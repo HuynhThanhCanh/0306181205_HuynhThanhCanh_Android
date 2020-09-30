@@ -1,1 +1,1 @@
-# 0306181205_HuynhThanhCanh_Android
+# 0306181205_HuynhThanhCanh_Android_Java
