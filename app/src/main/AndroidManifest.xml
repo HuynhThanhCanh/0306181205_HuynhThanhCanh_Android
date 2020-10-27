@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TrangCaNhan_LichSuGiaoDich"></activity>
+        <activity android:name=".TrangCaNhan_ThongTin" />
+        <activity android:name=".TrangCaNhan"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
