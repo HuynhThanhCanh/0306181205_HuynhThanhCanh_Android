@@ -14,7 +14,7 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-public class TrangCaNhan_ThongTin extends Fragment {
+public class TrangCaNhan_ThongTinActivity extends Fragment {
     private View mRootView;
     private ArrayList list;
     private Spinner spinner;

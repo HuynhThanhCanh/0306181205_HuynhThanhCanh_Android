@@ -9,13 +9,16 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tl_trang_ca_nhan"
         android:layout_width="match_parent"
-        android:layout_height="53dp"
+        android:layout_height="55dp"
+        android:layout_gravity="fill"
         app:tabIndicatorColor="#BD2121"
-        app:tabMode="fixed"></com.google.android.material.tabs.TabLayout>
+        app:tabMode="fixed"
+        app:tabTextColor="#000">
+
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_trang_ca_nhan"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent"/>
 </LinearLayout>

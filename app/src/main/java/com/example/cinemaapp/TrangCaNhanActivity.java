@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class TrangCaNhan extends AppCompatActivity {
+public class TrangCaNhanActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
