@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     List<Model> models;
+    List<Model> models2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initslide(List<Model> dsModel,ViewPager slideViewPager)
     {
+        adapter = new Adapter(dsModel,this);
         slideViewPager = findViewById(R.id.viewPager2);
         slideViewPager.setAdapter(adapter);
         slideViewPager.setClipChildren(false);

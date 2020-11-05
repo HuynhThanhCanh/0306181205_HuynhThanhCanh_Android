@@ -154,6 +154,23 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="#EFEEEE">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_dang_chieu"
+                    android:text="Dang chieu"
+                    >
+
+                </Button>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_sap_chieu"
+                    android:layout_toRightOf="@+id/btn_dang_chieu"
+                    android:text="Sap chieu"
+                    >
+
+                </Button>
 
                 <TextView
                     android:id="@+id/header_news"
