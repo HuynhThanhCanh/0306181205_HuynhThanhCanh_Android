@@ -9,14 +9,17 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"
+
         android:background="@color/cardview_dark_background"
-        app:cardBackgroundColor="#130D0D"
-        app:cardCornerRadius="10dp">
+        app:cardBackgroundColor="#000000"
+
+        app:cardCornerRadius="30dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
 
             <ImageView
                 android:id="@+id/image"

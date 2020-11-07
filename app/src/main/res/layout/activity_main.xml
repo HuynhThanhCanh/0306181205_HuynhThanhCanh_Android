@@ -12,6 +12,12 @@
         android:layout_height="150dp"
         android:background="@drawable/banner">
 
+
+<!--        <ViewFlipper-->
+<!--            android:id="@+id/flipper"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+<!--        </ViewFlipper>-->
         <Button
             android:id="@+id/btn_menu"
             android:layout_width="60dp"
@@ -31,10 +37,43 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="0dp"
             android:background="@drawable/icon_proflie" />
 
     </RelativeLayout>
+
+   
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_dang_chieu"
+            android:textColor="@android:color/white"
+            android:background="#BD2121"
+            android:layout_marginRight="2dp"
+            android:text="ĐANG CHIẾU"
+            >
+
+        </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:background="#BD2121"
+            android:layout_marginLeft="2dp"
+            android:id="@+id/btn_sap_chieu"
+            android:text="SẮP CHIẾU"
+            >
+
+        </Button>
+
+    </LinearLayout>
 
     <!--    <com.google.android.material.tabs.TabLayout-->
 
@@ -61,116 +100,92 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:text="PHIM ĐANG CHIẾU"
-                android:textSize="20dp"
-                android:padding="10dp"
-                android:textColor="@android:color/white"
-                android:background="#BD2121"
-                android:textAlignment="center"
-                android:layout_height="wrap_content">
 
-            </TextView>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="400dp">
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPager"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerImageSlider"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:clipToPadding="false"
-                    android:foregroundGravity="center"
-                    android:overScrollMode="never">
+                    android:layout_height="400dp"
+                    android:background="#514141"
+                    android:hapticFeedbackEnabled="false"
+                    android:paddingStart="80dp"
+                    android:paddingEnd="80dp">
 
-                </androidx.viewpager.widget.ViewPager>
+                </androidx.viewpager2.widget.ViewPager2>
 
                 <Button
                     android:id="@+id/btn_View"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="0dp"
                     android:background="@drawable/round"
-                    android:onClick="xem_chi_tiet"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:text="Xem chi tiết"
+                    android:onClick="thongbao"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Xem chi tiết >"
+
                     android:textColor="#000000">
 
                 </Button>
             </RelativeLayout>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#BD2121"
-                android:padding="10dp"
-                android:text="PHIM SẮP CHIẾU"
-                android:textColor="@android:color/white"
-                android:textAlignment="center"
-                android:textSize="20dp">
+<!--            <TextView-->
+<!--                android:id="@+id/bac"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="#BD2121"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="PHIM SẮP CHIẾU"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:textSize="20dp">-->
 
-            </TextView>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="400dp">
+<!--            </TextView>-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="400dp">-->
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPager2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:clipToPadding="false"
-                    android:foregroundGravity="center"
-                    android:overScrollMode="never">
+<!--                <androidx.viewpager.widget.ViewPager-->
+<!--                    android:id="@+id/viewPager2"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:clipToPadding="false"-->
+<!--                    android:foregroundGravity="center"-->
+<!--                    android:overScrollMode="never">-->
 
-                </androidx.viewpager.widget.ViewPager>
+<!--                </androidx.viewpager.widget.ViewPager>-->
 
-                <Button
-                    android:id="@+id/btn_View2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/round"
-                    android:onClick="xem_chi_tiet"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:text="Xem chi tiết"
-                    android:textColor="#000000">
+<!--                <Button-->
+<!--                    android:id="@+id/btn_View2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:background="@drawable/round"-->
+<!--                    android:onClick="xem_chi_tiet"-->
+<!--                    android:paddingLeft="30dp"-->
+<!--                    android:paddingRight="30dp"-->
+<!--                    android:text="Xem chi tiết"-->
+<!--                    android:textColor="#000000">-->
 
-                </Button>
-            </RelativeLayout>
+<!--                </Button>-->
+<!--            </RelativeLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="#EFEEEE">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btn_dang_chieu"
-                    android:text="Dang chieu"
-                    >
 
-                </Button>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btn_sap_chieu"
-                    android:layout_toRightOf="@+id/btn_dang_chieu"
-                    android:text="Sap chieu"
-                    >
-
-                </Button>
 
                 <TextView
                     android:id="@+id/header_news"
