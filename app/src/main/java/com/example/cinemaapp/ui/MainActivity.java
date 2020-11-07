@@ -1,9 +1,10 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cinemaapp.R;
 
 
 public class MainActivity extends AppCompatActivity {
