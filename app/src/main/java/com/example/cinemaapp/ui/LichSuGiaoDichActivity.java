@@ -1,10 +1,12 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.cinemaapp.R;
 
 public class LichSuGiaoDichActivity extends AppCompatActivity{
 

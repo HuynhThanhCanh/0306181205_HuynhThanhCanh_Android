@@ -2,11 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-<<<<<<< HEAD
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".ui.MainActivity" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -75,21 +74,6 @@
         </Button>
 
     </LinearLayout>
-
-    <!--    <com.google.android.material.tabs.TabLayout-->
-
-    <!--        android:id="@+id/tabLayoutt"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        app:tabIndicatorColor="#FF9800"-->
-    <!--        app:tabRippleColor="#FF5722">-->
-
-
-    <!--    </com.google.android.material.tabs.TabLayout>-->
-
-
-
-
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -126,7 +110,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="0dp"
                     android:background="@drawable/round"
-                    android:onClick="thongbao"
+                    android:onClick="showFilmInformations"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:text="Xem chi tiết >"
@@ -135,51 +119,6 @@
 
                 </Button>
             </RelativeLayout>
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/bac"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="#BD2121"-->
-<!--                android:padding="10dp"-->
-<!--                android:text="PHIM SẮP CHIẾU"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@android:color/white"-->
-<!--                android:textSize="20dp">-->
-
-<!--            </TextView>-->
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="400dp">-->
-
-<!--                <androidx.viewpager.widget.ViewPager-->
-<!--                    android:id="@+id/viewPager2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_centerInParent="true"-->
-<!--                    android:clipToPadding="false"-->
-<!--                    android:foregroundGravity="center"-->
-<!--                    android:overScrollMode="never">-->
-
-<!--                </androidx.viewpager.widget.ViewPager>-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_View2"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_alignParentBottom="true"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/round"-->
-<!--                    android:onClick="xem_chi_tiet"-->
-<!--                    android:paddingLeft="30dp"-->
-<!--                    android:paddingRight="30dp"-->
-<!--                    android:text="Xem chi tiết"-->
-<!--                    android:textColor="#000000">-->
-
-<!--                </Button>-->
-<!--            </RelativeLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -240,22 +179,10 @@
                         android:padding="24dp"
                         android:text="[GV-Ví Momo]  Giảm giá còn 60.000 đ  khi thanh toán qua momo" />
 
-
                 </LinearLayout>
 
             </RelativeLayout>
 
-
-
         </LinearLayout>
     </ScrollView>
-
-
-
 </LinearLayout>
-=======
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F5F7F7"
-    tools:context=".ui.MainActivity"/>
->>>>>>> CIN10-Giao-dien-danh-sach-phim

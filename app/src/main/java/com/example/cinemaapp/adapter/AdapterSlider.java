@@ -1,4 +1,4 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.adapter;
 
 
 import android.content.Context;
@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.cinemaapp.R;
+import com.example.cinemaapp.model.Model;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
     private Context context;
 
 
-    AdapterSlider(List<Model> dangchieu_ats, ViewPager2 viewPager2) {
+    public AdapterSlider(List<Model> dangchieu_ats, ViewPager2 viewPager2) {
         this.dangchieu_ats = dangchieu_ats;
         this.viewPager2 = viewPager2;
     }

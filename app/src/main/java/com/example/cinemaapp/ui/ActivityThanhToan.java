@@ -1,10 +1,12 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.example.cinemaapp.R;
 
 public class ActivityThanhToan extends AppCompatActivity {
 

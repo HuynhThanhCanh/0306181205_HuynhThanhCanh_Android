@@ -1,4 +1,4 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -6,6 +6,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.cinemaapp.R;
+import com.example.cinemaapp.adapter.GiaodienAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class Manhinhchinh extends AppCompatActivity {

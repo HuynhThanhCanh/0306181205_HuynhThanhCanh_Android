@@ -1,4 +1,4 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.model;
 
 public class Model {
 

@@ -1,10 +1,14 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.cinemaapp.fragment.Lichchieu;
+import com.example.cinemaapp.fragment.Thongtinphim;
+import com.example.cinemaapp.fragment.Danhgia;
 
 public class GiaodienAdapter extends FragmentStatePagerAdapter {
     public GiaodienAdapter(@NonNull FragmentManager fm, int behavior) {

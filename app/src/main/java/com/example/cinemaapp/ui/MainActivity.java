@@ -1,4 +1,4 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.animation.ArgbEvaluator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -16,12 +17,14 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.google.android.material.tabs.TabItem;
+import com.example.cinemaapp.adapter.Adapter;
+import com.example.cinemaapp.adapter.AdapterSlider;
+import com.example.cinemaapp.fragment.Thongtinphim;
+import com.example.cinemaapp.model.Model;
+import com.example.cinemaapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.transform.Transformer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -193,11 +196,9 @@ public class MainActivity extends AppCompatActivity {
         viewPagerVP.setPageTransformer(compositePageTransformer);
 
     }
-    public void thongbao( View view)
-    {
 
-        Toast.makeText(this,Integer.toString(stt),Toast.LENGTH_LONG).show();
+    public void showFilmInformations(View view) {
+        Intent intent = new Intent(this, Manhinhchinh.class);
+        startActivity(intent);
     }
-
-
 }

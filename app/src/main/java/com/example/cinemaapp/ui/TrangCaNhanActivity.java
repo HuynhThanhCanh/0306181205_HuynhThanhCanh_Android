@@ -1,11 +1,12 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.view.View;
 
+import com.example.cinemaapp.R;
+import com.example.cinemaapp.adapter.TrangCaNhanAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class TrangCaNhanActivity extends AppCompatActivity {

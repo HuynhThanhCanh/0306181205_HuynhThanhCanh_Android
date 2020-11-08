@@ -1,4 +1,4 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.cinemaapp.model.Model;
+import com.example.cinemaapp.R;
 
 import java.util.List;
 

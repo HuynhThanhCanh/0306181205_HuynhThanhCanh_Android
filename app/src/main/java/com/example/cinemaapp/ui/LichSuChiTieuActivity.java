@@ -1,4 +1,4 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+import com.example.cinemaapp.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
