@@ -10,6 +10,7 @@
         android:supportsRtl="true"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity">
 =======
@@ -18,16 +19,29 @@
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.splash_Screen">
 >>>>>>> CIN10-Giao-dien-danh-sach-phim
+=======
+        android:theme="@style/AppTheme">
+        <activity android:name=".ActivityThanhToan">
+>>>>>>> CIN14_DangNhap
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 =======
         android:theme="@style/AppTheme">
         <activity android:name=".Manhinhchinh"></activity>
 >>>>>>> CIN-11-Giao-dien-chi-tiet-phim
+=======
+        <activity android:name=".ActivityDangKy">
+
+        </activity>
+        <activity android:name=".ActivityDangNhap">
+
+        </activity>
+        <activity android:name=".MainActivity" />
+>>>>>>> CIN14_DangNhap
     </application>
 
 </manifest>
