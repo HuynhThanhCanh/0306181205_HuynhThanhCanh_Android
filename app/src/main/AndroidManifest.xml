@@ -11,7 +11,16 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:theme="@style/AppTheme.NoActionBar">
+=======
+        android:theme="@style/AppTheme">
+        <activity android:name=".LichSuChiTieuActivity"></activity>
+        <activity android:name=".LichSuGiaoDichActivity" />
+        <activity android:name=".TrangCaNhan_GiaoDichActivity" />
+        <activity android:name=".TrangCaNhan_ThongTinActivity" />
+        <activity android:name=".TrangCaNhanActivity" />
+>>>>>>> CIN-13-Giao-dien-trang-ca-nhan
         <activity android:name=".MainActivity">
 =======
         android:theme="@style/AppTheme">
