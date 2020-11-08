@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">CinemaApp</string>
-    <string name="facebook_app_id">[APP_ID]</string> <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
     <string-array name="film">
         <item>Phim đang chiếu</item>
         <item>Phim sắp chiếu</item>

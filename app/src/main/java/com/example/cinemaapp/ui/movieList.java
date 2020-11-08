@@ -1,10 +1,7 @@
 package com.example.cinemaapp.ui;
-import android.app.ActivityOptions;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.MovieAdapter;
 import com.example.cinemaapp.adapter.MovieItemClickListener;
-import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.SlidePagerAdapter;
 import com.example.cinemaapp.model.Movie;
 import com.example.cinemaapp.model.Slide;
@@ -78,6 +75,17 @@ private RecyclerView MoviesRV1;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onMovieClick(Movie movie, ImageView movieImageView) {
+       /* Intent intent = new Intent(this, MovieDetailActivity.class);
+        // send movie information to deatilActivity
+        intent.putExtra("title",movie.getTitle());
+        intent.putExtra("imgURL",movie.getThumbnail());
+        intent.putExtra("imgCover",movie.getCoverPhoto());
+
+        ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(movieList.this,
+                movieImageView,"sharedName");
+        startActivity(intent,options.toBundle());
+
+        Toast.makeText(this,"Bạn vừa chọn Phim " + movie.getTitle(),Toast.LENGTH_LONG).show();*/
     }
 
     class SliderTimer extends TimerTask{
@@ -93,6 +101,7 @@ private RecyclerView MoviesRV1;
                     else
 
                         slidepager.setCurrentItem(0);
+
                 }
             });
         }
