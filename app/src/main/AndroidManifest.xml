@@ -8,8 +8,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity">
+=======
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.movieList"></activity>
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.splash_Screen">
+>>>>>>> CIN10-Giao-dien-danh-sach-phim
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
