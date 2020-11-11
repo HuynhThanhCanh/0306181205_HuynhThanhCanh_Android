@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.ActivityThanhToan">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="60dp"
+            android:layout_height="247dp"
+            android:layout_weight="1"
+            android:background="@drawable/tiec_trang_mau_5_banner" />
+
+        <LinearLayout
+            android:layout_width="144dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/textViewTenPhim"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:text="TIỆC TRĂNG MÁU"
+                android:textColor="#000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phim không dành cho khán giả dưới 18 tuổi"
+                android:textColor="#BD2121"
+
+                />
+
+            <TextView
+                android:id="@+id/txtThoiGianChieu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thời gian chiếu" />
+
+            <TextView
+                android:id="@+id/txtTenChiNhanh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên chi nhánh" />
+
+            <TextView
+                android:id="@+id/txtTenRap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên rạp" />
+
+            <TextView
+                android:id="@+id/txtSoGhe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ghế" />
+
+            <TextView
+                android:id="@+id/txtTongTien"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="10dp"
+                android:text="Tổng Thanh Toán:"
+                android:textColor="#BD2121"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#BD2121"
+                android:padding="10dp"
+                android:text="THÔNG TIN VÉ"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtsoluong"
+                    android:layout_width="208dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Số lượng"
+                    android:textColor="#000"
+                    android:textSize="7pt" />
+
+                <TextView
+                    android:id="@+id/txtso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-49dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="-400dp"
+                    android:layout_toLeftOf="@id/txtsoluong"
+                    android:gravity="center_vertical"
+                    android:text="2"
+                    android:textColor="#000"
+                    android:textSize="7pt" />
+
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="Tổng"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#BD2121"
+                android:padding="10dp"
+                android:text="GIẢM GIÁ"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="CGV Voucher"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="Coupon"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="Điểm thưởng"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="Thẻ quà tặng"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="Thẻ ưu tiên"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#BD2121"
+                android:padding="10dp"
+                android:text="TỔNG KẾT"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="Tổng cộng"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="Giảm giá"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="Còn lại"
+                android:textColor="#000"
+                android:textSize="7pt" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/checkboxtoidongy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/txttoidongy"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/checkboxtoidongy"
+                    android:text="Tôi đồng ý với Điều khoản Sử dụng và đang mua vé cho người có độ tuổi thích hợp"
+
+                    android:textColor="#000"
+
+                    android:textSize="7pt" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnThanhToan"
+                android:textColor="#fff"
+                android:textSize="10pt"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15pt"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/botron_button"
+                android:text="THANH TOÁN"
+                 />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
