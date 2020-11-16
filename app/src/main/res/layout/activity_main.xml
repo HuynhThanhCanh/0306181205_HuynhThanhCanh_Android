@@ -48,18 +48,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:id="@+id/btn_dang_chieu"
-            android:textColor="@android:color/white"
-            android:background="#BD2121"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="#BD2121"
             android:text="ĐANG CHIẾU"
-            >
+            android:textColor="@android:color/white">
 
         </Button>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

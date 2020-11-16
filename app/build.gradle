@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
 
+
 android {
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -47,4 +53,5 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     implementation 'com.airbnb.android:lottie:3.4.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
 }

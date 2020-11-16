@@ -11,57 +11,61 @@
     android:foreground="?attr/selectableItemBackgroundBorderless">
 
 
-    <ImageView
-        android:scaleType="centerCrop"
-        android:id="@+id/item_movie_img"
-        android:layout_width="0dp"
-        android:layout_height="175dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:ignore="VectorDrawableCompat" />
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/item_movie_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
-        android:textColor="@color/text_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_movie_img" />
+        <ImageView
+            android:id="@+id/item_movie_img"
+            android:layout_width="125dp"
+            android:layout_height="175dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:ignore="VectorDrawableCompat" />
 
-    <TextView
-        android:id="@+id/item_movie_point"
-        android:layout_width="27dp"
-        android:layout_height="29dp"
-        android:text="4"
-        android:textColor="@color/text_gray"
-        android:textSize="23dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        <TextView
+            android:id="@+id/item_movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="175dp"
+            android:text="TextView"
+            android:textColor="@color/text_gray"
 
-    </TextView>
+            app:layout_constraintTop_toBottomOf="@+id/item_movie_img" />
 
-    <ImageView
+        <TextView
+            android:id="@+id/item_movie_point"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="170dp"
+            android:text="4"
+            android:textColor="@color/text_gray"
+            android:textSize="23dp">
 
-        android:id="@+id/item_movie_star"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:background="@drawable/ic_star_full"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        </TextView>
 
-    </ImageView>
+        <ImageView
+            android:layout_marginStart="107dp"
+            android:id="@+id/item_movie_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="175dp"
+            android:background="@drawable/ic_star_full"
+          >
+
+        </ImageView>
+
+        <ImageView
+             android:layout_marginStart="60dp"
+            android:layout_width="64dp"
+            android:layout_height="37dp"
+            android:layout_marginBottom="136dp"
+            android:background="@drawable/logo18"
+            app:layout_constraintBottom_toBottomOf="@+id/item_movie_img">
+
+        </ImageView>
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
