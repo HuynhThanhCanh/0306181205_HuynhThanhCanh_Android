@@ -10,20 +10,82 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.model.User;
+import com.example.cinemaapp.readjson.ReadThongTinCaNhanJSON;
 
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class TrangCaNhan_ThongTinActivity extends Fragment {
     private View mRootView;
     private ArrayList list;
     private Spinner spinner;
+
+    //Declare Control
+    TextView txtFullName;
+    EditText txtUserName;
+    EditText txtPhoneNumber;
+    EditText txtUserNameDateOfBirth;
+    EditText txtEmail;
+    RadioButton male;
+    RadioButton female;
+    EditText txtFullAddress;
+    Spinner city;
+    Spinner district;
+    Spinner ward;
+    Button btnCapNhat;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.activity_trang_ca_nhan__thong_tin, container, false);
+        //Start set control
+        txtFullName = mRootView.findViewById(R.id.tv_Name);
+        txtUserName = mRootView.findViewById(R.id.edtext_Name);
+        txtPhoneNumber = mRootView.findViewById(R.id.edtext_Phone);
+        txtUserNameDateOfBirth = mRootView.findViewById(R.id.edtext_BirthDay);
+        txtEmail =  mRootView.findViewById(R.id.edtext_Email);
+        male = mRootView.findViewById(R.id.rad_Male);
+        female = mRootView.findViewById(R.id.rad_Female);
+        txtFullAddress = mRootView.findViewById(R.id.edtext_Address);
+        city = mRootView.findViewById(R.id.spinner_City);
+        district = mRootView.findViewById(R.id.spinner_District);
+        ward = mRootView.findViewById(R.id.spinner_Ward);
+        btnCapNhat = mRootView.findViewById(R.id.btn_CapNhat);
+        //End set control
+        try {
+            loadData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        btnCapNhat.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                try {
+                    GetAPI();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         SpinnerCity();
         SpinnerDistrict();
         SpinnerWard();
@@ -84,5 +146,51 @@ public class TrangCaNhan_ThongTinActivity extends Fragment {
         spinner = (Spinner) mRootView.findViewById(R.id.spinner_Ward);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, list);
         spinner.setAdapter(spinnerAdapter);
+    }
+
+    public void loadData() throws IOException, JSONException {
+        User user = ReadThongTinCaNhanJSON.readThongTinCaNhanJsonFile(getActivity());
+        txtFullName.setText(user.getFullName());
+        //
+        txtUserName.setText(user.getUserName());
+        txtPhoneNumber.setText(user.getPhoneNumber());
+        txtUserNameDateOfBirth.setText(user.getDayOfBirth());
+        txtEmail.setText(user.getEmail());
+        //
+        if(user.getSex() == 1){
+            male.setChecked(true);
+        }else if(user.getSex() == 0){
+            female.setChecked(true);
+        }else{
+            male.setChecked(false);
+            female.setChecked(false);
+        }
+        //
+//        city.set
+//        district = mRootView.findViewById(R.id.spinner_District);
+//        ward = mRootView.findViewById(R.id.spinner_Ward);
+    }
+
+    public void GetAPI() throws Exception {
+        //GET API
+        URL urlForGetRequest = new URL("https://thongtindoanhnghiep.co/api/city");
+        String readline = null;
+        HttpURLConnection connection = (HttpURLConnection) urlForGetRequest.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setRequestProperty("city","application/json");
+        int responseCode = connection.getResponseCode();
+
+        if(responseCode ==  HttpURLConnection.HTTP_OK){
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            while((readline = in.readLine()) != null){
+                response.append(readline);
+            }
+            in.close();
+
+            Toast.makeText(getActivity(), "JSON String Result", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getActivity(), "JSON NOT WORKED", Toast.LENGTH_SHORT).show();
+        }
     }
 }

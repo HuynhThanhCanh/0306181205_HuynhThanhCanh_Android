@@ -1,0 +1,18 @@
+{
+  "user":
+    {
+      "id": 1,
+      "full_name": "Huỳnh Thanh Cảnh",
+      "username": "canhht",
+      "avatar": "htc",
+      "phone_number":"0947479207",
+      "day_of_birth":"02/10/2000",
+      "email": "huynhthanhcanh.top@gmail.com",
+      "sex": 1,
+      "address": {
+        "city": "Tp.Hồ Chí Minh",
+        "district": "P.24",
+        "ward": "Q.Bình Thạnh",
+      }
+    }
+}

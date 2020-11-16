@@ -12,25 +12,36 @@
         android:theme="@style/AppTheme.NoActionBar">
 
         <activity android:name=".ui.LichSuChiTieuActivity" />
+
         <activity android:name=".ui.LichSuGiaoDichActivity" />
+
         <activity
             android:name=".ui.TrangCaNhan_GiaoDichActivity"
             tools:ignore="Instantiatable" />
         <activity
             android:name=".ui.TrangCaNhan_ThongTinActivity"
             tools:ignore="Instantiatable" />
-        <activity android:name=".ui.TrangCaNhanActivity" />
-        <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.movieList" />
-        <activity android:name=".ui.splash_Screen">
+
+        <activity android:name=".ui.TrangCaNhanActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.MainActivity" />
+
+        <activity android:name=".ui.movieList" />
+
+        <activity android:name=".ui.splash_Screen">
+        </activity>
+
         <activity android:name=".ui.ActivityThanhToan" />
+
         <activity android:name=".ui.Manhinhchinh" />
+
         <activity android:name=".ui.ActivityDangKy" />
+
         <activity android:name=".ui.ActivityDangNhap" />
     </application>
 
