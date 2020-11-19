@@ -22,7 +22,7 @@
         <activity android:name=".ui.TrangCaNhanActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.movieList" />
-        <activity android:name=".ui.splash_Screen">
+        <activity android:name=".ui.ActivityDangNhap">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,7 +31,7 @@
         <activity android:name=".ui.ActivityThanhToan" />
         <activity android:name=".ui.Manhinhchinh" />
         <activity android:name=".ui.ActivityDangKy" />
-        <activity android:name=".ui.ActivityDangNhap" />
+        <activity android:name=".ui.splash_Screen" />
     </application>
 
 </manifest>
