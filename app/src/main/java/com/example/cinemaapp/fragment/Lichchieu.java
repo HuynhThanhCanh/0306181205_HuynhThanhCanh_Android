@@ -1,5 +1,7 @@
 package com.example.cinemaapp.fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,16 +9,31 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.ui.MainActivity;
+
+import java.util.concurrent.ThreadPoolExecutor;
+
+import static com.example.cinemaapp.R.array.Adres;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Lichchieu#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Lichchieu extends Fragment {
+public class Lichchieu extends Fragment  { //implements AdapterView.OnItemSelectedListener
 
+
+    Spinner spinner;
+    Spinner loai;
+    View view;
+    String mAdress[];
+    String dinhdang[];
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,10 +74,38 @@ public class Lichchieu extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lichchieu, container, false);
+         view= inflater.inflate(R.layout.fragment_lichchieu, container, false);
+        LoadlistLoai();
+        loadListAddress();
+
+       //Spinner spinner1=(Spinner)view.findViewById(R.id.spinner_dd);
+
+
+        return view;
     }
+
+    private void LoadlistLoai() {
+        loai=view.findViewById(R.id.spinner_dd);
+        dinhdang= getResources().getStringArray(R.array.loai);
+        ArrayAdapter<String> adapter= new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item,dinhdang);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        loai.setAdapter(adapter);
+    }
+
+
+    public void loadListAddress() {
+        spinner = view.findViewById(R.id.spinner_diachi);
+        mAdress = getResources().getStringArray(Adres);
+        ArrayAdapter<String> arrayAdapter =  new  ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, mAdress);
+        //
+        arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+    }
+
+
 }

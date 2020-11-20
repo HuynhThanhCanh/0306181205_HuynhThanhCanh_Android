@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/MylearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.Danhgia">
@@ -17,86 +19,65 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
        android:background="@drawable/poster"/>
+  <TextView
+      android:layout_marginTop="10dp"
+      android:layout_below="@id/hinh"
+      android:id="@+id/binhluan"
+      android:layout_marginLeft="20dp"
+      android:layout_width="match_parent"
+      android:text="Tất cả các bình luận"
+      android:textAppearance="?android:textAppearanceLargeInverse"
+      android:textSize="20dp"
+      android:textColor="@color/design_default_color_primary"
+      android:layout_height="wrap_content"/>
 
+  <RatingBar
+      android:id="@+id/ratingBar"
+      android:layout_width="250dp"
+      android:layout_height="41dp"
+      android:layout_below="@id/binhluan"
+      android:progressTint="@android:color/holo_orange_light"
+
+      android:numStars="5"
+      android:scaleX="0.5"
+      android:scaleY="0.5" />
+     <TextView
+         android:id="@+id/rateCount"
+         android:layout_below="@id/ratingBar"
+         android:textAppearance="?android:textAppearanceMedium"
+         android:layout_width="match_parent"
+         android:layout_height="20dp"/>
     <EditText
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/hinh"
-        android:id="@+id/txtBL"
+        android:layout_below="@id/rateCount"
+        android:id="@+id/review"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="  ý kiến của bạn" />
+        android:hint="  ý kiến của bạn" />
     <Button
         android:layout_marginTop="10dp"
         android:id="@+id/btnBl"
         android:layout_marginLeft="300dp"
         android:text="Bình luận"
+        android:textAllCaps="false"
         android:textColor="@color/cardview_light_background"
         android:background="@android:color/holo_red_dark"
-        android:layout_below="@id/txtBL"
-        android:layout_width="100dp"
-        android:layout_height="50dp"/>
+        android:layout_below="@id/review"
+        android:layout_width="80dp"
+        android:layout_gravity="right"
+        android:layout_height="30dp"/>
+  <TextView
+      android:layout_below="@id/btnBl"
+      android:layout_marginTop="15dp"
+      android:id="@+id/showRating"
+      android:textAppearance="?android:textAppearanceMedium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
 
-    <ImageView
-        android:layout_marginLeft="20dp"
-        android:id="@+id/hinhbl"
-        android:layout_marginTop="15dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/btnBl"
-        android:background="@drawable/mytam" />
 
-    <TextView
-        android:id="@+id/txtbl1"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/btnBl"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="15dp"
-        android:padding="14dp"
-        android:text="phim hay"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/hinhbl1"
-        android:layout_marginLeft="20dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/hinhbl"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/hinh2" />
-    <TextView
-        android:id="@+id/txtbl2"
-        android:layout_marginTop="15dp"
-        android:padding="14dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textStyle="bold"
-        android:layout_below="@id/txtbl1"
-        android:layout_marginLeft="80dp"
-        android:layout_width="250dp"
-        android:text="phim đung tam lý cuộc sống"
-        android:layout_height="50dp"/>
-    <ImageView
-        android:layout_marginLeft="20dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/hinhbl1"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/hinh2" />
-    <TextView
-        android:id="@+id/txtbl3"
-        android:layout_marginTop="15dp"
-        android:padding="14dp"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textStyle="bold"
-        android:layout_below="@id/txtbl2"
-        android:layout_marginLeft="80dp"
-        android:layout_width="250dp"
-        android:text="hay :))"
-        android:layout_height="50dp"/>
+
 
 
 
