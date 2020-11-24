@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="176dp"
+                        android:layout_marginStart="134dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="11dp"
                         android:layout_marginBottom="15dp"
@@ -136,6 +136,8 @@
 
                 </RelativeLayout>
                 <!-- Film 2-->
+                <!-- Film 3-->
+                <!-- Film 4-->
                 <RelativeLayout
                     android:id="@+id/layout_Film2"
                     android:layout_width="match_parent"
@@ -206,7 +208,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="176dp"
+                        android:layout_marginStart="143dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="11dp"
                         android:layout_marginBottom="15dp"
@@ -216,8 +218,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
-                <!-- Film 3-->
-                <!-- Film 4-->
+
                 <RelativeLayout
                     android:id="@+id/layout_Film3"
                     android:layout_width="match_parent"
@@ -288,10 +289,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="176dp"
+                        android:layout_marginStart="145dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="11dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="26dp"
                         android:layout_toEndOf="@+id/txt_Point3"
                         android:text="80.000 VNĐ"
                         android:textColor="#000000"
