@@ -1,7 +1,9 @@
 package com.example.cinemaapp.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -12,9 +14,12 @@ import android.animation.ArgbEvaluator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+//import android.widget.Toolbar;
 import android.widget.ViewFlipper;
 
 import com.example.cinemaapp.adapter.Adapter;
@@ -22,6 +27,7 @@ import com.example.cinemaapp.adapter.AdapterSlider;
 import com.example.cinemaapp.fragment.Thongtinphim;
 import com.example.cinemaapp.model.Model;
 import com.example.cinemaapp.R;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
     Button btn_dangchieu;
     final List<Model> dangchieu_ats =new ArrayList<>();
     Button btn_sapchieu;
+
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private NavigationView navigationView;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         constructormodels2();
         viewPagerVP=(ViewPager2)findViewById(R.id.viewPagerImageSlider);
-
-
+        // khởi tao các đối tượng  add vào silder đang chiếu
         dangchieu_ats.add(new Model(R.drawable.matbet,"Mắt Biếc","Tình cảm"));
         dangchieu_ats.add(new Model(R.drawable.rom,"Ròm","Hành động"));
         dangchieu_ats.add(new Model(R.drawable.trangmau,"Tiệc Trăng Máu","Hài Hước"));
@@ -64,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
         //end test
 
         initslider1(dangchieu_ats);
-
-
 
 
         btn_dangchieu = (Button) findViewById(R.id.btn_dang_chieu);
@@ -84,26 +93,58 @@ public class MainActivity extends AppCompatActivity {
                     initslider1(models);
             }
         });
-//        TabItem tab1= (TabItem) findViewById(R.id.tabDangChieu);
-//        TabItem tab2 = (TabItem) findViewById(R.id.tabSapChieu);
-//        tab1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                initslider1(dangchieu_ats);
-//            }
-//        });
-//        tab2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                initslider1(models);
-//            }
-//        });
 
-//                initslide(models,viewPager);
-//                initslide(models2,viewPager2);
+//         toolbar = findViewById(R.id.toolbar);
+//         setSupportActionBar(toolbar);
+
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,drawerLayout,R.string.drawer_open,R.string.drawer_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+
+       navigationView = findViewById(R.id.nav_view);
+//       View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
+       navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+           @Override
+           public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+               UserMenuSelected(item);
+               return false;
+           }
+       });
+
+
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item))
+            return true;
+        return super.onOptionsItemSelected(item);
+    }
+    // xử lí khi người dùng click vào menu ở đây
+
+    public void UserMenuSelected(MenuItem item){
+        switch (item.getItemId())
+        {
+            case R.id.theoPhim :
+                    Intent intent = new Intent(getApplicationContext(),movieList.class);
+                    startActivity(intent);
+            break;
+        }
+
+
+    }
+
     public  void constructormodels2()
     {
+        // khởi tạo các đối tượng add vào silder sắp chiếu
         models = new ArrayList<>();
         models.add(new Model(R.drawable.img_1,"Tiec Trang Mau","Hai huoc"));
         models.add(new Model(R.drawable.img_2,"365 ngay yeu anh","tinh cam"));
@@ -112,61 +153,6 @@ public class MainActivity extends AppCompatActivity {
         models.add(new Model(R.drawable.img_3,"Em chua 18","Tam ly"));
     }
 
-//    public void initslide(List<Model> dsModel,ViewPager slideViewPager)
-//    {
-//        adapter = new Adapter(dsModel,this);
-//
-//        slideViewPager.setAdapter(adapter);
-//        slideViewPager.setClipChildren(false);
-//        slideViewPager.setOffscreenPageLimit(3);
-//        slideViewPager.setPadding(100,0,100,0);
-//        Integer[] colors_temp ={getResources().getColor(R.color.color1),
-//                getResources().getColor(R.color.color2),
-//                getResources().getColor(R.color.color3),
-//                getResources().getColor(R.color.color4)};
-//
-//        colors = colors_temp;
-//
-//        slideViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-////                if (position<(adapter.getCount()-1) &&position <(colors.length-1))
-////                {
-////                    viewPager.setBackgroundColor(
-////
-////                            (Integer) argbEvaluator
-////                                    .evaluate(positionOffset
-////                                            ,colors[position]
-////                                            ,colors[position+1])
-////                    );
-////
-////                }
-////                else
-////                {
-////                    viewPager.setBackgroundColor(colors[colors.length-1]);
-////                }
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                stt=position+1;
-//                sliderHandler.removeCallbacks(sliderRunnable2);
-//                sliderHandler.postDelayed(sliderRunnable2,3000);
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
-//    }
-
-//    private Runnable sliderRunnable2 = new Runnable() {
-//        @Override
-//        public void run() {
-//            viewPager2.setCurrentItem(viewPager2.getCurrentItem()+1);
-//        }
-//    };
 
     public void xem_chi_tiet(View view) {
         String tb = "Ban da chon phim"+Integer.toString(stt);
@@ -201,4 +187,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Manhinhchinh.class);
         startActivity(intent);
     }
+
 }

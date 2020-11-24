@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
     android:layout_height="match_parent">
@@ -11,9 +12,10 @@
         android:id="@+id/imageSlide"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-
+        android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
-        app:riv_corner_radius="12dp">
+        app:riv_corner_radius="12dp"
+        tools:src="@drawable/blackp">
 
 
     </com.makeramen.roundedimageview.RoundedImageView>
@@ -26,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:text="Mắt Biếc"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"></TextView>
+        android:textSize="25dp"></TextView>
 
     <TextView
         android:id="@+id/txtCategory"
