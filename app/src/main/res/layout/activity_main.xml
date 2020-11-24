@@ -12,7 +12,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:orientation="vertical">
+=======
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_dang_chieu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="#BD2121"
+            android:text="ĐANG CHIẾU"
+            android:textColor="@android:color/white">
+
+        </Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:background="#BD2121"
+            android:layout_marginLeft="2dp"
+            android:id="@+id/btn_sap_chieu"
+            android:text="SẮP CHIẾU"
+            >
+
+        </Button>
+>>>>>>> CIN-10-Update
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"

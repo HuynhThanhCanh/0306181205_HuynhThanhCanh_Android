@@ -1,6 +1,9 @@
 package com.example.cinemaapp.ui;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
@@ -23,11 +26,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class movieList extends AppCompatActivity implements MovieItemClickListener {
+    //Đầu tiên khai báo RecyclerView
 private List<Slide>lstslides;
 private ViewPager slidepager;
 private TabLayout indicator;
 private RecyclerView MoviesRV;
 private RecyclerView MoviesRV1;
+private EditText searchInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +41,20 @@ private RecyclerView MoviesRV1;
         indicator =findViewById(R.id.indicator);
         MoviesRV=findViewById(R.id.Rv_movies);
         MoviesRV1=findViewById(R.id.Rv_movies1);
+        //input search
+        searchInput=findViewById(R.id.inputSearch);
+        searchInput.setSelected(false);
+
         lstslides= new ArrayList<>();
-        lstslides.add(new Slide(R.drawable.slide1,"slide Title /nmore text here"));
-        lstslides.add(new Slide(R.drawable.slide2,"slide Title /nmore text here"));
-        lstslides.add(new Slide(R.drawable.slide1,"slide Title /nmore text here"));
-        lstslides.add(new Slide(R.drawable.slide2,"slide Title /nmore text here"));
+        lstslides.add(new Slide(R.drawable.mulan,"slide Title /nmore text here"));
+        lstslides.add(new Slide(R.drawable.spidercover,"slide Title /nmore text here"));
+        lstslides.add(new Slide(R.drawable.anvanger,"slide Title /nmore text here"));
+        lstslides.add(new Slide(R.drawable.rom,"slide Title /nmore text here"));
         SlidePagerAdapter adapter = new SlidePagerAdapter(this,lstslides);
         slidepager.setAdapter(adapter);
-
         Timer timer= new Timer();
         timer.scheduleAtFixedRate(new movieList.SliderTimer(),4000,6000);
         indicator.setupWithViewPager(slidepager,true);
-
         //setup RecylerView Phim đang chiếu
         List<Movie>lstMovies=new ArrayList<>();
         lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.moana));
@@ -59,7 +66,9 @@ private RecyclerView MoviesRV1;
         MovieAdapter movieAdapter = new MovieAdapter(this,lstMovies,this);
         MoviesRV.setAdapter(movieAdapter);
         MoviesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
         //setup RecylerView Phim đang chiếu
+
         List<Movie>lstMovies1=new ArrayList<>();
         lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.moana));
         lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.blackp));
@@ -70,6 +79,24 @@ private RecyclerView MoviesRV1;
         MovieAdapter movieAdapter1 = new MovieAdapter(this,lstMovies1,this);
         MoviesRV1.setAdapter(movieAdapter);
         MoviesRV1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                movieAdapter.getFilter().filter(s);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

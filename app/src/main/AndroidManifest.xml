@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cinemaapp">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-
+        <activity android:name=".ui.MoviePlayerActivity"></activity>
         <activity android:name=".ui.LichSuChiTieuActivity" />
         <activity android:name=".ui.LichSuGiaoDichActivity" />
         <activity
@@ -21,10 +21,11 @@
             tools:ignore="Instantiatable" />
         <activity android:name=".ui.TrangCaNhanActivity" />
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.movieList" />
+        <activity android:name=".ui.movieList"/>
         <activity android:name=".ui.splash_Screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
