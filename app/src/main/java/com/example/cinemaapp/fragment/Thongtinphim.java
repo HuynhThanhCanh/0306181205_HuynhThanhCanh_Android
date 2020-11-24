@@ -1,21 +1,36 @@
 package com.example.cinemaapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.adapter.Sodorap;
+//import com.google.android.youtube.player.YouTubePlayer;
+//import com.google.android.youtube.player.YouTubePlayerView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Thongtinphim#newInstance} factory method to
  * create an instance of this fragment.
  */
+/*   <view
+               android:id="@+id/view"
+               class="com.google.android.youtube.player.YouTubePlayerView"
+               android:layout_alignParentTop="true"
+               android:layout_alignParentStart="true"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>*/
 public class Thongtinphim extends Fragment {
+    //YouTubePlayerView mYouTubePlayerView;
+    Button btnPlay;
+    //YouTubePlayer.OnInitializedListener mOnInitializedListener;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,17 +65,30 @@ public class Thongtinphim extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
 
+    }
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Button muave;
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_thongtinphim, container, false);
+       View view= inflater.inflate(R.layout.fragment_thongtinphim, container, false);
+        muave =(Button) view.findViewById(R.id.btndatve) ;
+        muave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chonghe= new Intent();
+                startActivity(chonghe);
+            }
+        });
+       //mYouTubePlayerView=(YouTubePlayer)view.findViewById(R.id.view);
+       return  view;
     }
 }

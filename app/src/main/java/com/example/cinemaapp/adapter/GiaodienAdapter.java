@@ -11,6 +11,8 @@ import com.example.cinemaapp.fragment.Thongtinphim;
 import com.example.cinemaapp.fragment.Danhgia;
 
 public class GiaodienAdapter extends FragmentStatePagerAdapter {
+
+
     public GiaodienAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
@@ -46,4 +48,5 @@ public class GiaodienAdapter extends FragmentStatePagerAdapter {
         }
         return super.getPageTitle(position);
     }
+
 }

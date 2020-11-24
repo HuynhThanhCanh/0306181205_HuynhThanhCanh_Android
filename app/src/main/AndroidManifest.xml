@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cinemaapp">
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET"/>
+=======
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+>>>>>>> CIN-17-binhluan-trailer
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+<<<<<<< HEAD
         <activity android:name=".ui.MoviePlayerActivity"></activity>
+=======
+        <activity android:name=".adapter.Sodorap"></activity>
+>>>>>>> CIN-17-binhluan-trailer
         <activity android:name=".ui.LichSuChiTieuActivity" />
         <activity android:name=".ui.LichSuGiaoDichActivity" />
         <activity
@@ -33,6 +43,7 @@
         <activity android:name=".ui.Manhinhchinh" />
         <activity android:name=".ui.ActivityDangKy" />
         <activity android:name=".ui.ActivityDangNhap" />
+        <activity android:name=".adapter.TrailerAdapter" />
     </application>
 
 </manifest>

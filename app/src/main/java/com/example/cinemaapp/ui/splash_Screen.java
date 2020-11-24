@@ -24,7 +24,11 @@ public class splash_Screen extends AppCompatActivity {
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 } finally {
+<<<<<<< HEAD
                     Intent intent = new Intent(splash_Screen.this, movieList.class);
+=======
+                    Intent intent = new Intent(splash_Screen.this, Manhinhchinh.class);
+>>>>>>> CIN-17-binhluan-trailer
                     startActivity(intent);
                     finish();
                 }
