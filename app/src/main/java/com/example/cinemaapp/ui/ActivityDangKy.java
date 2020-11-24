@@ -4,19 +4,22 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.model.ThanhVien;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -24,6 +27,12 @@ import java.util.List;
 public class ActivityDangKy extends AppCompatActivity {
     private Spinner spinner;
     private EditText starDay;
+    private EditText editHoten, editSdt, editEmail, editMatkhau, editNgaysinh;
+    private Button btnDangky;
+    private RadioButton rabtnNam, rabtnNu;
+    private Context context;
+
+
 
 
 
@@ -53,17 +62,68 @@ public class ActivityDangKy extends AppCompatActivity {
         list.add("Quận Tân Phú");
         list.add("Quận Tân Bình");
         list.add("Quận Nhà Bè");
+        context = this;
 
         //ngày sinh
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, list);
         spinner.setAdapter(adapter);
 
-        starDay = (EditText) findViewById(R.id.textViewNgaySinh);
+        starDay = (EditText) findViewById(R.id.editTextNgaySinh);
         //mũi tên quay lại
         ActionBar actionBar = getSupportActionBar(); //gọi để lấy đối tượng action bar
         //actionBar.hide(); ẩn tên app
-        actionBar.setTitle("Đăng ký");//đặt tên app
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
+        //actionBar.setTitle("Đăng ký");//đặt tên app
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
+
+
+        final DBManager dbManager = new DBManager(this);
+        editHoten = (EditText) findViewById(R.id.editTextHoTen);
+        editSdt = (EditText)findViewById(R.id.editTextSDT);
+        editEmail = (EditText)findViewById(R.id.editTextTNhapEmail);
+        editMatkhau = (EditText)findViewById(R.id.editTextNhapPassword);
+        rabtnNam =(RadioButton)findViewById(R.id.radioBtnNam);
+        rabtnNu =(RadioButton)findViewById(R.id.radioBtnNu);
+        editNgaysinh=(EditText)findViewById(R.id.editTextNgaySinh);
+        btnDangky=(Button)findViewById(R.id.btnDangKy);
+        spinner = (Spinner)findViewById(R.id.spinner);
+        btnDangky.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ThanhVien thanhVien= dkThanhVien();
+                System.out.println(thanhVien);
+                if(thanhVien!=null)
+                {
+                    if(dbManager.themThanhVien(thanhVien)){
+                        ThongBaoThanhCong();
+                    }else{
+                        ThongBaoLoi();
+                    }
+                }
+
+            }
+        });
+    }
+
+    public void ThongBaoThanhCong(){
+        Toast.makeText(this, "Them Thanh cong!", Toast.LENGTH_LONG).show();
+    }
+
+    public void ThongBaoLoi(){
+        Toast.makeText(this, "Loi!", Toast.LENGTH_LONG).show();
+    }
+
+    private ThanhVien dkThanhVien(){
+        String hoten= editHoten.getText().toString();
+        String sdt= editSdt.getText().toString();
+        String email= editEmail.getText().toString();
+        String matkhau= editMatkhau.getText().toString();
+        String gioitinh = rabtnNam.isChecked() ? getString( R.string.Nam) : getString(R.string.Nu);
+        String ngaysinh= editNgaysinh.getText().toString();
+
+        String diachi=  spinner.getSelectedItem().toString();
+
+        ThanhVien thanhVien= new ThanhVien(hoten, sdt,email,matkhau,gioitinh,ngaysinh,diachi);
+        return thanhVien;
 
 
 
@@ -90,7 +150,7 @@ public class ActivityDangKy extends AppCompatActivity {
 
     public void PopupNgay(View view) {
         switch (view.getId()){
-            case R.id.textViewNgaySinh: {
+            case R.id.editTextNgaySinh: {
                 showCalenderDialog(starDay);
                 break;
             }

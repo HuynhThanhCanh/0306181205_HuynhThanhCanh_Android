@@ -16,8 +16,8 @@ public class ActivityThanhToan extends AppCompatActivity {
         setContentView(R.layout.activity_thanh_toan);
         ActionBar actionBar = getSupportActionBar(); //gọi để lấy đối tượng action bar
         //actionBar.hide(); ẩn tên app
-        actionBar.setTitle("Thanh toán");//đặt tên app
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
+        //actionBar.setTitle("Thanh toán");//đặt tên app
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

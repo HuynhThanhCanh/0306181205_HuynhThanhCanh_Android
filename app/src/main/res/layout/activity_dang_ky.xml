@@ -95,7 +95,7 @@
        android:layout_marginEnd="24dp"
 
        android:layout_marginBottom="10dp"
-       android:text="Nam"
+       android:text="@string/Nam"
        android:textSize="7pt" />
 
    <RadioButton
@@ -104,14 +104,14 @@
        android:layout_height="22dp"
 
        android:layout_marginEnd="144dp"
-       android:text="Nữ"
+       android:text="@string/Nu"
        android:textSize="7pt" />
 
 
   </RadioGroup>
 
   <EditText
-      android:id="@+id/textViewNgaySinh"
+      android:id="@+id/editTextNgaySinh"
       android:layout_width="265dp"
       android:layout_height="54dp"
       android:layout_marginTop="15dp"
