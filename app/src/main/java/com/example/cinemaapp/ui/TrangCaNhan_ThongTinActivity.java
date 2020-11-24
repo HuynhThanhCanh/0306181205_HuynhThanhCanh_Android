@@ -35,7 +35,7 @@ public class TrangCaNhan_ThongTinActivity extends Fragment {
     private View mRootView;
     private ArrayList list;
     private Spinner spinner;
-
+    String jsonURL="https://thongtindoanhnghiep.co/api/city";
     //Declare Control
     TextView txtFullName;
     EditText txtUserName;
@@ -104,6 +104,7 @@ public class TrangCaNhan_ThongTinActivity extends Fragment {
         list.add("Tiền Giang");
         list.add("Hà Tĩnh");
         list.add("Quãng Ngãi");
+        list.add("Quãng Nam");
         spinner = (Spinner) mRootView.findViewById(R.id.spinner_City);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, list);
         spinner.setAdapter(spinnerAdapter);
@@ -144,8 +145,13 @@ public class TrangCaNhan_ThongTinActivity extends Fragment {
         list.add("Phường 9");
         list.add("Phường 10");
         spinner = (Spinner) mRootView.findViewById(R.id.spinner_Ward);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, list);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter  <String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, list);
         spinner.setAdapter(spinnerAdapter);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     public void loadData() throws IOException, JSONException {
