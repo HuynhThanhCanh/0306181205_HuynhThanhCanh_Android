@@ -30,9 +30,7 @@
             tools:ignore="Instantiatable" />
         <activity android:name=".ui.TrangCaNhanActivity" />
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.movieList" />
-        <activity android:name=".ui.ActivityDangNhap">
-=======
+        <activity android:name=".ui.ActivityDangNhap"/>
         <activity
             android:name=".ui.TrangCaNhanActivity"
             tools:ignore="DuplicateActivity"/>
@@ -45,25 +43,17 @@
         <activity
             android:name=".ui.SplashScreenActivity"
             tools:ignore="DuplicateActivity">
-
->>>>>>> Cinema-App-Master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".ui.ActivityThanhToan" />
-        <activity android:name=".ui.Manhinhchinh" />
-        <activity android:name=".ui.ActivityDangKy" />
-        <activity android:name=".ui.splash_Screen" />
-=======
         <activity android:name=".ui.ThanhToanActivity" />
+        <activity android:name=".ui.Manhinhchinh" />
+        <activity android:name=".ui.DangKyActivity" />
         <activity android:name=".ui.ThongTinPhimActivity">
         </activity>
-        <activity android:name=".ui.DangKyActivity" />
         <activity android:name=".ui.DangNhapActivity" />
->>>>>>> Cinema-App-Master
     </application>
 
 </manifest>

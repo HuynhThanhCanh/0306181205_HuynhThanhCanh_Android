@@ -18,10 +18,8 @@ Mộc Lan trở về nhà, trao cho cha những thứ đó, nhưng ông Hoa Hồ
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-<<<<<<< HEAD
     <string name="Nam">Nam</string>
     <string name="Nu">Nữ</string>
-=======
     <string name="trangchu">Trang chủ</string>
     <string name="theoPhim">Đặt vé theo Phim</string>
     <string name="theoRap">Đặt vé theo Rạp</string>
@@ -42,5 +40,4 @@ Mộc Lan trở về nhà, trao cho cha những thứ đó, nhưng ông Hoa Hồ
         <item>phim 2D</item>
         <item>phim 3D</item>
     </string-array>
->>>>>>> Cinema-App-Master
 </resources>

@@ -74,7 +74,6 @@ public class DangKyActivity extends AppCompatActivity {
         //actionBar.hide(); ẩn tên app
         //actionBar.setTitle("Đăng ký");//đặt tên app
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
-<<<<<<< HEAD:app/src/main/java/com/example/cinemaapp/ui/ActivityDangKy.java
 
 
         final DBManager dbManager = new DBManager(this);
@@ -125,12 +124,6 @@ public class DangKyActivity extends AppCompatActivity {
 
         ThanhVien thanhVien= new ThanhVien(hoten, sdt,email,matkhau,gioitinh,ngaysinh,diachi);
         return thanhVien;
-
-
-
-=======
->>>>>>> Cinema-App-Master:app/src/main/java/com/example/cinemaapp/ui/DangKyActivity.java
-
     }
 
     private void  showCalenderDialog(final EditText text)

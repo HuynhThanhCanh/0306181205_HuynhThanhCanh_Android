@@ -98,8 +98,7 @@
             android:background="@drawable/botron_den"
             android:text="Đăng ký tài khoản"
             android:textColor="#fff"
-            android:textSize="7pt"
-            android:onClick="showDangKyActivity"/>
+            android:textSize="7pt" />
 
 
     </LinearLayout>

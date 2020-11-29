@@ -2,20 +2,13 @@ package com.example.cinemaapp.ui;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
-<<<<<<< HEAD:app/src/main/java/com/example/cinemaapp/ui/ActivityDangNhap.java
 import android.content.Context;
-=======
->>>>>>> Cinema-App-Master:app/src/main/java/com/example/cinemaapp/ui/DangNhapActivity.java
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-<<<<<<< HEAD:app/src/main/java/com/example/cinemaapp/ui/ActivityDangNhap.java
 import android.widget.Button;
 import android.widget.EditText;
-=======
->>>>>>> Cinema-App-Master:app/src/main/java/com/example/cinemaapp/ui/DangNhapActivity.java
 
 import com.example.cinemaapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -25,21 +18,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-<<<<<<< HEAD:app/src/main/java/com/example/cinemaapp/ui/ActivityDangNhap.java
-public class ActivityDangNhap extends AppCompatActivity implements View.OnClickListener {
+public class DangNhapActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnDangNhap, btnDangKyTaiKhoan, btnsigingg;
     private EditText editTextEmail, editTextPassword;
     private GoogleSignInClient mGoogleSignInClient;
-    int RC_SIGN_IN=001;
-=======
-public class DangNhapActivity extends AppCompatActivity {
->>>>>>> Cinema-App-Master:app/src/main/java/com/example/cinemaapp/ui/DangNhapActivity.java
+    int RC_SIGN_IN = 001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
-<<<<<<< HEAD:app/src/main/java/com/example/cinemaapp/ui/ActivityDangNhap.java
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -50,44 +38,39 @@ public class DangNhapActivity extends AppCompatActivity {
         findViewById(R.id.sign_in_gg).setOnClickListener(this);
 
 
-
-
-
-
         ActionBar actionBar = getSupportActionBar(); //gọi để lấy đối tượng action bar
         //actionBar.hide(); ẩn tên app
         //actionBar.setTitle("Đăng nhập");//đặt tên app
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
         btnDangNhap = (Button) findViewById(R.id.btnDangNhap);
 
-        btnDangKyTaiKhoan= (Button) findViewById(R.id.btnDangKyTaiKhoan);
+        btnDangKyTaiKhoan = (Button) findViewById(R.id.btnDangKyTaiKhoan);
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(editTextEmail.getText().length() !=0 && editTextPassword.getText().length()!=0){
-                   // if (editTextEmail.getText().toString().equals(editTextTNhapEmail))
+                if (editTextEmail.getText().length() != 0 && editTextPassword.getText().length() != 0) {
+                    // if (editTextEmail.getText().toString().equals(editTextTNhapEmail))
                 }
             }
         });
-=======
         //ActionBar actionBar = getSupportActionBar(); //gọi để lấy đối tượng action bar
         //actionBar.hide(); ẩn tên app
         //actionBar.setTitle("Đăng nhập");//đặt tên app
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
->>>>>>> Cinema-App-Master:app/src/main/java/com/example/cinemaapp/ui/DangNhapActivity.java
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case android.R.id.home://R.id.home là mặc định ID của nút mũi tên quay lại
                 onBackPressed();
                 return true;
 
-            default:break;
+            default:
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -99,8 +82,6 @@ public class DangNhapActivity extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         updateUI(account);
         super.onStart();
-
-
     }
 
     private void updateUI(GoogleSignInAccount account) {
@@ -115,10 +96,12 @@ public class DangNhapActivity extends AppCompatActivity {
                 break;
         }
     }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -127,27 +110,29 @@ public class DangNhapActivity extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
-            Intent intent = new Intent(this,ActivityDangKy.class);
+            Intent intent = new Intent(this, DangKyActivity.class);
             startActivity(intent);
 
         }
     }
+
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
             updateUI(account);
-           // updateUI(null);
+            // updateUI(null);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-           // Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            // Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
             updateUI(null);
         }
     }
-    public   static void getLastSignedInAccount (Context context) {
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(new ActivityDangKy());
+
+    public static void getLastSignedInAccount(Context context) {
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(new DangKyActivity());
         if (acct != null) {
             String editTextHoTen = acct.getDisplayName();
             String editTextTNhapEmail = acct.getEmail();
@@ -157,13 +142,7 @@ public class DangNhapActivity extends AppCompatActivity {
     }
 
     public void chuyensangdangky(View view) {
-        Intent intent = new Intent(this,ActivityDangKy.class);
-        startActivity(intent);
-
-    }
-
-    public void showDangKyActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), DangKyActivity.class);
+        Intent intent = new Intent(this, DangKyActivity.class);
         startActivity(intent);
     }
 }
