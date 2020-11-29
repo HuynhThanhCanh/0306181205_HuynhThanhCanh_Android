@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/trangchu">
+    </item>
+
+    <item
+        android:id="@+id/theoPhim"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/theoPhim">
+    </item>
+
+    <item
+        android:id="@+id/theoRap"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/theoRap">
+    </item>
+
+    <item
+        android:id="@+id/veCuaToi"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/veCuaToi">
+    </item>
+
+    <item
+        android:id="@+id/rap"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/rap">
+    </item>
+
+    <item
+        android:id="@+id/dangnhap_dangky"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/dangnhap_dangky">
+    </item>
+
+</menu>

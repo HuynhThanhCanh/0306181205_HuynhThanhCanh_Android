@@ -39,4 +39,10 @@
     <color name="ic_tv_normal">#66D3D3D3</color>
     <color name="ic_tv_pressed">#a6D3D3D3</color>
     <color name="ic_tv_selected">@android:color/white</color>
+    <color name="player_bg">#000000</color>
+    <color name="shutter_bg">#000000</color>
+    <color name="video_player">#000000</color>
+
+    <color name="card_bg_color">#f6f6f6</color>
+
 </resources>

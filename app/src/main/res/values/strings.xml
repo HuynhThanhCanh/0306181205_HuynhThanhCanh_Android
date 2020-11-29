@@ -11,8 +11,36 @@ Mộc Tu làm giả một bức thư, ra lệnh cho Lý Tường đưa quân t�
 Tại kinh thành, đội lính của Lý Tường được chào đón bằng màn diễu hành và được tung hô là "Người hùng của Trung Hoa", nhưng chẳng ai thấy vui trừ Tứ Phúc, họ vẫn còn kinh ngạc về Mộc Lan. Lý Tường rất ngạc nhiên khi thấy Mộc Lan nhưng không nghe lời cảnh báo của cô. Mộc Lan thuyết phục người dân nhưng họ cũng không nghe. Mộc Tu nhắc cho cô nhớ rằng giờ cô là phụ nữ nên chẳng ai chịu nghe cô cả. Lý Tường dâng thanh gươm của Thiền Vu cho Hoàng đế, nhưng con chim ưng của Thiền Vu quắp lấy nó từ tay Lý Tường và mang tới cho chủ nhân đang ở trên nóc cung điện. Thiền Vu cùng toán quân của hắn bắt Hoàng đế và rút vào cung điện. Mộc Lan dẫn Lý Tường và A Nghiêu, A Ninh, Kim Bảo (3 người cải trang thành cung nữ) vào cung bằng đường khác. Sau trận đánh nhau trong cung điện, Mộc Lan dụ được Thiền Vu lên nóc cung điện và khiến hắn mất mạng khi bị quả pháo của Mộc Tu bắn trúng. Hoàng đế và toàn thể mọi người đều kính trọng Mộc Lan. Hoàng đế đưa cô con dấu của mình, ý muốn cô trở thành người nối nghiệp, nói cách khác, trở thành "Công chúa của Trung Hoa". Cô cũng được trao thanh gươm của Thiền Vu để chứng minh công lao của mình.
 
 Mộc Lan trở về nhà, trao cho cha những thứ đó, nhưng ông Hoa Hồ đã vứt chúng sang một bên, ôm lấy cô và nói rằng: "Có được người con gái như con chính là món quà tuyệt vời nhất". Lý Tường, được Hoàng đế khuyên rằng: "Khanh sẽ không gặp được người phụ nữ nào như thế mỗi triều đại đâu", đã đi tìm cô dưới cái cớ trả lại mũ trụ. Anh đồng ý lời mời ăn tối của cô. Để trả công cho việc đã giúp Mộc Lan, tổ tiên đời thứ nhất của nhà họ Hoa đã trao lại chức vụ cho Mộc Tu. Sau đó, Mộc Tu, Cri-kee cùng những tổ tiên khác ăn mừng theo một bữa tiệc mang phong cách hiện đại.</string>
+    <string name="noidung_tiectrang_mau">
+        Trong buổi họp mặt của nhóm bạn thân, một thành viên bất ngờ đề xuất trò chơi chia sẻ điện thoại nhằm tăng tinh thần “đoàn kết”. Từ đó, những góc khuất của từng người dần hé lộ và khiến cho mối quan hệ vốn khắng khít của họ bắt đầu lay chuyển.
+    </string>
     <!-- TODO: Remove or change this placeholder text -->
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+<<<<<<< HEAD
     <string name="Nam">Nam</string>
     <string name="Nu">Nữ</string>
+=======
+    <string name="trangchu">Trang chủ</string>
+    <string name="theoPhim">Đặt vé theo Phim</string>
+    <string name="theoRap">Đặt vé theo Rạp</string>
+    <string name="veCuaToi">Vé của Tôi</string>
+    <string name="rap">Rạp</string>
+    <string name="dangnhap_dangky">Đăng nhập/Đăng ký</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string-array name="Adres">
+        <item>TP HCM</item>
+        <item>Quận 1</item>
+        <item>Quận 2</item>
+        <item>Quận 3</item>
+        <item>Bình Thạnh</item>
+    </string-array>
+    <string-array name="loai">
+        <item>Định dạng</item>
+        <item>phim 2D</item>
+        <item>phim 3D</item>
+    </string-array>
+>>>>>>> Cinema-App-Master
 </resources>
