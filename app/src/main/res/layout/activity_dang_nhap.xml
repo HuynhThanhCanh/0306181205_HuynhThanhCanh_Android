@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ActivityDangNhap">
+    tools:context=".ui.DangNhapActivity">
 
 
     <LinearLayout
@@ -90,7 +90,8 @@
             android:background="@drawable/botron_den"
             android:text="Đăng ký tài khoản"
             android:textColor="#fff"
-            android:textSize="7pt" />
+            android:textSize="7pt"
+            android:onClick="showDangKyActivity"/>
 
 
     </LinearLayout>

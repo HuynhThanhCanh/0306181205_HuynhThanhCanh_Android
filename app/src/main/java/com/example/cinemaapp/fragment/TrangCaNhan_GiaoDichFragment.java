@@ -1,4 +1,4 @@
-package com.example.cinemaapp.ui;
+package com.example.cinemaapp.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +15,7 @@ import com.example.cinemaapp.R;
 import com.example.cinemaapp.ui.LichSuChiTieuActivity;
 import com.example.cinemaapp.ui.LichSuGiaoDichActivity;
 
-public class TrangCaNhan_GiaoDichActivity extends Fragment implements View.OnClickListener {
+public class TrangCaNhan_GiaoDichFragment extends Fragment implements View.OnClickListener {
     private View mRootView;
     private  Button btnLichSuGiaoDich;
     private  Button btnLichSuChiTieu;
@@ -23,7 +23,7 @@ public class TrangCaNhan_GiaoDichActivity extends Fragment implements View.OnCli
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.activity_trang_ca_nhan__giao_dich, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_trang_ca_nhan__giao_dich, container, false);
 
         //set setOnClickListener for btnLichSuGiaoDich
         btnLichSuGiaoDich = (Button) mRootView.findViewById(R.id.btn_LichSuGiaoDich);

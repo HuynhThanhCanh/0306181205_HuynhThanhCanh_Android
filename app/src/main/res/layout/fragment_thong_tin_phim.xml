@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".fragment.Thongtinphim">
+    tools:context=".fragment.ThongTinPhimFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -14,8 +13,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="200dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/ic_play_arrow_black_24dp"
+                app:backgroundTint="@color/bg_activity_detail"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="@+id/slide_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/slide_img"
+                app:layout_constraintTop_toTopOf="@+id/slide_img" />
 
-          <ImageView
+
+            <ImageView
               android:id="@+id/avt"
               android:layout_width="match_parent"
               android:layout_height="170dp"

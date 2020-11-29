@@ -1,4 +1,4 @@
-package com.example.cinemaapp.adapter;
+package com.example.cinemaapp.model;
 
 import android.widget.ImageView;
 

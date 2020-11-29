@@ -6,18 +6,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.cinemaapp.ui.TrangCaNhan_GiaoDichActivity;
-import com.example.cinemaapp.ui.TrangCaNhan_ThongTinActivity;
+import com.example.cinemaapp.fragment.TrangCaNhan_GiaoDichFragment;
+import com.example.cinemaapp.fragment.TrangCaNhan_ThongTinFragment;
 
 public class TrangCaNhanAdapter extends FragmentStatePagerAdapter {
     private String listTab[] = {"Thông tin", "Giao dịch"};
-    private TrangCaNhan_ThongTinActivity mFirstFragment;
-    private TrangCaNhan_GiaoDichActivity mSecondFragment;
+    private TrangCaNhan_ThongTinFragment mFirstFragment;
+    private TrangCaNhan_GiaoDichFragment mSecondFragment;
 
     public TrangCaNhanAdapter(@NonNull FragmentManager fm) {
         super(fm);
-        mFirstFragment = new TrangCaNhan_ThongTinActivity();
-        mSecondFragment = new TrangCaNhan_GiaoDichActivity();
+        mFirstFragment = new TrangCaNhan_ThongTinFragment();
+        mSecondFragment = new TrangCaNhan_GiaoDichFragment();
     }
 
     @NonNull

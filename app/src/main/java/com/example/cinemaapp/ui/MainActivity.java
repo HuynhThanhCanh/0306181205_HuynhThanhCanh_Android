@@ -24,7 +24,6 @@ import android.widget.ViewFlipper;
 
 import com.example.cinemaapp.adapter.Adapter;
 import com.example.cinemaapp.adapter.AdapterSlider;
-import com.example.cinemaapp.fragment.Thongtinphim;
 import com.example.cinemaapp.model.Model;
 import com.example.cinemaapp.R;
 import com.google.android.material.navigation.NavigationView;
@@ -134,9 +133,17 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.theoPhim :
-                    Intent intent = new Intent(getApplicationContext(),movieList.class);
-                    startActivity(intent);
-            break;
+            {
+                Intent intent = new Intent(getApplicationContext(), MovieListActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.dangnhap_dangky :
+            {
+                Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
 
 
@@ -180,12 +187,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         viewPagerVP.setPageTransformer(compositePageTransformer);
-
     }
 
     public void showFilmInformations(View view) {
-        Intent intent = new Intent(this, Manhinhchinh.class);
+        Intent intent = new Intent(this, ThongTinPhimActivity.class);
         startActivity(intent);
     }
 
+    public void showTrangCaNhan(View view) {
+        Intent intent = new Intent(this, TrangCaNhanActivity.class);
+        startActivity(intent);
+    }
 }

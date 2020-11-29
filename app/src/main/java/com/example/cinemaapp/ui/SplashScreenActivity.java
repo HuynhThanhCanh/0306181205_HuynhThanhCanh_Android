@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cinemaapp.R;
 
-public class splash_Screen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
     Thread timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +21,11 @@ public class splash_Screen extends AppCompatActivity {
                     synchronized (this){
                         wait(5000);
                     }
-                } catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
-                } finally {
-<<<<<<< HEAD
-                    Intent intent = new Intent(splash_Screen.this, movieList.class);
-=======
-                    Intent intent = new Intent(splash_Screen.this, Manhinhchinh.class);
->>>>>>> CIN-17-binhluan-trailer
+                }
+                finally {
+                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }

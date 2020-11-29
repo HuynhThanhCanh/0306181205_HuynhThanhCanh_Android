@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import com.example.cinemaapp.R;
 
-public class ActivityThanhToan extends AppCompatActivity {
+public class ThanhToanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

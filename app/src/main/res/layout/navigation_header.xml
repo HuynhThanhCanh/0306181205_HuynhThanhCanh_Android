@@ -23,7 +23,8 @@
         android:id="@+id/btnEditPfrofile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chỉnh sửa"></Button>
+        android:text="Chỉnh sửa"
+        android:onClick="showTrangCaNhan"/>
 
 
 </LinearLayout>

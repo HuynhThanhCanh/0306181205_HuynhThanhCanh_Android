@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:scrollbarStyle="outsideOverlay"
-    tools:context=".ui.TrangCaNhan_ThongTinActivity">
+    tools:context=".fragment.TrangCaNhan_ThongTinFragment">
 
     <ScrollView
         android:id="@+id/scrollView2"

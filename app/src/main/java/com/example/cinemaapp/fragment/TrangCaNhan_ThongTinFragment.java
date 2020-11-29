@@ -1,8 +1,7 @@
-package com.example.cinemaapp.ui;
+package com.example.cinemaapp.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -29,9 +28,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-public class TrangCaNhan_ThongTinActivity extends Fragment {
+public class TrangCaNhan_ThongTinFragment extends Fragment {
     private View mRootView;
     private ArrayList list;
     private Spinner spinner;
@@ -53,7 +51,7 @@ public class TrangCaNhan_ThongTinActivity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.activity_trang_ca_nhan__thong_tin, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_trang_ca_nhan__thong_tin, container, false);
         //Start set control
         txtFullName = mRootView.findViewById(R.id.tv_Name);
         txtUserName = mRootView.findViewById(R.id.edtext_Name);

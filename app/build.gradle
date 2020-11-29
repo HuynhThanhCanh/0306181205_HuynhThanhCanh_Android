@@ -62,22 +62,11 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     implementation 'com.airbnb.android:lottie:3.4.0'
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     implementation 'androidx.appcompat:appcompat:1.0.0'
-
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.1.0'
-=======
     implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
->>>>>>> CIN-10-Update
-=======
-
->>>>>>> CIN-17-binhluan-trailer
-}
-=======
     //noinspection GradleCompatible
     implementation 'com.android.support:design:26.1.0'
 
@@ -87,5 +76,3 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
 
 }
-
->>>>>>> CIN-22-Hoan-thien-man-hinh-thong-tin-ca-nhan-voi-api

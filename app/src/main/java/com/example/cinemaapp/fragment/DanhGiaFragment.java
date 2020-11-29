@@ -3,8 +3,6 @@ package com.example.cinemaapp.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +16,10 @@ import com.example.cinemaapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Danhgia#newInstance} factory method to
+ * Use the {@link DanhGiaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Danhgia extends Fragment {
+public class DanhGiaFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +30,7 @@ public class Danhgia extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Danhgia() {
+    public DanhGiaFragment() {
         // Required empty public constructor
     }
 
@@ -45,8 +43,8 @@ public class Danhgia extends Fragment {
      * @return A new instance of fragment Danhgia.
      */
     // TODO: Rename and change types and number of parameters
-    public static Danhgia newInstance(String param1, String param2) {
-        Danhgia fragment = new Danhgia();
+    public static DanhGiaFragment newInstance(String param1, String param2) {
+        DanhGiaFragment fragment = new DanhGiaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,7 +73,7 @@ public class Danhgia extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=  inflater.inflate(R.layout.fragment_danhgia, container, false);
+        View view=  inflater.inflate(R.layout.fragment_danh_gia, container, false);
         rateCount= (TextView) view.findViewById(R.id.rateCount);
         ratingBar=(RatingBar)view.findViewById(R.id.ratingBar);
         review =(EditText)view.findViewById(R.id.review);

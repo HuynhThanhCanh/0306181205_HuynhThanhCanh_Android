@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adapter.Sodorap">
+    tools:context=".ui.ActivitySoDoRap">
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -14,7 +14,6 @@
             android:id="@+id/layoutSeat"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"/>
-
     </ScrollView>
 
 </RelativeLayout>

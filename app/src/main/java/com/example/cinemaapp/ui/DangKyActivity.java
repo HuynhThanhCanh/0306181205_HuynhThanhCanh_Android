@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class ActivityDangKy extends AppCompatActivity {
+public class DangKyActivity extends AppCompatActivity {
     private Spinner spinner;
     private EditText starDay;
 
@@ -60,13 +60,10 @@ public class ActivityDangKy extends AppCompatActivity {
 
         starDay = (EditText) findViewById(R.id.textViewNgaySinh);
         //mũi tên quay lại
-        ActionBar actionBar = getSupportActionBar(); //gọi để lấy đối tượng action bar
+        //ActionBar actionBar = getSupportActionBar(); //gọi để lấy đối tượng action bar
         //actionBar.hide(); ẩn tên app
-        actionBar.setTitle("Đăng ký");//đặt tên app
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
-
-
-
+        //actionBar.setTitle("Đăng ký");//đặt tên app
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
 
     }
 

@@ -1,7 +1,5 @@
 package com.example.cinemaapp.fragment;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,24 +7,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.cinemaapp.R;
-import com.example.cinemaapp.ui.MainActivity;
-
-import java.util.concurrent.ThreadPoolExecutor;
 
 import static com.example.cinemaapp.R.array.Adres;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Lichchieu#newInstance} factory method to
+ * Use the {@link LichChieuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Lichchieu extends Fragment  { //implements AdapterView.OnItemSelectedListener
+public class LichChieuFragment extends Fragment  { //implements AdapterView.OnItemSelectedListener
 
 
     Spinner spinner;
@@ -43,7 +36,7 @@ public class Lichchieu extends Fragment  { //implements AdapterView.OnItemSelect
     private String mParam1;
     private String mParam2;
 
-    public Lichchieu() {
+    public LichChieuFragment() {
         // Required empty public constructor
     }
 
@@ -56,8 +49,8 @@ public class Lichchieu extends Fragment  { //implements AdapterView.OnItemSelect
      * @return A new instance of fragment Lichchieu.
      */
     // TODO: Rename and change types and number of parameters
-    public static Lichchieu newInstance(String param1, String param2) {
-        Lichchieu fragment = new Lichchieu();
+    public static LichChieuFragment newInstance(String param1, String param2) {
+        LichChieuFragment fragment = new LichChieuFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -79,7 +72,7 @@ public class Lichchieu extends Fragment  { //implements AdapterView.OnItemSelect
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         view= inflater.inflate(R.layout.fragment_lichchieu, container, false);
+         view= inflater.inflate(R.layout.fragment_lich_chieu, container, false);
         LoadlistLoai();
         loadListAddress();
 

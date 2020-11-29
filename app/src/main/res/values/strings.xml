@@ -18,15 +18,14 @@ Mộc Lan trở về nhà, trao cho cha những thứ đó, nhưng ông Hoa Hồ
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-<<<<<<< HEAD
     <string name="trangchu">Trang chủ</string>
     <string name="theoPhim">Đặt vé theo Phim</string>
     <string name="theoRap">Đặt vé theo Rạp</string>
     <string name="veCuaToi">Vé của Tôi</string>
     <string name="rap">Rạp</string>
+    <string name="dangnhap_dangky">Đăng nhập/Đăng ký</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
-=======
     <string-array name="Adres">
         <item>TP HCM</item>
         <item>Quận 1</item>
@@ -39,5 +38,4 @@ Mộc Lan trở về nhà, trao cho cha những thứ đó, nhưng ông Hoa Hồ
         <item>phim 2D</item>
         <item>phim 3D</item>
     </string-array>
->>>>>>> CIN-17-binhluan-trailer
 </resources>

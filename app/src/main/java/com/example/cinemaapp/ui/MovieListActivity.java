@@ -14,7 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.MovieAdapter;
-import com.example.cinemaapp.adapter.MovieItemClickListener;
+import com.example.cinemaapp.model.MovieItemClickListener;
 import com.example.cinemaapp.adapter.SlidePagerAdapter;
 import com.example.cinemaapp.model.Movie;
 import com.example.cinemaapp.model.Slide;
@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class movieList extends AppCompatActivity implements MovieItemClickListener {
+public class MovieListActivity extends AppCompatActivity implements MovieItemClickListener {
     //Đầu tiên khai báo RecyclerView
 private List<Slide>lstslides;
 private ViewPager slidepager;
@@ -53,7 +53,7 @@ private EditText searchInput;
         SlidePagerAdapter adapter = new SlidePagerAdapter(this,lstslides);
         slidepager.setAdapter(adapter);
         Timer timer= new Timer();
-        timer.scheduleAtFixedRate(new movieList.SliderTimer(),4000,6000);
+        timer.scheduleAtFixedRate(new MovieListActivity.SliderTimer(),4000,6000);
         indicator.setupWithViewPager(slidepager,true);
         //setup RecylerView Phim đang chiếu
         List<Movie>lstMovies=new ArrayList<>();
@@ -118,7 +118,7 @@ private EditText searchInput;
     class SliderTimer extends TimerTask{
         @Override
         public void run() {
-            movieList.this.runOnUiThread(new Runnable() {
+            MovieListActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     if(slidepager.getCurrentItem()<lstslides.size()-1)

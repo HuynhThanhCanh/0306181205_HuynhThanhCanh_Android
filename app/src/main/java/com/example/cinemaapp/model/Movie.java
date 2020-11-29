@@ -9,9 +9,6 @@ public class Movie {
     private String streamingLink;
     private int coverPhoto;
 
-
-
-
     public Movie(String title, int thumbnail) {
         this.title = title;
         this.thumbnail = thumbnail;
@@ -26,11 +23,13 @@ public class Movie {
         this.streamingLink = streamingLink;
 
     }
+
     public Movie(String title, int thumbnail, int coverPhoto) {
         this.title = title;
         this.thumbnail = thumbnail;
         this.coverPhoto=coverPhoto;
     }
+
     public String getTitle() {
         return title;
     }
@@ -58,8 +57,6 @@ public class Movie {
     public int getCoverPhoto() {
         return coverPhoto;
     }
-
-
 
     public void setTitle(String title) {
         this.title = title;

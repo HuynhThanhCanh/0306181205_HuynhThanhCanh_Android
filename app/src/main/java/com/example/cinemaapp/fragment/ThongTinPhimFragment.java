@@ -7,30 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.cinemaapp.R;
-import com.example.cinemaapp.adapter.Sodorap;
-//import com.google.android.youtube.player.YouTubePlayer;
-//import com.google.android.youtube.player.YouTubePlayerView;
+import com.example.cinemaapp.ui.TrailerActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Thongtinphim#newInstance} factory method to
+ * Use the {@link ThongTinPhimFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-/*   <view
-               android:id="@+id/view"
-               class="com.google.android.youtube.player.YouTubePlayerView"
-               android:layout_alignParentTop="true"
-               android:layout_alignParentStart="true"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"/>*/
-public class Thongtinphim extends Fragment {
-    //YouTubePlayerView mYouTubePlayerView;
-    Button btnPlay;
-    //YouTubePlayer.OnInitializedListener mOnInitializedListener;
 
+public class ThongTinPhimFragment extends Fragment {
+    private View view;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +32,7 @@ public class Thongtinphim extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Thongtinphim() {
+    public ThongTinPhimFragment() {
         // Required empty public constructor
     }
 
@@ -54,8 +45,8 @@ public class Thongtinphim extends Fragment {
      * @return A new instance of fragment Thongtinphim.
      */
     // TODO: Rename and change types and number of parameters
-    public static Thongtinphim newInstance(String param1, String param2) {
-        Thongtinphim fragment = new Thongtinphim();
+    public static ThongTinPhimFragment newInstance(String param1, String param2) {
+        ThongTinPhimFragment fragment = new ThongTinPhimFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,20 +66,17 @@ public class Thongtinphim extends Fragment {
     }
     @Override
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        Button muave;
-        // Inflate the layout for this fragment
-       View view= inflater.inflate(R.layout.fragment_thongtinphim, container, false);
-        muave =(Button) view.findViewById(R.id.btndatve) ;
-        muave.setOnClickListener(new View.OnClickListener() {
+    public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_thong_tin_phim, container, false);
+        FloatingActionButton fab = view.findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent chonghe= new Intent();
-                startActivity(chonghe);
+            public void onClick(View view) {
+                //chuyển dữ liêu từ fragment sang activity
+                Intent intent = new Intent(getActivity(), TrailerActivity.class);
+                getActivity().startActivity(intent);
             }
         });
-       //mYouTubePlayerView=(YouTubePlayer)view.findViewById(R.id.view);
        return  view;
     }
 }
