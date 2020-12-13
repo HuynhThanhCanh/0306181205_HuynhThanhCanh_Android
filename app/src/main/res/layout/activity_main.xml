@@ -46,7 +46,7 @@
                         android:id="@+id/btn_dang_chieu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="2px"
+
                         android:layout_weight="1"
                         android:background="#BD2121"
                         android:text="ĐANG CHIẾU"
@@ -58,7 +58,7 @@
                         android:id="@+id/btn_sap_chieu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="1px"
+
                         android:layout_weight="1"
                         android:background="#BD2121"
                         android:text="SẮP CHIẾU"
@@ -76,9 +76,9 @@
                         android:id="@+id/after1"
                         android:layout_width="wrap_content"
                         android:layout_height="4dp"
-                        android:layout_marginRight="4px"
+
                         android:layout_weight="1"
-                        android:background="#BD2121"
+                        android:background="#FFFFFF"
                        >
 
                     </Button>
@@ -87,7 +87,7 @@
                         android:id="@+id/after2"
                         android:layout_width="wrap_content"
                         android:layout_height="4dp"
-                        android:layout_marginLeft="1px"
+
                         android:layout_weight="1"
                         android:background="#BD2121"
                         >
@@ -115,7 +115,7 @@
                                 android:id="@+id/viewPagerImageSlider"
                                 android:layout_width="match_parent"
                                 android:layout_height="400dp"
-                                android:background="#514141"
+                                android:background="#222222"
                                 android:hapticFeedbackEnabled="false"
                                 android:paddingStart="80dp"
                                 android:paddingEnd="80dp">
@@ -214,7 +214,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/navigation_header"
+
         app:menu="@menu/navigation_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
