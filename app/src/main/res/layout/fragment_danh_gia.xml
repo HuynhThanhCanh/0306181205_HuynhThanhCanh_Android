@@ -37,7 +37,6 @@
       android:layout_height="41dp"
       android:layout_below="@id/binhluan"
       android:progressTint="@android:color/holo_orange_light"
-
       android:numStars="5"
       android:scaleX="0.5"
       android:scaleY="0.5" />

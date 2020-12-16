@@ -8,26 +8,40 @@ public class Movie {
     private String rating;
     private String streamingLink;
     private int coverPhoto;
+    private String label;
+
+
 
     public Movie(String title, int thumbnail) {
         this.title = title;
         this.thumbnail = thumbnail;
     }
 
-    public Movie(String description, String studio, String rating, String streamingLink) {
+    public Movie(String description, String studio, String rating, String streamingLink,String label) {
         this.title = title;
         this.description = description;
         this.thumbnail = thumbnail;
         this.studio = studio;
         this.rating = rating;
         this.streamingLink = streamingLink;
+        this.label=label;
 
     }
 
-    public Movie(String title, int thumbnail, int coverPhoto) {
+    public Movie(String title, int thumbnail, int coverPhoto,String rating,String label) {
         this.title = title;
         this.thumbnail = thumbnail;
         this.coverPhoto=coverPhoto;
+        this.rating=rating;
+        this.label=label;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public String getTitle() {

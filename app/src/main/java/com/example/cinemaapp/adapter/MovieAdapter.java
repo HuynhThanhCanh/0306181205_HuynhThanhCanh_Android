@@ -67,6 +67,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
        // MyViewHolder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
         myViewHolder.TvTitle.setText(mDatafilter.get(i).getTitle());
         myViewHolder.ImgMovie.setImageResource(mDatafilter.get(i).getThumbnail());
+        myViewHolder.Tvtpoint.setText(mDatafilter.get(i).getRating());
+        myViewHolder.TvTlabel.setText(mDatafilter.get(i).getLabel());
         myViewHolder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
     }
 
@@ -116,7 +118,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     public  class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView TvTitle,Tvtpoint;
+        private TextView TvTitle,Tvtpoint,TvTlabel;
         private ImageView ImgMovie,imgsao;
 
         public RelativeLayout container;
@@ -127,7 +129,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
             TvTitle= itemView.findViewById(R.id.item_movie_title);
             ImgMovie=itemView.findViewById(R.id.item_movie_img);
             Tvtpoint=itemView.findViewById(R.id.item_movie_point);
-            imgsao=itemView.findViewById(R.id.item_movie_star);
+            TvTlabel=itemView.findViewById(R.id.item_movie_label);
+            //imgsao=itemView.findViewById(R.id.item_movie_star);
             container = itemView.findViewById(R.id.container);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
