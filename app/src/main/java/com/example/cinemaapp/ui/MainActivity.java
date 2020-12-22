@@ -163,12 +163,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
-            case R.id.dangnhap_dangky :
-            {
-                Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
-                startActivity(intent);
-                break;
-            }
+//            case R.id.dangnhap_dangky :
+//            {
+//                Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
+//                startActivity(intent);
+//                break;
+//            }
         }
 
 
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerVP.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
         CompositePageTransformer compositePageTransformer=new CompositePageTransformer();
-        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+        compositePageTransformer.addTransformer(new MarginPageTransformer(20));
         compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
             public void transformPage(@NonNull View page, float position) {
