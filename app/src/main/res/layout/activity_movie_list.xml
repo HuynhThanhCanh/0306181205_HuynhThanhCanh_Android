@@ -139,7 +139,6 @@
                    android:layout_height="wrap_content">
                    <!--Phim đang chiếu nè -->
                    <TextView
-
                        android:id="@+id/textView"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
@@ -150,6 +149,7 @@
                        android:text="Phim đang chiếu"
                        android:textAllCaps="true"
                        android:textColor="@color/text_gray"
+                       android:fontFamily="@font/roboto_bold"
                        app:layout_constraintEnd_toEndOf="parent"
                        app:layout_constraintHorizontal_bias="0.0"
                        app:layout_constraintStart_toStartOf="parent"
@@ -184,12 +184,12 @@
                         android:text="Phim sắp chiếu"
                         android:textAllCaps="true"
                         android:textColor="@color/text_gray"
+                        android:fontFamily="@font/roboto_bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent" />
                     <!--Phim đang chiếu nè-->
                     <androidx.recyclerview.widget.RecyclerView
-
                         android:id="@+id/Rv_movies1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -1,10 +1,13 @@
 package com.example.cinemaapp.ui;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,12 +60,12 @@ private EditText searchInput;
         indicator.setupWithViewPager(slidepager,true);
         //setup RecylerView Phim đang chiếu
         List<Movie>lstMovies=new ArrayList<>();
-        lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.moana));
-        lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.blackp));
-        lstMovies.add(new Movie("Mulan",R.drawable.mulan,R.drawable.mulan));
-        lstMovies.add(new Movie("Avanger",R.drawable.anvanger,R.drawable.anvanger));
-        lstMovies.add(new Movie("Ròm",R.drawable.rom,R.drawable.rom));
-        lstMovies.add(new Movie("Tiệc trăng máu",R.drawable.tiectrangmau,R.drawable.tiectrangmau));
+        lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.moana,"4","12+"));
+        lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.blackp,"4","18+"));
+        lstMovies.add(new Movie("Mulan",R.drawable.mulan,R.drawable.mulan,"5","18+"));
+        lstMovies.add(new Movie("Avanger",R.drawable.anvanger,R.drawable.anvanger,"1","18+"));
+        lstMovies.add(new Movie("Ròm",R.drawable.rom,R.drawable.rom,"2","12+"));
+        lstMovies.add(new Movie("Tiệc trăng máu",R.drawable.tiectrangmau,R.drawable.tiectrangmau,"3","12+"));
         MovieAdapter movieAdapter = new MovieAdapter(this,lstMovies,this);
         MoviesRV.setAdapter(movieAdapter);
         MoviesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
@@ -70,12 +73,12 @@ private EditText searchInput;
         //setup RecylerView Phim đang chiếu
 
         List<Movie>lstMovies1=new ArrayList<>();
-        lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.moana));
-        lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.blackp));
-        lstMovies.add(new Movie("Mulan",R.drawable.mulan,R.drawable.mulan));
-        lstMovies.add(new Movie("Avanger",R.drawable.anvanger,R.drawable.anvanger));
-        lstMovies.add(new Movie("Ròm",R.drawable.rom,R.drawable.rom));
-        lstMovies.add(new Movie("Tiệc trăng máu",R.drawable.tiectrangmau,R.drawable.tiectrangmau));
+        lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.moana,"3","12+"));
+        lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.blackp,"1","18+"));
+        lstMovies.add(new Movie("Mulan",R.drawable.mulan,R.drawable.mulan,"5","18+"));
+        lstMovies.add(new Movie("Avanger",R.drawable.anvanger,R.drawable.anvanger,"5","18+"));
+        lstMovies.add(new Movie("Ròm",R.drawable.rom,R.drawable.rom,"4","18+"));
+        lstMovies.add(new Movie("Tiệc trăng máu",R.drawable.tiectrangmau,R.drawable.tiectrangmau,"3","18+"));
         MovieAdapter movieAdapter1 = new MovieAdapter(this,lstMovies1,this);
         MoviesRV1.setAdapter(movieAdapter);
         MoviesRV1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
@@ -102,17 +105,16 @@ private EditText searchInput;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onMovieClick(Movie movie, ImageView movieImageView) {
-       /* Intent intent = new Intent(this, MovieDetailActivity.class);
+  Intent intent = new Intent(this, ThongTinPhimActivity.class);
         // send movie information to deatilActivity
         intent.putExtra("title",movie.getTitle());
         intent.putExtra("imgURL",movie.getThumbnail());
         intent.putExtra("imgCover",movie.getCoverPhoto());
-
-        ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(movieList.this,
+        ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(MovieListActivity.this,
                 movieImageView,"sharedName");
         startActivity(intent,options.toBundle());
 
-        Toast.makeText(this,"Bạn vừa chọn Phim " + movie.getTitle(),Toast.LENGTH_LONG).show();*/
+        Toast.makeText(this,"Bạn vừa chọn Phim " + movie.getTitle(),Toast.LENGTH_LONG).show();
     }
 
     class SliderTimer extends TimerTask{

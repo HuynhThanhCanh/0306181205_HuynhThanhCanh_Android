@@ -26,7 +26,7 @@ public class TrailerActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-        youTubePlayer.cueVideo("MzYoVbzy_4U");
+        youTubePlayer.cueVideo("_au37MZaQQI");
     }
 
     @Override
