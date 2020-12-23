@@ -44,5 +44,7 @@
     <color name="video_player">#000000</color>
 
     <color name="card_bg_color">#f6f6f6</color>
+    <color name="tabSelected">#FFFFFF</color>
+    <color name="tabNonSelected">#BD2121</color>
 
 </resources>

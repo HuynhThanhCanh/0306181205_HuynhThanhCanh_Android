@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 initslider1(dangchieu_ats);
+                selectedTab(view);
             }
         });
 
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     initslider1(models);
+                selectedTab(view);
             }
         });
 
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
 
        navigationView = findViewById(R.id.nav_view);
-//       View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
+       View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
            @Override
            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -119,6 +121,29 @@ public class MainActivity extends AppCompatActivity {
        });
 
 
+    }
+    public void selectedTab(View view){
+        Button btn1 = (Button)findViewById(R.id.after1);
+        Button btn2 = (Button)findViewById(R.id.after2);
+        btn1.setBackgroundResource(R.color.tabSelected);
+        switch (view.getId()){
+            case R.id.btn_dang_chieu:
+            {
+                btn1.setBackgroundResource(R.color.tabSelected);
+
+                btn2.setBackgroundResource(R.color.tabNonSelected);
+
+            }break;
+            case R.id.btn_sap_chieu:
+            {
+                btn2.setBackgroundResource(R.color.tabSelected);
+                btn1.setBackgroundResource(R.color.tabNonSelected);
+
+
+            }break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + view.getId());
+        }
     }
 
     @Override
@@ -138,12 +163,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
-            case R.id.dangnhap_dangky :
-            {
-                Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
-                startActivity(intent);
-                break;
-            }
+//            case R.id.dangnhap_dangky :
+//            {
+//                Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
+//                startActivity(intent);
+//                break;
+//            }
         }
 
 
@@ -177,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerVP.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
         CompositePageTransformer compositePageTransformer=new CompositePageTransformer();
-        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+        compositePageTransformer.addTransformer(new MarginPageTransformer(20));
         compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
             public void transformPage(@NonNull View page, float position) {
@@ -187,7 +212,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         viewPagerVP.setPageTransformer(compositePageTransformer);
+        viewPagerVP.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                sliderHandler.removeCallbacks((Runnable) silderRunnable);
+                sliderHandler.postDelayed((Runnable) silderRunnable,3500);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+            }
+        });
+
     }
+    private Runnable silderRunnable = new Runnable() {
+        @Override
+        public void run() {
+            viewPagerVP.setCurrentItem(viewPagerVP.getCurrentItem()+1);
+        }
+    };
 
     public void showFilmInformations(View view) {
         Intent intent = new Intent(this, ThongTinPhimActivity.class);

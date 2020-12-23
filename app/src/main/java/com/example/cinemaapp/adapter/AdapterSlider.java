@@ -41,6 +41,11 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
         holder.setImage(dangchieu_ats.get(position));
         holder.setHeader(dangchieu_ats.get(position));
         holder.setTxtCategory(dangchieu_ats.get(position));
+        if (position==dangchieu_ats.size()-2)
+        {
+
+            viewPager2.post(runnable);
+        }
 
 
     }
@@ -79,7 +84,13 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
 //    Context context;
 //    LayoutInflater layoutInflater;
 
-
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            dangchieu_ats.addAll(dangchieu_ats);
+            notifyDataSetChanged();
+        }
+    };
 
     public int getCount() {
         return dangchieu_ats.size();
@@ -123,5 +134,6 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((RelativeLayout)object);
     }
+
 }
 
