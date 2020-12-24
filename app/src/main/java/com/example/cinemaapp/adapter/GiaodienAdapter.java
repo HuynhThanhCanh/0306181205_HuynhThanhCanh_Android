@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.cinemaapp.fragment.LichChieuFragment;
-import com.example.cinemaapp.fragment.ThongTinPhimFragment;
 import com.example.cinemaapp.fragment.DanhGiaFragment;
 
 public class GiaodienAdapter extends FragmentStatePagerAdapter {
@@ -21,17 +20,17 @@ public class GiaodienAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0: return new ThongTinPhimFragment();
-            case 1: return new LichChieuFragment();
-            case 2: return  new DanhGiaFragment();
-            default: return  new ThongTinPhimFragment();
+
+            case 0: return new LichChieuFragment();
+            case 1: return  new DanhGiaFragment();
+            default: return  new LichChieuFragment();
 
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Nullable
@@ -39,11 +38,9 @@ public class GiaodienAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         String title="";
         switch (position){
-            case 0: title ="Thông tin phim";
+            case 0: title ="Lịch chiếu";
             break;
-            case 1: title ="Lịch chiếu";
-            break;
-            case 2: title="Đánh giá";
+            case 1: title="Đánh giá";
             break;
         }
         return super.getPageTitle(position);
