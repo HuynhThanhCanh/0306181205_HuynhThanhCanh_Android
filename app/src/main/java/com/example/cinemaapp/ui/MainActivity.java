@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void showFilmInformations(View view) {
-        Intent intent = new Intent(this, ThongTinPhimActivity.class);
+        Intent intent = new Intent(this, GiaodienActivity.class);
         startActivity(intent);
     }
 
