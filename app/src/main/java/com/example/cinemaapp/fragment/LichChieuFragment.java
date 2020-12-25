@@ -1,5 +1,6 @@
 package com.example.cinemaapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.ui.SoDoRapActivity;
 
 import static com.example.cinemaapp.R.array.Adres;
 
@@ -27,6 +30,7 @@ public class LichChieuFragment extends Fragment  { //implements AdapterView.OnIt
     View view;
     String mAdress[];
     String dinhdang[];
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -73,13 +77,110 @@ public class LichChieuFragment extends Fragment  { //implements AdapterView.OnIt
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
          view= inflater.inflate(R.layout.fragment_lich_chieu, container, false);
+         AnhXa(view);
+
+//        btn1 = (Button) view.findViewById(R.id.btn1);
+
+
         LoadlistLoai();
         loadListAddress();
 
        //Spinner spinner1=(Spinner)view.findViewById(R.id.spinner_dd);
 
 
+        btnClick();
+
         return view;
+    }
+
+    private void btnClick() {
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoDoRapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+    private void AnhXa(View view) {
+        btn1 = (Button) view.findViewById(R.id.btn1);
+        btn2 = (Button) view.findViewById(R.id.btn2);
+        btn3 = (Button) view.findViewById(R.id.btn3);
+        btn4 = (Button) view.findViewById(R.id.btn4);
+        btn5 = (Button) view.findViewById(R.id.btn5);
+        btn6 = (Button) view.findViewById(R.id.btn6);
+        btn7 = (Button) view.findViewById(R.id.btn7);
+        btn8 = (Button) view.findViewById(R.id.btn8);
+
     }
 
     private void LoadlistLoai() {

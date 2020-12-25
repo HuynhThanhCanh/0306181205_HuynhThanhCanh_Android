@@ -105,7 +105,7 @@ private EditText searchInput;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onMovieClick(Movie movie, ImageView movieImageView) {
-  Intent intent = new Intent(this, ThongTinPhimActivity.class);
+        Intent intent = new Intent(this, ThongTinPhimActivity.class);
         // send movie information to deatilActivity
         intent.putExtra("title",movie.getTitle());
         intent.putExtra("imgURL",movie.getThumbnail());
