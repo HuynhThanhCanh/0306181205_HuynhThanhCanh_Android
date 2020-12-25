@@ -19,10 +19,13 @@ public class GiaodienAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 0: return new LichChieuFragment();
-            case 1: return  new DanhGiaFragment();
-            default: return  new LichChieuFragment();
+        switch (position) {
+            case 0:
+                return new LichChieuFragment();
+            case 1:
+                return new DanhGiaFragment();
+            default:
+                return new LichChieuFragment();
         }
     }
 
@@ -34,10 +37,16 @@ public class GiaodienAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String title="";
-        switch (position){
-            case 0: title ="Lịch chiếu";
-            break;
-            case 1: title="Đánh giá";
-            break;
+        String title = "";
+        switch (position) {
+            case 0:
+                title = "Lịch chiếu";
+                break;
+            case 1:
+                title = "Đánh giá";
+                break;
+        }
+        return super.getPageTitle(position);
+    }
+}
  

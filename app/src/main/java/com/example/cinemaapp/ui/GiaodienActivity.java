@@ -8,7 +8,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.GiaodienAdapter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class GiaodienActivity extends AppCompatActivity {
