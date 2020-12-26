@@ -11,11 +11,9 @@ import com.example.cinemaapp.fragment.DanhGiaFragment;
 
 public class GiaodienAdapter extends FragmentStatePagerAdapter {
 
-
     public GiaodienAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
-
 
     @Override
     public Fragment getItem(int position) {
