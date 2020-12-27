@@ -7,13 +7,7 @@ import android.os.Bundle;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.TrangCaNhanAdapter;
-import com.example.cinemaapp.model.User;
-import com.example.cinemaapp.readjson.ReadThongTinCaNhanJSON;
 import com.google.android.material.tabs.TabLayout;
-
-import org.json.JSONException;
-
-import java.io.IOException;
 
 public class TrangCaNhanActivity extends AppCompatActivity {
     private ViewPager mViewPager;

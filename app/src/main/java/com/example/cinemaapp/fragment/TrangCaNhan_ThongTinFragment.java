@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.model.User;
-import com.example.cinemaapp.readjson.ReadThongTinCaNhanJSON;
 
 import org.json.JSONException;
 
@@ -66,13 +65,13 @@ public class TrangCaNhan_ThongTinFragment extends Fragment {
         ward = mRootView.findViewById(R.id.spinner_Ward);
         btnCapNhat = mRootView.findViewById(R.id.btn_CapNhat);
         //End set control
-        try {
-            loadData();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            //loadData();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         btnCapNhat.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -152,28 +151,24 @@ public class TrangCaNhan_ThongTinFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public void loadData() throws IOException, JSONException {
-        User user = ReadThongTinCaNhanJSON.readThongTinCaNhanJsonFile(getActivity());
-        txtFullName.setText(user.getFullName());
-        //
-        txtUserName.setText(user.getUserName());
-        txtPhoneNumber.setText(user.getPhoneNumber());
-        txtUserNameDateOfBirth.setText(user.getDayOfBirth());
-        txtEmail.setText(user.getEmail());
-        //
-        if(user.getSex() == 1){
-            male.setChecked(true);
-        }else if(user.getSex() == 0){
-            female.setChecked(true);
-        }else{
-            male.setChecked(false);
-            female.setChecked(false);
-        }
-        //
-//        city.set
-//        district = mRootView.findViewById(R.id.spinner_District);
-//        ward = mRootView.findViewById(R.id.spinner_Ward);
-    }
+//    public void loadData() throws IOException, JSONException {
+//        User user = APIGetting.readThongTinCaNhanJsonFile(getActivity());
+//        txtFullName.setText(user.getFullName());
+//        //
+//        txtUserName.setText(user.getUserName());
+//        txtPhoneNumber.setText(user.getPhoneNumber());
+//        txtUserNameDateOfBirth.setText(user.getDayOfBirth());
+//        txtEmail.setText(user.getEmail());
+//        //
+//        if(user.getSex() == 1){
+//            male.setChecked(true);
+//        }else if(user.getSex() == 0){
+//            female.setChecked(true);
+//        }else{
+//            male.setChecked(false);
+//            female.setChecked(false);
+//        }
+//    }
 
     public void GetAPI() throws Exception {
         //GET API
