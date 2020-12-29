@@ -22,6 +22,6 @@ public class APIGetting extends AsyncTask<String , String ,  String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        return null;
+     return  APIMovie.getMovie();
     }
 }

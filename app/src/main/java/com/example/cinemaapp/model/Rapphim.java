@@ -15,4 +15,5 @@ public class Rapphim extends Model{
     @JsonName
     public JSONArray configDraw;
 
+
 }

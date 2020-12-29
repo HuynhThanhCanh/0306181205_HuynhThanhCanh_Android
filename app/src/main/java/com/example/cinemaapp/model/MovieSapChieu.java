@@ -1,43 +1,39 @@
 package com.example.cinemaapp.model;
 
-public class Movie {
+public class MovieSapChieu {
     private String title;
     private String description;
-    private String thumbnail;
+    private int thumbnail;
     private String studio;
     private String rating;
     private String streamingLink;
-    private String coverPhoto;
+    private int coverPhoto;
     private String label;
 
 
 
-//    public Movie(String title, String thumbnail) {
-//        this.title = title;
-//        this.thumbnail = thumbnail;
-//    }
-//
-//    public Movie(String description, String studio, String rating, String streamingLink, String label) {
-//        this.title = title;
-//        this.description = description;
-//        this.thumbnail = thumbnail;
-//        this.studio = studio;
-//        this.rating = rating;
-//        this.streamingLink = streamingLink;
-//        this.label=label;
-//
-//    }
+    public  MovieSapChieu(String title, int thumbnail) {
+        this.title = title;
+        this.thumbnail = thumbnail;
+    }
 
-//    public Movie(String title, String thumbnail, String coverPhoto, String rating, String label) {
-//        this.title = title;
-//        this.thumbnail = thumbnail;
-//        this.coverPhoto=coverPhoto;
-//        this.rating=rating;
-//        this.label=label;
-//    }
+    public  MovieSapChieu(String description, String studio, String rating, String streamingLink, String label) {
+        this.title = title;
+        this.description = description;
+        this.thumbnail = thumbnail;
+        this.studio = studio;
+        this.rating = rating;
+        this.streamingLink = streamingLink;
+        this.label=label;
 
-    public Movie() {
+    }
 
+    public  MovieSapChieu(String title, int thumbnail, int coverPhoto, String rating, String label) {
+        this.title = title;
+        this.thumbnail = thumbnail;
+        this.coverPhoto=coverPhoto;
+        this.rating=rating;
+        this.label=label;
     }
 
     public String getLabel() {
@@ -56,7 +52,7 @@ public class Movie {
         return description;
     }
 
-    public String getThumbnail() {
+    public int getThumbnail() {
         return thumbnail;
     }
 
@@ -72,7 +68,7 @@ public class Movie {
         return streamingLink;
     }
 
-    public String getCoverPhoto() {
+    public int getCoverPhoto() {
         return coverPhoto;
     }
 
@@ -84,7 +80,7 @@ public class Movie {
         this.description = description;
     }
 
-    public void setThumbnail(String thumbnail) {
+    public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
     }
 
@@ -100,9 +96,7 @@ public class Movie {
         this.streamingLink = streamingLink;
     }
 
-    public void setCoverPhoto(String coverPhoto) {
+    public void setCoverPhoto(int coverPhoto) {
         this.coverPhoto = coverPhoto;
     }
-
-
 }
