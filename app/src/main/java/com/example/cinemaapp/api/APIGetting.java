@@ -3,6 +3,8 @@ package com.example.cinemaapp.api;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.google.android.gms.dynamic.IFragmentWrapper;
+
 public class APIGetting extends AsyncTask<String , String ,  String> {
     Context context;
 
@@ -22,6 +24,13 @@ public class APIGetting extends AsyncTask<String , String ,  String> {
 
     @Override
     protected String doInBackground(String... strings) {
-     return  APIMovie.getMovie();
+        if (strings[0].equals("true"))
+        {
+
+            return  APIMovieDangChieu.getMovieDangChieu();
+        }
+
+     return  APIMovieSapChieu.getMovieSapChieu();
+
     }
 }

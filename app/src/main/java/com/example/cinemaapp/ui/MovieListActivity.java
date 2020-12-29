@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.MovieAdapter;
+import com.example.cinemaapp.adapter.MovieSapChieuAdapter;
 import com.example.cinemaapp.api.APIGetting;
 import com.example.cinemaapp.model.MovieItemClickListener;
 import com.example.cinemaapp.adapter.SlidePagerAdapter;
@@ -47,7 +48,9 @@ private RecyclerView MoviesRV1;
 private EditText searchInput;
 private  String jsonString;
 static LinkedList<Movie> lst_movie ;
+    static LinkedList<MovieS> lst_movie2 ;
 MovieAdapter Adapter;
+MovieSapChieuAdapter Adapter2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,16 +97,16 @@ MovieAdapter Adapter;
 //        lstMovies2.add(new MovieSapChieu("Mulan",R.drawable.mulan,R.drawable.mulan,"5","18+"));
 //
 //
-//        MovieSapChieuAdapter movieAdapter1 = new MovieSapChieuAdapter(this,lstMovies2,  this);
+//        MovieSapChieuAdapter movieAdapter1 = new MovieSapChieuAdapter();
 //        MoviesRV1.setAdapter(movieAdapter1);
 //        MoviesRV1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         try {
-            jsonString = new APIGetting(this).execute().get();
-          if(get_list_movie(jsonString)){
+            jsonString = new APIGetting(this).execute("true").get();
+          if(get_list_movieDangChieu(jsonString,lst_movie)){
 
-             Adapter= new MovieAdapter(lst_movie,this);
-              MoviesRV.setAdapter(Adapter);
+             Adapter= new MovieAdapter(lst_movie,this,this);
+              MoviesRV.setAdapter(Adapter2);
               MoviesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
             }
             else{
@@ -114,7 +117,24 @@ MovieAdapter Adapter;
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+        } try {
+            jsonString = new APIGetting(this).execute().get();
+            if(get_list_movieDangChieu(jsonString,lst_movie2)){
+
+                Adapter2= new MovieSapChieuAdapter(lst_movie2,this,this);
+                MoviesRV1.setAdapter(Adapter);
+                MoviesRV1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+            }
+            else{
+                MoviesRV1.setVisibility(View.INVISIBLE);
+
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
+
 
         searchInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -124,7 +144,7 @@ MovieAdapter Adapter;
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                movieAdapter.getFilter().filter(s);
+                    Adapter.getFilter().filter(s);
 //                movieAdapter1.getFilter().filter(s);
             }
 
@@ -135,9 +155,9 @@ MovieAdapter Adapter;
         });
     }
 
-    public Boolean get_list_movie(String js){
-        lst_movie= new LinkedList<>();
-        String IP="http://192.168.1.12:8080/image/phim/";
+    public Boolean get_list_movieDangChieu(String js,LinkedList<Movie> l){
+        l= new LinkedList<>();
+        String IP="http://192.168.137.15:8080/image/phim/";
 
         try {
             JSONArray jsonArray= new JSONArray(js);
@@ -149,10 +169,11 @@ MovieAdapter Adapter;
 
                 movie.setTitle(jsonObject.getString("TenPhim"));
                 movie.setRating(jsonObject.getString("Diem"));
-              String file=jsonObject.getString("HinhAnh");
-                String link=IP+file;
+                String HinhAnh=jsonObject.getString("HinhAnh");
+                String link=IP+HinhAnh;
                 movie.setCoverPhoto(link);
-                lst_movie.add(movie);
+                movie.setThumbnail(link);
+                l.add(movie);
             }
             return  true;
         } catch (JSONException e) {
@@ -160,6 +181,33 @@ MovieAdapter Adapter;
             return false;
         }
     }
+    //get phim sap chieu chieu
+//    public Boolean get_list_movieSapChieu(String js){
+//        lst_movie= new LinkedList<>();
+//        String IP="http://192.168.137.15:8080/image/phim/";
+//
+//        try {
+//            JSONArray jsonArray= new JSONArray(js);
+//
+//            int num= jsonArray.length();
+//            for(int i=0; i<num; i++){
+//                JSONObject jsonObject= jsonArray.getJSONObject(i);
+//                Movie movie= new Movie();
+//
+//                movie.setTitle(jsonObject.getString("TenPhim"));
+//                movie.setRating(jsonObject.getString("Diem"));
+//                String HinhAnh=jsonObject.getString("HinhAnh");
+//                String link=IP+HinhAnh;
+//                movie.setCoverPhoto(link);
+//                movie.setThumbnail(link);
+//                lst_movie.add(movie);
+//            }
+//            return  true;
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -205,7 +253,6 @@ MovieAdapter Adapter;
                     else
 
                         slidepager.setCurrentItem(0);
-
                 }
             });
         }

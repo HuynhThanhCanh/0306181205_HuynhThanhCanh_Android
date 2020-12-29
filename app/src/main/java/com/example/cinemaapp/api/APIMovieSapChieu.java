@@ -7,16 +7,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class APIMovie {
-
-public  static String getMovie()
+public class APIMovieSapChieu
+{
+    public  static String getMovieSapChieu()
     {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL("http://192.168.1.12:8080/api/phimDangChieu");
+            URL requestURL = new URL("http://192.168.137.15:8080/api/phimSapChieu");
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

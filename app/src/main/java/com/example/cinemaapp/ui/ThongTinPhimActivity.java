@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -23,7 +24,6 @@ public class ThongTinPhimActivity extends AppCompatActivity {
     private ImageView MovieThumbnaiImg,MovieCoverImg;
     private TextView tv_title,tv_description;
     private FloatingActionButton play_fab;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,17 +41,15 @@ public class ThongTinPhimActivity extends AppCompatActivity {
     {
         play_fab=findViewById(R.id.play_fab);
         String movieTitle =getIntent().getExtras().getString("title");
-        int imageResoureId=getIntent().getExtras().getInt("imgURL");
-        int imageCover=getIntent().getExtras().getInt("imgCover");
-        MovieThumbnaiImg=findViewById(R.id.detail_movie_img);
-        Glide.with(this).load(imageResoureId).into(MovieThumbnaiImg);
-        MovieThumbnaiImg.setImageResource(imageResoureId);
-        MovieCoverImg=findViewById(R.id.detail_movie_cover);
+        String imageResoureId=getIntent().getExtras().getString("imgURL");
+        String imageCover=getIntent().getExtras().getString("imgCover");
+            MovieThumbnaiImg=findViewById(R.id.detail_movie_img);
+      Glide.with(this).load(imageResoureId).into(MovieThumbnaiImg);
+       MovieCoverImg=findViewById(R.id.detail_movie_cover);
         Glide.with(this).load(imageCover).into(MovieCoverImg);
-        tv_title=findViewById(R.id.detail_movie_title);
-        tv_title.setText(movieTitle);
-        MovieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
-        MovieThumbnaiImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
+       tv_title=findViewById(R.id.detail_movie_title);
+       tv_title.setText(movieTitle);
+       MovieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         tv_title.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
 
     }

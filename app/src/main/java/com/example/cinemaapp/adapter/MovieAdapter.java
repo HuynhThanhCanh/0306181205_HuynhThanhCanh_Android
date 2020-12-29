@@ -27,11 +27,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     Context context;
     LinkedList<Movie> mData;
     List<Movie> mDatafilter;
-    MovieItemClickListener movieItemClickListener;
+   MovieItemClickListener movieItemClickListener;
     LayoutInflater inflater;
-    public MovieAdapter(LinkedList<Movie> mData, Context context) {
+    public MovieAdapter(LinkedList<Movie> mData, Context context,MovieItemClickListener listener) {
         this.mData=mData;
         this.context=context;
+        this.movieItemClickListener=listener;
         inflater= LayoutInflater.from(context);
         this.mDatafilter =mData;
 

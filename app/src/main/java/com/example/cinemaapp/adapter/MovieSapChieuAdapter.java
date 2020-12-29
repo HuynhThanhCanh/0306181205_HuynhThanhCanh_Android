@@ -15,24 +15,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.model.Movie;
 import com.example.cinemaapp.model.MovieItemClickListener;
 import com.example.cinemaapp.model.MovieSapChieu;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MovieSapChieuAdapter  extends RecyclerView.Adapter<MovieSapChieuAdapter.MyViewHolder> implements Filterable {
     Context context;
-    List<MovieSapChieu> mData;
+    LinkedList<MovieSapChieu> mData;
     List<MovieSapChieu> mDatafilter;
     MovieItemClickListener movieItemClickListener;
+    LayoutInflater inflater;
+    public MovieSapChieuAdapter(LinkedList<MovieSapChieu> mData, Context context,MovieItemClickListener listener) {
+        this.mData=mData;
+        this.context=context;
+        this.movieItemClickListener=listener;
+        inflater= LayoutInflater.from(context);
+        this.mDatafilter =mData;
 
-
-    public MovieSapChieuAdapter(Context context, List<MovieSapChieu> mdata, MovieItemClickListener listener) {
-        this.context = context;
-        this.mData = mdata;
-        this.movieItemClickListener = listener;
-        this.mDatafilter=mdata;
     }
 
 
