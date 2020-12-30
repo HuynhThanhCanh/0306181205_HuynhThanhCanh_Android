@@ -2,9 +2,14 @@ package com.example.cinemaapp.adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,14 +19,26 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.model.Model;
+import com.example.cinemaapp.ui.GiaodienActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderViewHolder> {
     private List<Model> dangchieu_ats;
     private ViewPager2 viewPager2;
     private LayoutInflater layoutInflater;
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     private Context context;
 
 
@@ -46,6 +63,13 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
 
             viewPager2.post(runnable);
         }
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, GiaodienActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
 
     }
@@ -70,7 +94,10 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
         }
         void setImage(Model dangchieu_at)
         {
-            imageView.setImageResource(dangchieu_at.getImage());
+
+//            imageView.setImageResource(dangchieu_at.getImage());
+            LoadImmage loadImmage = new LoadImmage(imageView);
+            loadImmage.execute(dangchieu_at.getImageURL());
         }
         void setHeader(Model dangchieu_at)
         {
@@ -80,6 +107,35 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
         {
             txtCategory.setText(dangchieu_at.getDescription());
         }
+        public class LoadImmage extends AsyncTask<String,Void, Bitmap>
+        {
+            ImageView imageView;
+
+            public LoadImmage(ImageView imageView) {
+                this.imageView = imageView;
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                imageView.setImageBitmap(bitmap);
+            }
+
+            @Override
+            protected Bitmap doInBackground(String... strings) {
+                String url = strings[0];
+                Bitmap bitmap =null;
+
+                try {
+                    InputStream inputStream = new java.net.URL(url).openStream();
+                    bitmap = BitmapFactory.decodeStream(inputStream);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return bitmap;
+            }
+        }
+
     }
 //    Context context;
 //    LayoutInflater layoutInflater;
