@@ -22,7 +22,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ImageView MovieThumbnaiImg,MovieCoverImg;
-    private TextView tv_title,tv_description;
+    private TextView tv_title,tv_description,sao,genrename,daoDien;
     private FloatingActionButton play_fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +43,23 @@ public class ThongTinPhimActivity extends AppCompatActivity {
         String movieTitle =getIntent().getExtras().getString("title");
         String imageResoureId=getIntent().getExtras().getString("imgURL");
         String imageCover=getIntent().getExtras().getString("imgCover");
-            MovieThumbnaiImg=findViewById(R.id.detail_movie_img);
+        String rating=getIntent().getExtras().getString("rating");
+        String genre=getIntent().getExtras().getString("genre");
+        String Directors=getIntent().getExtras().getString("Directors");
+        MovieThumbnaiImg=findViewById(R.id.detail_movie_img);
       Glide.with(this).load(imageResoureId).into(MovieThumbnaiImg);
        MovieCoverImg=findViewById(R.id.detail_movie_cover);
         Glide.with(this).load(imageCover).into(MovieCoverImg);
+
        tv_title=findViewById(R.id.detail_movie_title);
        tv_title.setText(movieTitle);
+
+       sao=findViewById(R.id.so_sao);
+       sao.setText(rating);
+        genrename=findViewById(R.id.ten_the_loai);
+        genrename.setText(genre);
+        daoDien=findViewById(R.id.ten_dao_dien);
+        daoDien.setText(Directors);
        MovieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         tv_title.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
 

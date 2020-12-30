@@ -4,7 +4,8 @@ public class Movie {
     private String title;
     private String description;
     private String thumbnail;
-    private String studio;
+    private String genre;
+    private  String Directors;
     private String rating;
     private String streamingLink;
     private String coverPhoto;
@@ -40,6 +41,14 @@ public class Movie {
 
     }
 
+    public String getDirectors() {
+        return Directors;
+    }
+
+    public void setDirectors(String directors) {
+        Directors = directors;
+    }
+
     public String getLabel() {
         return label;
     }
@@ -58,10 +67,6 @@ public class Movie {
 
     public String getThumbnail() {
         return thumbnail;
-    }
-
-    public String getStudio() {
-        return studio;
     }
 
     public String getRating() {
@@ -88,10 +93,6 @@ public class Movie {
         this.thumbnail = thumbnail;
     }
 
-    public void setStudio(String studio) {
-        this.studio = studio;
-    }
-
     public void setRating(String rating) {
         this.rating = rating;
     }
@@ -103,6 +104,12 @@ public class Movie {
     public void setCoverPhoto(String coverPhoto) {
         this.coverPhoto = coverPhoto;
     }
+    public String getGenre() {
+        return genre;
+    }
 
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
 }

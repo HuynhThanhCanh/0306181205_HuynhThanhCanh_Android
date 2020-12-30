@@ -77,6 +77,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         Movie movie=mData.get(i);
         myViewHolder.TvTitle.setText(movie.getTitle());
         myViewHolder.Tvtpoint.setText(movie.getRating());
+        myViewHolder.TvTlabel.setText(movie.getLabel());
         Picasso.get().load(movie.getCoverPhoto()).into( myViewHolder.ImgMovie);
         myViewHolder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
     }
@@ -128,7 +129,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     public  class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView TvTitle,Tvtpoint,TvTlabel;
-        private ImageView ImgMovie,imgsao;
+        private ImageView ImgMovie;
         private MovieAdapter adapter;
         public RelativeLayout container;
 
