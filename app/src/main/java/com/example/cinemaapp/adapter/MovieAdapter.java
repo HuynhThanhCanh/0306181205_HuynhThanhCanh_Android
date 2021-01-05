@@ -26,7 +26,7 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> implements Filterable {
     Context context;
     LinkedList<Movie> mData;
-    List<Movie> mDatafilter;
+    LinkedList<Movie> mDatafilter;
    MovieItemClickListener movieItemClickListener;
     LayoutInflater inflater;
     public MovieAdapter(LinkedList<Movie> mData, Context context,MovieItemClickListener listener) {
@@ -99,7 +99,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
                }
                else
                {
-                   List<Movie>lstFitler=new ArrayList<>();
+                   LinkedList<Movie>lstFitler=new LinkedList<>();
                    for(Movie row:mData)
                    {
                        if(row.getTitle().toLowerCase().contains(key.toLowerCase())||row.getTitle().toUpperCase().contains(key.toUpperCase()))
@@ -119,7 +119,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
            @Override
            protected void publishResults(CharSequence constraint, FilterResults results) {
-                mDatafilter=(List<Movie>)results.values;
+                mDatafilter=(LinkedList<Movie>)results.values;
                 notifyDataSetChanged();
            }
        };

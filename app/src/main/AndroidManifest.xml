@@ -19,7 +19,6 @@
         <activity android:name=".ui.TrailerActivity"
             android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".ui.MoviePlayerActivity" />
         <activity android:name=".ui.ThongTinPhimActivity" />
         <activity android:name=".ui.SoDoRapActivity"/>
         <activity android:name=".ui.LichSuChiTieuActivity" />

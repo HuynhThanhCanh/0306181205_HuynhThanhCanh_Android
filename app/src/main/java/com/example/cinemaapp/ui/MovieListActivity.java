@@ -46,7 +46,7 @@ private RecyclerView MoviesRV1;
 private EditText searchInput;
 private String URLimage="http://192.168.1.12:8080/image/phim/";
 private  String jsonString;
-static LinkedList<Movie> lst_movie=new LinkedList<>() ;
+
 static LinkedList<Movie> lst_movie2= new LinkedList<>() ;
 MovieAdapter Adapter;
     MovieAdapter Adapter2;
@@ -77,8 +77,11 @@ MovieAdapter Adapter;
         indicator.setupWithViewPager(slidepager,true);
 
         try {
+             LinkedList<Movie> lst_movie=new LinkedList<>() ;
             ReadMoives("phimDangChieu",lst_movie,URLimage);
-
+            Adapter= new MovieAdapter(lst_movie,this,this);
+            MoviesRV.setAdapter(Adapter);
+            MoviesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -86,12 +89,10 @@ MovieAdapter Adapter;
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Adapter= new MovieAdapter(lst_movie,this,this);
-        MoviesRV.setAdapter(Adapter);
-        MoviesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
 
         try {
-
+            LinkedList<Movie> lst_movie2= new LinkedList<>() ;
             ReadMoives("phimSapChieu",lst_movie2,URLimage);
             Adapter2= new MovieAdapter(lst_movie2,this,this);
             MoviesRV1.setAdapter(Adapter2);
@@ -175,7 +176,6 @@ MovieAdapter Adapter;
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                     Adapter.getFilter().filter(s);
-//                movieAdapter1.getFilter().filter(s);
             }
 
             @Override
@@ -251,6 +251,9 @@ MovieAdapter Adapter;
         intent.putExtra("rating",movie.getRating());
         intent.putExtra("genre",movie.getGenre());
         intent.putExtra("Directors",movie.getDirectors());
+        intent.putExtra("trailer",movie.getStreamingLink());
+        intent.putExtra("NoiDung",movie.getDescription());
+        intent.putExtra("label",movie.getLabel());
         ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(MovieListActivity.this,
                 movieImageView,"sharedName");
         startActivity(intent,options.toBundle());
@@ -298,7 +301,8 @@ MovieAdapter Adapter;
         JSONArray jsonArray = new JSONArray(jsonString);
 
         int num = jsonArray.length();
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < num; i++)
+        {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             Movie movie = new Movie();
 
@@ -308,10 +312,12 @@ MovieAdapter Adapter;
             movie.setGenre(jsonObject.getString("TenLoaiPhim"));
             movie.setLabel(jsonObject.getString("TenGioiHan"));
             movie.setDirectors(jsonObject.getString("DaoDien"));
+            movie.setStreamingLink(jsonObject.getString("LinkPhim"));
+            movie.setDescription(jsonObject.getString("NoiDung"));
             String link = URLimage + HinhAnh;
             movie.setCoverPhoto(link);
             movie.setThumbnail(link);
-            list.addLast(movie);
+            list.add(movie);
 
         }
     }
