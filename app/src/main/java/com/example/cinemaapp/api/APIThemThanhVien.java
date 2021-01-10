@@ -2,9 +2,10 @@ package com.example.cinemaapp.api;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.text.TextWatcher;
+import android.widget.Toast;
 
-import com.example.cinemaapp.model.Movie;
+import com.example.cinemaapp.model.User;
+import com.example.cinemaapp.model.Users;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,24 +13,25 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.PublicKey;
 
-public class APISearchPhim extends AsyncTask<String,String,String> {
-    Context context;
-
-    public  APISearchPhim(Context mCon)
-    {
-        this.context=mCon;
+public class APIThemThanhVien  extends AsyncTask<Users,String,String> {
+    @Override
+    protected String doInBackground(Users... users) {
+        return ThemThanhVien(users[0]);
     }
-
-
-
-    public static String searchWord(){
+    private Context m_con;
+    public  APIThemThanhVien(Context con)
+    {
+        m_con = con;
+    }
+    public   String ThemThanhVien(Users users)
+    {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL("http://192.168.1.12:8080/api/phim");
+            //URL requestURL = new URL("http://192.168.1.108/dictionary/api.php?word="+tuVung.getWord()+"&definition="+tuVung.getDefinition()+"&image="+tuVung.getImage());
+            URL requestURL = new URL("http://192.168.1.12:8080/api/savethanhvien?HoTenTV="+users.getHoTenTV()+"&NgaySinh="+users.getNgaySinh()+"&SDT="+users.getSDT()+"&Email="+users.getEmail()+"&Password="+users.getPass()+"&DiaChi="+users.getDiaChi());
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
@@ -60,9 +62,9 @@ public class APISearchPhim extends AsyncTask<String,String,String> {
         }
         return result;
     }
-
     @Override
-    protected String doInBackground(String... strings) {
-        return APISearchPhim.searchWord();
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        Toast.makeText(m_con, "Thêm Thành Công", Toast.LENGTH_SHORT).show();
     }
 }

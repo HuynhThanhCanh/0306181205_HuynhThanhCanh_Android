@@ -12,20 +12,29 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 //import android.widget.Toolbar;
 import android.widget.ViewFlipper;
 
+import com.bumptech.glide.Glide;
 import com.example.cinemaapp.adapter.Adapter;
 import com.example.cinemaapp.adapter.AdapterSlider;
 import com.example.cinemaapp.model.Model;
 import com.example.cinemaapp.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -36,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper flipper;
     private int stt =0;
     ViewPager viewPager2;
-
+    TextView name;
     ViewPager2 viewPagerVP;
     Adapter adapter;
     private Handler sliderHandler = new Handler();
@@ -47,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn_dangchieu;
     final List<Model> dangchieu_ats =new ArrayList<>();
     Button btn_sapchieu;
+    ImageButton imgAnh;
+    GoogleSignInClient mGoogleSignInClient;
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -58,13 +69,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //test viewpager 2
-
-
-        constructormodels2();
+                      GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                       .requestEmail()
+                        .build();
+                         mGoogleSignInClient=GoogleSignIn.getClient(this,gso);
+                                  
+        constructormodels2();     
         viewPagerVP=(ViewPager2)findViewById(R.id.viewPagerImageSlider);
-        // khởi tao các đối tượng  add vào silder đang chiếu
+        // khởi tao các đối tượng         mGoogleSignInClient = GoogleSignIn.getClient(this, gso); add vào silder đang chiếu
         dangchieu_ats.add(new Model(R.drawable.matbet,"Mắt Biếc","Tình cảm"));
         dangchieu_ats.add(new Model(R.drawable.rom,"Ròm","Hành động"));
         dangchieu_ats.add(new Model(R.drawable.trangmau,"Tiệc Trăng Máu","Hài Hước"));
@@ -108,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,drawerLayout,R.string.drawer_open,R.string.drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-
-
        navigationView = findViewById(R.id.nav_view);
        View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -119,6 +129,22 @@ public class MainActivity extends AppCompatActivity {
                return false;
            }
        });
+
+
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+
+
+            String personName = acct.getDisplayName();
+            Uri personPhoto = acct.getPhotoUrl();
+            name=findViewById(R.id.txtName);
+            imgAnh=findViewById(R.id.avatarUser)  ;
+            name.setText(personName);
+            Glide.with(this).load(String.valueOf(personPhoto)) .into(imgAnh) ;
+
+        }
+
 
 
     }

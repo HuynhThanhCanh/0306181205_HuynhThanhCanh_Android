@@ -37,6 +37,10 @@ public class Movie {
 //        this.label=label;
 //    }
 
+    public Movie(String title) {
+        this.title = title;
+    }
+
     public Movie() {
 
     }

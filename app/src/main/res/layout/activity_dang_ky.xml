@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DangKyActivity">
+    tools:context=".ui.RegisterApp">
 
 
  <LinearLayout
@@ -21,7 +21,7 @@
 
   <ImageView
       android:id="@+id/imageView"
-      android:layout_width="470dp"
+      android:layout_width="match_parent"
       android:layout_height="184dp"
 
       android:layout_marginBottom="50dp"
@@ -79,37 +79,6 @@
       android:inputType="textPassword"
       android:textSize="7pt" />
 
-  <RadioGroup
-      android:layout_width="189dp"
-      android:layout_height="40dp"
-      android:layout_marginLeft="15pt"
-      android:layout_marginBottom="10dp"
-      android:orientation="horizontal">
-
-   <RadioButton
-
-       android:id="@+id/radioBtnNam"
-       android:layout_width="80dp"
-       android:layout_height="25dp"
-
-       android:layout_marginEnd="24dp"
-
-       android:layout_marginBottom="10dp"
-       android:text="@string/Nam"
-       android:textSize="7pt" />
-
-   <RadioButton
-       android:id="@+id/radioBtnNu"
-       android:layout_width="60dp"
-       android:layout_height="22dp"
-
-       android:layout_marginEnd="144dp"
-       android:text="@string/Nu"
-       android:textSize="7pt" />
-
-
-  </RadioGroup>
-
   <EditText
       android:id="@+id/editTextNgaySinh"
       android:layout_width="265dp"
@@ -117,19 +86,20 @@
       android:layout_marginTop="15dp"
       android:layout_marginLeft="15pt"
       android:hint="Ngày sinh"
-      android:onClick="PopupNgay"/>
+  />
 
-    <Spinner
-      android:id="@+id/spinner"
-      android:layout_width="193dp"
+  <EditText
+      android:inputType="textMultiLine"
+      android:hint="Địa chỉ"
+      android:id="@+id/editTextDiaChi"
+      android:layout_width="352dp"
       android:layout_height="41dp"
-        android:layout_marginTop="15dp"
       android:layout_marginLeft="15pt"
-      />
+      android:layout_marginTop="15dp" />
 
 
   <Button
-      android:id="@+id/btnDangKy"
+      android:id="@+id/btnDangKythanhvien"
       android:background="@drawable/botron_button"
       android:text="Đăng Ký"
       android:layout_marginBottom="10dp"

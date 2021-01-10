@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> implements Filterable {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
     Context context;
     LinkedList<Movie> mData;
-    LinkedList<Movie> mDatafilter;
+    // LinkedList<Movie> mDatafilter;
    MovieItemClickListener movieItemClickListener;
     LayoutInflater inflater;
     public MovieAdapter(LinkedList<Movie> mData, Context context,MovieItemClickListener listener) {
@@ -34,7 +34,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         this.context=context;
         this.movieItemClickListener=listener;
         inflater= LayoutInflater.from(context);
-        this.mDatafilter =mData;
+        //this.mDatafilter =mData;
 
     }
 
@@ -84,46 +84,47 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     @Override
     public int getItemCount() {
-        return mDatafilter.size();
+        return mData.size();
     }
 
-    @Override
-    public Filter getFilter() {
-       return new Filter() {
-           @Override
-           protected FilterResults performFiltering(CharSequence constraint) {
-               String key=constraint.toString();
-               if(key.isEmpty())
-               {
-                   mDatafilter=mData;
-               }
-               else
-               {
-                   LinkedList<Movie>lstFitler=new LinkedList<>();
-                   for(Movie row:mData)
-                   {
-                       if(row.getTitle().toLowerCase().contains(key.toLowerCase())||row.getTitle().toUpperCase().contains(key.toUpperCase()))
-                       {
-                           lstFitler.add(row);
-                       }
-                   }
-                   mDatafilter=lstFitler;
-
-
-               }
-               FilterResults filterResults= new FilterResults();
-               filterResults.values=mDatafilter;
-               return filterResults;
-
-           }
-
-           @Override
-           protected void publishResults(CharSequence constraint, FilterResults results) {
-                mDatafilter=(LinkedList<Movie>)results.values;
-                notifyDataSetChanged();
-           }
-       };
-    }
+//    @Override
+//    public Filter getFilter() {
+//       return new Filter() {
+//           @Override
+//           protected FilterResults performFiltering(CharSequence constraint) {
+//               String key=constraint.toString();
+//               if(key.isEmpty())
+//               {
+//                   mDatafilter=mData;
+//               }
+//               else
+//               {
+//
+//                   LinkedList<Movie>lstFitler=new LinkedList<>();
+//                   for(Movie row:mData)
+//                   {
+//                       if(row.getTitle().toLowerCase().contains(key.toLowerCase())||row.getTitle().toUpperCase().contains(key.toUpperCase()))
+//                       {
+//                           lstFitler.add(row);
+//                       }
+//                   }
+//                   mDatafilter=lstFitler;
+//
+//
+//               }
+//               FilterResults filterResults= new FilterResults();
+//               filterResults.values=mDatafilter;
+//               return filterResults;
+//
+//           }
+//
+//           @Override
+//           protected void publishResults(CharSequence constraint, FilterResults results) {
+//                mDatafilter=(LinkedList<Movie>)results.values;
+//                notifyDataSetChanged();
+//           }
+//       };
+//    }
 
 
     public  class MyViewHolder extends RecyclerView.ViewHolder {
