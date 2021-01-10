@@ -48,6 +48,7 @@
             android:textSize="7pt" />
 
         <Button
+
             android:id="@+id/btnDangNhap"
             android:layout_width="350dp"
             android:layout_height="50dp"
@@ -84,7 +85,6 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginLeft="15pt"
-            android:onClick="chuyensangdangky"
             android:layout_marginRight="15pt"
             android:layout_marginBottom="20dp"
             android:background="@drawable/botron_den"

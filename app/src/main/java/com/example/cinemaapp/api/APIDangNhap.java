@@ -1,10 +1,7 @@
 package com.example.cinemaapp.api;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
-import com.example.cinemaapp.model.User;
 import com.example.cinemaapp.model.Users;
 
 import java.io.BufferedReader;
@@ -14,24 +11,19 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class APIThemThanhVien  extends AsyncTask<Users,String,String> {
+public class APIDangNhap extends AsyncTask<Users,String,String> {
     @Override
     protected String doInBackground(Users... users) {
-        return ThemThanhVien(users[0]);
+        return DangNhap(users[0]);
     }
-    private Context m_con;
-    public  APIThemThanhVien(Context con)
-    {
-        m_con = con;
-    }
-    public   String ThemThanhVien(Users users)
+    public  String DangNhap(Users users)
     {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String result = null;
         try {
             //URL requestURL = new URL("http://192.168.1.108/dictionary/api.php?word="+tuVung.getWord()+"&definition="+tuVung.getDefinition()+"&image="+tuVung.getImage());
-            URL requestURL = new URL("http://192.18.1.10:8080/api/savethanhvien?HoTenTV="+users.getHoTenTV()+"&NgaySinh="+users.getNgaySinh()+"&SDT="+users.getSDT()+"&Email="+users.getEmail()+"&Password="+users.getPass()+"&DiaChi="+users.getDiaChi());
+            URL requestURL = new URL("http://192.168.1.10:8080/api/loginApp?User="+users.getEmail()+"&Pass="+users.getPass());
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
@@ -61,9 +53,5 @@ public class APIThemThanhVien  extends AsyncTask<Users,String,String> {
             }
         }
         return result;
-    }
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
     }
 }

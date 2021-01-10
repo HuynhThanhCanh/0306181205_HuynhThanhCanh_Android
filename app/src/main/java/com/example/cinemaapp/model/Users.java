@@ -28,6 +28,11 @@ public class Users {
         this.SDT = SDT;
     }
 
+    public Users(String email, String pass) {
+        this.email = email;
+        this.pass = pass;
+    }
+
     public Users()
     {
 

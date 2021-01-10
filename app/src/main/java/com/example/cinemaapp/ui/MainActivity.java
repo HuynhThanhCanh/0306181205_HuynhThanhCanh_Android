@@ -132,18 +132,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if (acct != null) {
-
-
-            String personName = acct.getDisplayName();
-            Uri personPhoto = acct.getPhotoUrl();
-            name=findViewById(R.id.txtName);
-            imgAnh=findViewById(R.id.avatarUser)  ;
-            name.setText(personName);
-            Glide.with(this).load(String.valueOf(personPhoto)) .into(imgAnh) ;
-
-        }
+//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+//        if (acct != null) {
+//
+//
+//            String personName = acct.getDisplayName();
+//            Uri personPhoto = acct.getPhotoUrl();
+//            name=findViewById(R.id.txtName);
+//            imgAnh=findViewById(R.id.avatarUser)  ;
+//            name.setText(personName);
+//            Glide.with(this).load(String.valueOf(personPhoto)) .into(imgAnh) ;
+//
+//        }
+        //initview();
 
 
 
@@ -273,5 +274,12 @@ public class MainActivity extends AppCompatActivity {
     public void showTrangCaNhan(View view) {
         Intent intent = new Intent(this, TrangCaNhanActivity.class);
         startActivity(intent);
+    }
+    public void initview()
+    {
+        String HoTenTV =getIntent().getExtras().getString("name");
+        name=findViewById(R.id.txtName);
+        name.setText(HoTenTV);
+
     }
 }
