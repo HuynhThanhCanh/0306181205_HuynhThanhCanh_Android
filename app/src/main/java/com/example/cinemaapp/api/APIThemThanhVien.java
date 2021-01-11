@@ -31,7 +31,7 @@ public class APIThemThanhVien  extends AsyncTask<Users,String,String> {
         String result = null;
         try {
             //URL requestURL = new URL("http://192.168.1.108/dictionary/api.php?word="+tuVung.getWord()+"&definition="+tuVung.getDefinition()+"&image="+tuVung.getImage());
-            URL requestURL = new URL("http://192.18.1.10:8080/api/savethanhvien?HoTenTV="+users.getHoTenTV()+"&NgaySinh="+users.getNgaySinh()+"&SDT="+users.getSDT()+"&Email="+users.getEmail()+"&Password="+users.getPass()+"&DiaChi="+users.getDiaChi());
+            URL requestURL = new URL("http://172.16.0.242:8080/api/savethanhvien?HoTenTV="+users.getHoTenTV()+"&NgaySinh="+users.getNgaySinh()+"&SDT="+users.getSDT()+"&Email="+users.getEmail()+"&Password="+users.getPass()+"&DiaChi="+users.getDiaChi());
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

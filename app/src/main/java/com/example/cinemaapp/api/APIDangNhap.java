@@ -23,7 +23,7 @@ public class APIDangNhap extends AsyncTask<Users,String,String> {
         String result = null;
         try {
             //URL requestURL = new URL("http://192.168.1.108/dictionary/api.php?word="+tuVung.getWord()+"&definition="+tuVung.getDefinition()+"&image="+tuVung.getImage());
-            URL requestURL = new URL("http://192.168.1.10:8080/api/loginApp?User="+users.getEmail()+"&Pass="+users.getPass());
+            URL requestURL = new URL("http://172.16.0.242:8080/api/loginApp?User="+users.getEmail()+"&Pass="+users.getPass());
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

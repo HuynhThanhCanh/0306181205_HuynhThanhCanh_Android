@@ -131,9 +131,11 @@ public class LoginApp extends AppCompatActivity {
             String s=object.getString("User");
            // String name=object.getString("HoTenTV");
             JSONObject jsonObject1=new JSONObject(s);
+            String nameTV=jsonObject1.getString("HoTenTV");
 
             Intent intent= new Intent(LoginApp.this,MainActivity.class);
-          //  intent.putExtra("name",name);
+           // intent.putExtra("name",nameTV);
+            //  intent.putExtra("name",name);
             startActivity(intent);
         }
         else
