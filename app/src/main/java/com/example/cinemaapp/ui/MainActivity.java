@@ -12,11 +12,13 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 //import android.widget.Toolbar;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper flipper;
     private int stt =0;
     ViewPager viewPager2;
-    private String URLImage="http://192.168.1.2:8000/image/phim/";
+    private String URLImage="http://192.168.1.3:8000/image/phim/";
     ViewPager2 viewPagerVP;
     Adapter adapter;
     private Handler sliderHandler = new Handler();
@@ -65,23 +67,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        try {
-            LoadMovies("http://192.168.1.2:8000/api/phim",MoviesDC,URLImage);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        MoviesDC.clear();
+        MoviesSC.clear();
+//        try {
+//            LoadMovies("http://192.168.1.3:8000/api/phim",MoviesDC,URLImage);
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            LoadMovies("http://192.168.1.3:8000/api/phim",MoviesSC,URLImage);
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         //test viewpager 2
 
         viewPagerVP=(ViewPager2)findViewById(R.id.viewPagerImageSlider);
 
 
-        initslider1(MoviesDC);
+//        initslider1(MoviesDC);
 
 
         btn_dangchieu = (Button) findViewById(R.id.btn_dang_chieu);
@@ -89,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//               initslider1();
+//               initslider1(MoviesDC);
                 selectedTab(view);
             }
         });
@@ -98,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         btn_sapchieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    initslider1(MoviesDC);
+//                    initslider1(MoviesSC);
                 selectedTab(view);
             }
         });
@@ -114,12 +126,27 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawerLayout = findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,drawerLayout,R.string.drawer_open,R.string.drawer_close);
+
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
 
-       navigationView = findViewById(R.id.nav_view);
-       View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
+        navigationView = findViewById(R.id.nav_view);
+        int random_int = (int)(Math.random() * (100) + 1);
+
+        //set đăng nhập hay đăng kí ở đây
+//        if (random_int%2==0){
+//            View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
+//            TextView txtTenUser =(TextView) navView.findViewById(R.id.txtTenUser);
+//            txtTenUser.setText("Đặng Thái Bình");
+//        }
+//        else{
+            View navView = navigationView.inflateHeaderView(R.layout.navigation_header_login);
+
+//        }
+
+
+
        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
            @Override
            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -160,6 +187,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         return super.onOptionsItemSelected(item);
     }
+
+
+
     // xử lí khi người dùng click vào menu ở đây
 
     public void UserMenuSelected(MenuItem item){
@@ -195,10 +225,12 @@ public class MainActivity extends AppCompatActivity {
         for (int i =0;i<len;i++)
         {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String id = jsonObject.getString("MaPhim");
             String image =jsonObject.getString("HinhAnh");
             String name =jsonObject.getString("TenPhim");
-            String title=jsonObject.getString("DaoDien");
-            Model movie = new Model(URLimage+image,name,title);
+            String title=jsonObject.getString("TenLoaiPhim");
+
+            Model movie = new Model(id,URLimage+image,name,title);
             movies.addLast(movie);
         }
 
@@ -262,6 +294,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void showTrangCaNhan(View view) {
         Intent intent = new Intent(this, TrangCaNhanActivity.class);
+        startActivity(intent);
+    }
+    public void dangnhap(View view) {
+        Intent intent = new Intent(this, DangNhapActivity.class);
         startActivity(intent);
     }
 }

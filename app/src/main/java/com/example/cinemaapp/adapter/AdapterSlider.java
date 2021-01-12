@@ -67,6 +67,7 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, GiaodienActivity.class);
+                intent.putExtra("ID",dangchieu_ats.get(position).getId());
                 context.startActivity(intent);
             }
         });

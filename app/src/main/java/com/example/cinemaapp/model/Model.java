@@ -2,6 +2,23 @@ package com.example.cinemaapp.model;
 
 public class Model {
 
+    private  String Id;
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
+
+    public Model(String id, String imageURL, String title, String description) {
+        Id = id;
+        this.imageURL = imageURL;
+        this.title = title;
+        this.description = description;
+    }
+
     private String imageURL;
 
     public String getImageURL() {
