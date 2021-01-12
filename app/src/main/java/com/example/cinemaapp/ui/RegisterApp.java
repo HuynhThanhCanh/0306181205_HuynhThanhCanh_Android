@@ -47,8 +47,6 @@ public class RegisterApp extends AppCompatActivity
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 try {
                     themthanhvien();
                 } catch (JSONException e) {
@@ -109,7 +107,6 @@ public class RegisterApp extends AppCompatActivity
         {
             editDiaChi.setError("Không được bỏ trống!");
             return;
-
         }
         String hoten = ((EditText) findViewById(R.id.editTextHoTen)).getText().toString();
         String ngaysinh = ((EditText) findViewById(R.id.editTextNgaySinh)).getText().toString();
@@ -126,8 +123,16 @@ public class RegisterApp extends AppCompatActivity
 //        Toast.makeText(this, newWord.toString(), Toast.LENGTH_SHORT).show();
         String s= new APIThemThanhVien(this).execute(users).get();
         JSONObject jsonObject=new JSONObject(s);
-        String result=jsonObject.getString("mess");
-        Toast.makeText(this,result,Toast.LENGTH_LONG).show();
+
+        if(jsonObject.getString("mess").equals("true"))
+        {
+
+            Intent intent= new Intent(RegisterApp.this,LoginApp.class);
+
+            Toast.makeText(this,"Đăng ký thành công!",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
+        //Toast.makeText(this,result,Toast.LENGTH_LONG).show();
     }
 
     private boolean checkNull(String str){

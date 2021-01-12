@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class    APIGetting extends AsyncTask<String , String ,  String> {
     Context context;
-    private String URLApi ="http://172.16.0.242:8080/api/";
+    private String URLApi ="http://192.168.1.12:8080/api/";
 
     public String getURLApi() {
         return URLApi;

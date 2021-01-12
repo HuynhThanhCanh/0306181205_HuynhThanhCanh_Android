@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.Sqlite.Database;
 import com.example.cinemaapp.api.APIDangNhap;
 import com.example.cinemaapp.api.APIThemThanhVien;
 import com.example.cinemaapp.model.User;
@@ -39,6 +40,7 @@ public class LoginApp extends AppCompatActivity {
     private Button btnDangNhap;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN=1;
+    Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,6 +136,12 @@ public class LoginApp extends AppCompatActivity {
             String nameTV=jsonObject1.getString("HoTenTV");
 
             Intent intent= new Intent(LoginApp.this,MainActivity.class);
+            //Tạo database cinema
+            database= new Database(this,"cinema.sqlite",null,3);
+            //Tạo bảng User gồm User gồm các object và trang thai
+            database.QueryData("CREATE TABLE IF NOT EXISTS ThanhVien(User VARCHAR,TrangThai BIT)");
+            // Thêm dữ liệu
+            database.QueryData("INSERT INTO ThanhVien VALUES('User',1)");
            // intent.putExtra("name",nameTV);
             //  intent.putExtra("name",name);
             startActivity(intent);
@@ -142,5 +150,10 @@ public class LoginApp extends AppCompatActivity {
         {
             Toast.makeText(this,"Đăng Nhâp không thành công",Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void chuyensangdangky(View view) {
+        Intent intent= new Intent(LoginApp.this,RegisterApp.class);
+        startActivity(intent);
     }
 }

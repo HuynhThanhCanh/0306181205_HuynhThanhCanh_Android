@@ -1,4 +1,4 @@
-package com.example.cinemaapp.model;
+package com.example.cinemaapp.Sqlite;
 
 import android.content.Context;
 import android.database.Cursor;

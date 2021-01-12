@@ -25,7 +25,7 @@ import android.widget.ViewFlipper;
 
 import com.example.cinemaapp.adapter.Adapter;
 import com.example.cinemaapp.adapter.AdapterSlider;
-import com.example.cinemaapp.model.Database;
+import com.example.cinemaapp.Sqlite.Database;
 import com.example.cinemaapp.model.Model;
 import com.example.cinemaapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -61,13 +61,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Tạo database cinema
-        database= new Database(this,"cinema.sqlite",null,3);
-        //Tạo bảng User gồm User gồm các object và trang thai
-        database.QueryData("CREATE TABLE IF NOT EXISTS ThanhVien(User VARCHAR,TrangThai BIT)");
-        // Thêm dữ liệu
-        database.QueryData("INSERT INTO ThanhVien VALUES('User',1)");
-        constructormodels2();     
+        constructormodels2();
         viewPagerVP=(ViewPager2)findViewById(R.id.viewPagerImageSlider);
         // khởi tao các đối tượng         mGoogleSignInClient = GoogleSignIn.getClient(this, gso); add vào silder đang chiếu
         dangchieu_ats.add(new Model(R.drawable.matbet,"Mắt Biếc","Tình cảm"));

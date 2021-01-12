@@ -80,15 +80,7 @@
       android:textSize="7pt" />
 
   <EditText
-      android:id="@+id/editTextNgaySinh"
-      android:layout_width="265dp"
-      android:layout_height="54dp"
-      android:layout_marginTop="15dp"
-      android:layout_marginLeft="15pt"
-      android:hint="Ngày sinh"
-  />
 
-  <EditText
       android:inputType="textMultiLine"
       android:hint="Địa chỉ"
       android:id="@+id/editTextDiaChi"
@@ -99,6 +91,7 @@
 
 
   <Button
+
       android:id="@+id/btnDangKythanhvien"
       android:background="@drawable/botron_button"
       android:text="Đăng Ký"
