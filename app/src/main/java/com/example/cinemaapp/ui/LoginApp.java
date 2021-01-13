@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.DragAndDropPermissions;
 import android.view.MenuItem;
@@ -32,6 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigInteger;
 import java.util.concurrent.ExecutionException;
 
 public class LoginApp extends AppCompatActivity {
@@ -44,10 +46,31 @@ public class LoginApp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        database= new Database(this,"cinema.sqlite",null,3);
+        //Tạo bảng User gồm User gồm các object và trang thai
+        database.QueryData("CREATE TABLE IF NOT EXISTS ThanhVien(User VARCHAR,TrangThai BIT)");
+        Cursor cursor=database.getData("Select * from ThanhVien");
+        cursor.moveToFirst();
+        String result="";
+
+        while (!cursor.isAfterLast())
+        {
+            String User=cursor.getString(0);
+
+            cursor.moveToNext();
+            if (cursor.isAfterLast())
+            {
+                result=User;
+            }
+
+        }
+        cursor.close();
         setContentView(R.layout.activity_dang_nhap);
         signin=findViewById(R.id.sign_in_gg);
         editEmail= (EditText) findViewById(R.id.editTextEmail);
         editPass=(EditText)findViewById(R.id.editTextPassword);
+        editEmail.setText(result);
+
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +93,8 @@ public class LoginApp extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -110,7 +135,7 @@ public class LoginApp extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void DangNhap() throws ExecutionException, InterruptedException, JSONException {
+    private void DangNhap() throws Exception {
         if(editEmail.length()==0)
         {
             editEmail.setError("Không được bỏ trống!");
@@ -121,10 +146,14 @@ public class LoginApp extends AppCompatActivity {
             editPass.setError("Không được bỏ trống!");
             return;
         }
-        String email=((EditText)findViewById(R.id.editTextEmail)).getText().toString();
-        String matkhau=((EditText)findViewById(R.id.editTextPassword)).getText().toString();
 
-        Users users= new Users(email,matkhau);
+        String email=((EditText)findViewById(R.id.editTextEmail)).getText().toString();
+        byte[] matkhau=((EditText)findViewById(R.id.editTextPassword)).getText().toString().getBytes();// hash mật khẩu qua md5
+        BigInteger md5data=null;
+        md5data= new BigInteger(1,md5.encryptMD5(matkhau));
+        String matkhauStr=md5data.toString(16);
+
+        Users users= new Users(email,matkhauStr);
         String read= new APIDangNhap().execute(users).get();
         JSONObject object= new JSONObject(read);
 
@@ -134,14 +163,14 @@ public class LoginApp extends AppCompatActivity {
            // String name=object.getString("HoTenTV");
             JSONObject jsonObject1=new JSONObject(s);
             String nameTV=jsonObject1.getString("HoTenTV");
-
+            String maThanhVien=jsonObject1.getString("MaThanhVien");
+            String Email=jsonObject1.getString("Email");
+            String Avatar=jsonObject1.getString("Avatar");
             Intent intent= new Intent(LoginApp.this,MainActivity.class);
             //Tạo database cinema
-            database= new Database(this,"cinema.sqlite",null,3);
-            //Tạo bảng User gồm User gồm các object và trang thai
-            database.QueryData("CREATE TABLE IF NOT EXISTS ThanhVien(User VARCHAR,TrangThai BIT)");
+
             // Thêm dữ liệu
-            database.QueryData("INSERT INTO ThanhVien VALUES('User',1)");
+            database.QueryData("INSERT INTO ThanhVien VALUES('" +s+"',1)");
            // intent.putExtra("name",nameTV);
             //  intent.putExtra("name",name);
             startActivity(intent);

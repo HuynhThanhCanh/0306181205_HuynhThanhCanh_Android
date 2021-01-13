@@ -78,6 +78,16 @@
       android:hint="Mật khẩu"
       android:inputType="textPassword"
       android:textSize="7pt" />
+  <EditText
+      android:id="@+id/editTextNgaySinh"
+      android:layout_width="350dp"
+      android:layout_height="50dp"
+      android:layout_marginLeft="15pt"
+      android:layout_marginBottom="10dp"
+      android:ems="10"
+      android:hint="dd/MM/yyyy"
+      android:inputType="date"
+      android:textSize="7pt" />
 
   <EditText
 

@@ -3,6 +3,16 @@ package com.example.cinemaapp.model;
 import java.util.Date;
 
 public class Users {
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String email;
     private  String pass;
     private  String HoTenTV;

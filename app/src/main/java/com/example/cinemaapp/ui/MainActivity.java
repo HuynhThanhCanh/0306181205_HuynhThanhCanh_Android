@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         constructormodels2();
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         //end test
 
         initslider1(dangchieu_ats);
-
+        SHOW();
 
         btn_dangchieu = (Button) findViewById(R.id.btn_dang_chieu);
         btn_dangchieu.setOnClickListener(new View.OnClickListener() {
@@ -263,5 +265,29 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TrangCaNhanActivity.class);
         startActivity(intent);
     }
+    public void SHOW()
+    {
+        database= new Database(this,"cinema.sqlite",null,3);
+        //Tạo bảng User gồm User gồm các object và trang thai
+        database.QueryData("CREATE TABLE IF NOT EXISTS ThanhVien(User VARCHAR,TrangThai BIT)");
+        Cursor cursor=database.getData("Select * from ThanhVien");
+        cursor.moveToFirst();
+        String result="";
+
+        while (!cursor.isAfterLast())
+        {
+            String User=cursor.getString(0);
+
+            cursor.moveToNext();
+            if (cursor.isAfterLast())
+            {
+                result=User;
+            }
+
+        }
+        cursor.close();
+        Toast.makeText(this,result,Toast.LENGTH_LONG).show();
+    }
+
 
 }
