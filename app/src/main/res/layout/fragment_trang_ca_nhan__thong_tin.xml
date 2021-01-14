@@ -52,7 +52,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imgv_Avatar" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txtTitle_Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Họ và tên" />
@@ -62,8 +62,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/et_style"
+                android:background="@drawable/et_style_outline"
                 android:ems="10"
+                android:enabled="true"
                 android:inputType="textPersonName"
                 android:padding="10dp"
                 android:text="Huỳnh Thanh Cảnh"
@@ -72,10 +73,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.487"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Name"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txtTitle_Phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -86,8 +87,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/et_style"
+                android:background="@drawable/et_style_outline"
                 android:ems="10"
+                android:enabled="true"
                 android:inputType="phone"
                 android:padding="10dp"
                 android:text="0989765678"
@@ -99,7 +101,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edtext_Name" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/txtTitle_Birthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -124,7 +126,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edtext_Phone" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/txtTitle_Email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -135,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/et_style_outline"
+                android:background="@drawable/et_style"
                 android:ems="10"
                 android:enabled="false"
                 android:inputType="text"
@@ -149,103 +151,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/edtext_BirthDay" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/txtTitle_Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Giới tính" />
+                android:text="Đia chỉ" />
 
-            <RadioGroup
-                android:id="@+id/rad_SexGroup"
+            <EditText
+                android:id="@+id/edText_Address"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtext_Email">
-
-                <RadioButton
-                    android:id="@+id/rad_Male"
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:buttonTint="#BD2121"
-                    android:checked="true"
-                    android:text="Nam"
-                    android:textColor="#000000"
-                    android:textColorHighlight="#C9BD2121"
-                    android:textColorLink="#BD2121 "
-                    android:textSize="18sp"/>
-
-                <RadioButton
-                    android:id="@+id/rad_Female"
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:checked="true"
-                    android:text="Nữ"
-                    android:textColor="#000000"
-                    android:textColorHighlight="#C9BD2121"
-                    android:textColorLink="#BD2121 "
-                    android:textSize="18sp"
-                    android:buttonTint="#BD2121"/>
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Tỉnh/Thành phố" />
-
-            <Spinner
-                android:id="@+id/spinner_City"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/et_style_outline"
-                android:scrollbarSize="4sp"
-                android:spinnerMode="dropdown"
+                android:ems="10"
+                android:gravity="top"
+                android:inputType="textMultiLine|text"
+                android:padding="10dp"
+                android:text="47/24/38 Bùi Đình Túy, P.24, Q.Bình Thạnh"
+                android:textColor="#000000"
+                android:textCursorDrawable="@android:drawable/status_bar_item_background"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtext_Address" />
-
-            <TextView
-
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Quận/Huyện" />
-
-            <Spinner
-
-                android:id="@+id/spinner_District"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/et_style_outline"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_City" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Phường/Xã" />
-
-            <Spinner
-                android:id="@+id/spinner_Ward"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/et_style_outline"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_District" />
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
     </ScrollView>

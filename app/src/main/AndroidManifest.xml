@@ -29,7 +29,8 @@
         <activity
             android:name=".fragment.TrangCaNhan_ThongTinFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".ui.TrangCaNhanActivity" />
+        <activity android:name=".ui.TrangCaNhanActivity">
+        </activity>
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.DangNhapActivity"/>
         <activity android:name=".ui.MovieListActivity"/>
