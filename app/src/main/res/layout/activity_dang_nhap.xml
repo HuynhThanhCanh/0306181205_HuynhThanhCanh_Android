@@ -49,12 +49,11 @@
             android:layout_height="50dp"
             android:layout_marginLeft="15pt"
             android:layout_marginRight="15pt"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="40dp"
             android:ems="10"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:textSize="7pt" />
-
 
 
         <Button
@@ -63,7 +62,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="15pt"
             android:layout_marginRight="15pt"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/botron_button"
             android:text="ĐĂNG NHẬP"
             android:textColor="#fff"
@@ -72,11 +71,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="78dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <com.google.android.gms.common.SignInButton
@@ -84,16 +85,16 @@
                     android:layout_width="166dp"
                     android:layout_height="36dp"
                     android:layout_marginLeft="15pt"
-                    android:layout_marginRight="15pt"
+                    android:layout_marginRight="10pt"
                     android:layout_marginBottom="10dp" />
 
                 <com.facebook.login.widget.LoginButton
                     android:id="@+id/login_fb"
                     android:layout_width="166dp"
                     android:layout_height="36dp"
-
+                    android:layout_marginTop="2dp"
                     android:layout_marginRight="15pt"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp" />
             </LinearLayout>
 
         </LinearLayout>
