@@ -10,29 +10,26 @@
     <ImageButton
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:id="@+id/imageAvatar"
+        android:onClick="dangnhap"
         android:background="@drawable/avartar1"
-        android:onClick="showTrangCaNhan"
 
-      >
+
+        >
 
     </ImageButton>
 
 
-    <TextView
-        android:id="@+id/txtTenUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:textSize="20dp"
-        android:text="Bình Đặng" />
+
 
     <Button
-        android:id="@+id/btnEditPfrofile"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:onClick="dangxuat"
-        android:text="Đăng xuất" />
+
+        android:onClick="dangnhap"
+        android:text="Đăng nhập" />
 
 
 </LinearLayout>
