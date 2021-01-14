@@ -1,13 +1,14 @@
 package com.example.cinemaapp.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.cinemaapp.R;
 
@@ -17,6 +18,7 @@ import java.util.Calendar;
 public class LichSuChiTieuActivity extends AppCompatActivity {
     private EditText startDay;
     private EditText endDay;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,16 @@ public class LichSuChiTieuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lich_su_chi_tieu);
         startDay = (EditText) findViewById(R.id.edtext_StartDay);
         endDay = (EditText) findViewById(R.id.edtext_EndDay);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            }
+        });
     }
 
     public void back(View view) {

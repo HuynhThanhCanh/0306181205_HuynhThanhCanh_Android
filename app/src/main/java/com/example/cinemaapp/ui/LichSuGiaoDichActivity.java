@@ -1,11 +1,15 @@
 package com.example.cinemaapp.ui;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.cinemaapp.R;
@@ -61,7 +65,21 @@ public class LichSuGiaoDichActivity extends AppCompatActivity{
         mRecylerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void back(View view) {
-        this.finish();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home://R.id.home là mặc định ID của nút mũi tên quay lại
+                onBackPressed();
+                return true;
+
+            default:break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
+
+//    public void back(View view) {
+//        this.finish();
+//    }
 }

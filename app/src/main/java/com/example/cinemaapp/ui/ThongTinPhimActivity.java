@@ -2,7 +2,6 @@ package com.example.cinemaapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -53,7 +52,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_thong_tin_phim);
         XuLyMuave();
         thisImg=MovieThumbnaiImg.getDrawable();
-         MaPhim=getIntent().getExtras().getString("ID");
+        MaPhim=getIntent().getExtras().getString("ID");
         inViews();
     }
 
@@ -134,6 +133,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
         startActivity(intent);
         Toast.makeText(this,"Bạn chọn xem  Phim " + movieTitle,Toast.LENGTH_LONG).show();
     }
+    
     public void getThongTinPhim(String MaPhim) throws ExecutionException, InterruptedException, JSONException {
         String s= new APIGetting(this).execute("phim/"+MaPhim).get();
         JSONArray jsonArray = new JSONArray(s);

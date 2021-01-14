@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">CinemaApp</string>
+    <string name="facebook_app_id">750139688958677</string>
+    <string name="fb_login_protocol_scheme">fb750139688958677</string>
+
     <string-array name="film">
         <item>Phim đang chiếu</item>
         <item>Phim sắp chiếu</item>
