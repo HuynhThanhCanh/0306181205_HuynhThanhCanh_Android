@@ -36,6 +36,7 @@ private TabLayout indicator;
 private RecyclerView MoviesRV;
 private RecyclerView MoviesRV1;
 private EditText searchInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

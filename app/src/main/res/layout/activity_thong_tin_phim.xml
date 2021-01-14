@@ -49,8 +49,8 @@
 
             <Button
                 android:id="@+id/btndatve"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="105dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/detail_movie_img"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="5dp"
@@ -71,7 +71,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/theloai"
+                android:id="@+id/txt_TenloaiPhim"
                 android:layout_width="150dp"
                 android:layout_height="35dp"
                 android:layout_below="@id/detail_movie_title"
@@ -84,7 +84,7 @@
                 android:id="@+id/daodien"
                 android:layout_width="250dp"
                 android:layout_height="35dp"
-                android:layout_below="@id/theloai"
+                android:layout_below="@id/txt_TenloaiPhim"
                 android:layout_marginLeft="130dp"
                 android:padding="5dp"
                 android:text="Đạo diễn : Nguyễn Minh Quang"

@@ -10,7 +10,8 @@ public class Movie {
     private int coverPhoto;
     private String label;
 
-
+    public Movie() {
+    }
 
     public Movie(String title, int thumbnail) {
         this.title = title;
