@@ -40,4 +40,10 @@ public class GiaodienActivity extends AppCompatActivity {
         viewPager.setAdapter(giaodienAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+    public String GetMaPhim()
+    {
+        Intent intent = getIntent();
+        String MaPhim  = intent.getStringExtra("ID");
+        return MaPhim;
+    }
 }

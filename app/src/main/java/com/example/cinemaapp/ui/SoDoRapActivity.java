@@ -11,17 +11,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cinemaapp.model.Lichchieu;
-import com.example.cinemaapp.readjson.LichChieuAsync;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.model.Ghe;
+import com.example.cinemaapp.model.Lichchieu;
 import com.example.cinemaapp.model.Rapphim;
+import com.example.cinemaapp.readjson.LichChieuAsync;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -29,15 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.ExecutionException;
 
@@ -86,7 +78,7 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
 
 
         try {
-            seatSelected= readJSON("http://192.168.131.29:8000/api/so-do-rap?maLichChieu="+lichchieu.MaLichChieu);
+            seatSelected= readJSON(MainActivity.HostDomain+"api/so-do-rap?maLichChieu="+lichchieu.MaLichChieu);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

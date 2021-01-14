@@ -2,9 +2,8 @@ package com.example.cinemaapp.api;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.text.TextWatcher;
 
-import com.example.cinemaapp.model.Movie;
+import com.example.cinemaapp.ui.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +11,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.PublicKey;
 
 public class APISearchPhim extends AsyncTask<String,String,String> {
     Context context;
@@ -29,7 +27,7 @@ public class APISearchPhim extends AsyncTask<String,String,String> {
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL("http://192.168.1.12:8080/api/phim");
+            URL requestURL = new URL(MainActivity.HostDomain+"api/phim");
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
