@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.ui.ThongTinPhimActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +22,8 @@ import com.example.cinemaapp.R;
  * create an instance of this fragment.
  */
 public class DanhGiaFragment extends Fragment {
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

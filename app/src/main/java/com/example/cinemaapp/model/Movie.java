@@ -21,7 +21,8 @@ public class Movie {
     private String coverPhoto;
     private String label;
 
-
+    public Movie() {
+    }
 
 //    public Movie(String title, String thumbnail) {
 //        this.title = title;

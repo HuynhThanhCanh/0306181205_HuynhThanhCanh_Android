@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.LichChieuFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,52 +13,81 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent">
+
        <ImageView
-           android:id="@+id/hinhnen"
+           android:id="@+id/detail_movie_cover"
+           android:scaleType="centerCrop"
+
            android:layout_width="match_parent"
-            android:background="@drawable/poster"
-           android:layout_height="200dp"/>
+           android:layout_height="170dp"
+           />
        <Spinner
            android:id="@+id/spinner_diachi"
            android:layout_marginTop="10dp"
            android:layout_width="150dp"
            android:layout_marginLeft="20dp"
-           android:layout_below="@id/hinhnen"
+           android:layout_below="@id/detail_movie_cover"
            android:layout_height="30dp"/>
        <Spinner
            android:id="@+id/spinner_dd"
            android:layout_marginTop="10dp"
            android:layout_width="150dp"
            android:layout_marginLeft="250dp"
-           android:layout_below="@id/hinhnen"
+           android:layout_below="@id/detail_movie_cover"
            android:layout_height="30dp"/>
-       <CalendarView
 
+       <DatePicker
            android:id="@+id/lich"
-           android:padding="5dp"
-           android:layout_marginTop="10dp"
-           android:layout_below="@id/spinner_diachi"
-           android:layout_width="match_parent"
-           android:layout_height="250dp"/>
+           android:layout_width="wrap_content"
+           android:datePickerMode="calendar"
+           android:layout_marginLeft="30dp"
+           android:layout_height="303dp"
+           android:layout_below="@id/spinner_dd"
+           android:layout_marginTop="10dp">
+
+       </DatePicker>
        <TextView
            android:id="@+id/txtrap"
            android:textColor="@android:color/holo_red_dark"
-           android:layout_marginTop="5dp"
+           android:layout_marginTop="15dp"
            android:layout_marginLeft="10dp"
            android:padding="5dp"
            android:text="CNB2T Bình Thạnh"
            android:layout_below="@id/lich"
            android:layout_width="150dp"
            android:layout_height="30dp"/>
+       <ScrollView
+           android:id="@+id/src_SuatChieu"
+           android:scrollbars="horizontal"
+           android:layout_below="@id/txtrap"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <LinearLayout
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerViewSuatChieu"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/txtrap"
+                   android:orientation="horizontal">
+
+               </androidx.recyclerview.widget.RecyclerView>
+           </LinearLayout>
+
+
+       </ScrollView>
        <GridLayout
            android:id="@+id/khung"
            android:layout_marginTop="5dp"
            android:layout_marginLeft="5dp"
            android:rowCount="2"
            android:columnCount="4"
-           android:layout_below="@id/txtrap"
+           android:layout_below="@id/src_SuatChieu"
            android:layout_width="match_parent"
-           android:layout_height="65dp">
+           android:layout_height="0dp">
        <Button
            android:id="@+id/btn1"
            android:text="9:00"
@@ -105,19 +135,19 @@
            android:layout_marginTop="5dp"
            android:layout_marginLeft="10dp"
            android:padding="5dp"
-           android:text="CNB2T Bình Thạnh"
+           android:text="CNB2T Gò vấp"
            android:layout_below="@id/khung"
-           android:layout_width="150dp"
-           android:layout_height="30dp"/>
+           android:layout_width="0dp"
+           android:layout_height="0dp"/>
        <GridLayout
            android:id="@+id/khung1"
            android:layout_marginTop="5dp"
            android:layout_marginLeft="5dp"
            android:rowCount="2"
            android:columnCount="4"
-           android:layout_below="@id/txtrap1"
+           android:layout_below="@id/src_SuatChieu"
            android:layout_width="match_parent"
-           android:layout_height="65dp">
+           android:layout_height="0dp">
            <Button
                android:id="@+id/btn5"
                android:text="9:00"
@@ -159,7 +189,7 @@
                android:layout_width="100dp"
                android:layout_height="wrap_content"/>
        </GridLayout>
-       
+
 
    </RelativeLayout>
     </ScrollView>

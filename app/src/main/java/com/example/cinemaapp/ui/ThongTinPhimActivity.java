@@ -1,14 +1,16 @@
 package com.example.cinemaapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,12 +31,19 @@ import org.json.JSONObject;
 import java.util.LinkedList;
 import java.util.concurrent.ExecutionException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 public class ThongTinPhimActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private String MaPhim="";
     private String Host="http://192.168.5.24:8080/";
     private ImageView MovieThumbnaiImg,MovieCoverImg;
+    private FloatingActionButton play_fab;
+    public static Drawable thisImg;
     private TextView tv_title,tv_description,sao,genrename,daoDien,noiDung,doTuoi;
      private FloatingActionButton play_fab;
     private Movie movie = new Movie();
@@ -42,18 +51,24 @@ public class ThongTinPhimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin_phim);
+        XuLyMuave();
+        thisImg=MovieThumbnaiImg.getDrawable();
          MaPhim=getIntent().getExtras().getString("ID");
-        //Của fragment
-        //tabLayout=findViewById(R.id.tab_layout);
-        //viewPager=findViewById(R.id.view_page);
-        //GiaodienAdapter giaodienAdapter = new GiaodienAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        //viewPager.setAdapter(giaodienAdapter);
-        // tabLayout.setupWithViewPager(viewPager);
-
         inViews();
-
     }
-    void inViews()
+
+     void XuLyMuave() {
+         findViewById(R.id.btndatve).setOnClickListener(new View.OnClickListener(){
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(getApplicationContext(), GiaodienActivity.class);
+
+                 startActivity(intent);
+             }
+         });
+    }
+
+    private  void inViews()
     {
         try {
             getThongTinPhim(MaPhim);
@@ -107,6 +122,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
        MovieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         tv_title.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
 
+        movie.setCoverPhoto(imageCover);
     }
 
     public void play_trailer(View view) {
@@ -138,4 +154,5 @@ public class ThongTinPhimActivity extends AppCompatActivity {
 
         }
     }
+
 }

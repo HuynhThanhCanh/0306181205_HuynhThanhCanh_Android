@@ -135,28 +135,47 @@
                     android:id="@+id/txtso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="-49dp"
                     android:layout_marginTop="7dp"
-                    android:layout_marginRight="-400dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
                     android:layout_toLeftOf="@id/txtsoluong"
                     android:gravity="center_vertical"
-                    android:text="2"
+                    android:text="0"
                     android:textColor="#000"
                     android:textSize="7pt" />
 
             </RelativeLayout>
 
-
-
-            <TextView
+<!--        Bat dau phan cua Trang-->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center_vertical"
-                android:text="Tổng"
-                android:textColor="#000"
-                android:textSize="7pt" />
+                android:layout_height="wrap_content"
+                >
+<!--                Bat dau Thao Thao Tac-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Tổng"
+                    android:textColor="#000"
+                    android:textSize="7pt" />
+<!--                Ket thuc Thao Thao tac-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtTTTongTien"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#000"
+                    android:layout_marginRight="10dp"
+                    android:text="0"
+                    />
+            </RelativeLayout>
+
+<!--            Ket thuc phan cua Trang-->
+
 
             <TextView
                 android:layout_width="match_parent"

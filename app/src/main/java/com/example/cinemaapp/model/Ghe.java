@@ -1,5 +1,6 @@
 package com.example.cinemaapp.model;
 
+import ml.huytools.lib.API.ApiProvider;
 import ml.huytools.lib.Annotation.JsonName;
 import ml.huytools.lib.MVP.Model;
 public class Ghe extends Model {
@@ -8,6 +9,7 @@ public class Ghe extends Model {
     public static final int STATUS_RESERVED = 2;
     @JsonName
     public String MaGhe;
+    public int Gia;
     @JsonName
     public int status;
 }
