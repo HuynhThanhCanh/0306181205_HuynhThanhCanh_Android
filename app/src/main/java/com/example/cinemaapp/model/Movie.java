@@ -1,6 +1,16 @@
 package com.example.cinemaapp.model;
 
 public class Movie {
+    private String MaPhim;
+
+    public String getMaPhim() {
+        return MaPhim;
+    }
+
+    public void setMaPhim(String maPhim) {
+        MaPhim = maPhim;
+    }
+
     private String title;
     private String description;
     private String thumbnail;

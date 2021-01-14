@@ -19,8 +19,6 @@
             android:screenOrientation="landscape">
         </activity>
         <activity android:name=".ui.ThongTinPhimActivity" />
-        <activity android:name=".ui.LoginApp" />
-        <activity android:name=".ui.RegisterApp" />
 
         <activity android:name=".ui.SoDoRapActivity"/>
         <activity android:name=".ui.LichSuChiTieuActivity" />

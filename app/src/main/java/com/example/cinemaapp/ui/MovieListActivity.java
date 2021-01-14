@@ -47,7 +47,7 @@ private TabLayout indicator;
 private RecyclerView MoviesRV;
 private RecyclerView MoviesRV1;
 private EditText searchInput;
-private String URLimage="http://192.168.1.12:8080/image/phim/";
+private String URLimage="http://192.168.5.24:8080/image/phim/";
 private  String jsonString;
 public LinkedList<Movie> lst_movie=new LinkedList<>() ;
 public LinkedList<Movie> lst_movie2= new LinkedList<>() ;
@@ -317,15 +317,16 @@ public void searhPhim(Context context)
     public void onMovieClick(Movie movie, ImageView movieImageView) {
         Intent intent = new Intent(this, ThongTinPhimActivity.class);
         // send movie information to deatilActivity
+        intent.putExtra("ID",movie.getMaPhim());
         intent.putExtra("title",movie.getTitle());
-        intent.putExtra("imgURL",movie.getThumbnail());
+       intent.putExtra("imgURL",movie.getThumbnail());
         intent.putExtra("imgCover",movie.getCoverPhoto());
-        intent.putExtra("rating",movie.getRating());
+       intent.putExtra("rating",movie.getRating());
         intent.putExtra("genre",movie.getGenre());
-        intent.putExtra("Directors",movie.getDirectors());
-        intent.putExtra("trailer",movie.getStreamingLink());
-        intent.putExtra("NoiDung",movie.getDescription());
-        intent.putExtra("label",movie.getLabel());
+       intent.putExtra("Directors",movie.getDirectors());
+       intent.putExtra("trailer",movie.getStreamingLink());
+       intent.putExtra("NoiDung",movie.getDescription());
+       intent.putExtra("label",movie.getLabel());
         ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(MovieListActivity.this,
                 movieImageView,"sharedName");
         startActivity(intent,options.toBundle());
@@ -377,7 +378,7 @@ public void searhPhim(Context context)
         {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             Movie movie = new Movie();
-
+            movie.setMaPhim(jsonObject.getString("MaPhim"));
             movie.setTitle(jsonObject.getString("TenPhim"));
             movie.setRating(jsonObject.getString("Diem"));
             String HinhAnh = jsonObject.getString("HinhAnh");
