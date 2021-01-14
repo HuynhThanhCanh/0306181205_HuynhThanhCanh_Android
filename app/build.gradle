@@ -28,11 +28,16 @@ android {
     }
 }
 apply plugin: 'com.android.application'
-
+//phan cua thao ve dang nhap bang gg
 repositories {
     mavenCentral()
     google()
 }
+//phan cua thao ve dang nhap bang fb
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -52,6 +57,8 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.facebook.android:facebook-android-sdk:5.15.3'//facebook
+    implementation 'com.facebook.android:facebook-login:[8.1)'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

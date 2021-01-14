@@ -55,6 +55,8 @@
             android:inputType="textPassword"
             android:textSize="7pt" />
 
+
+
         <Button
             android:id="@+id/btnDangNhap"
             android:layout_width="350dp"
@@ -66,22 +68,43 @@
             android:text="ĐĂNG NHẬP"
             android:textColor="#fff"
             android:textSize="10pt" />
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_gg"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="15pt"
-            android:layout_marginRight="15pt"
-            android:layout_marginBottom="10dp"
-           />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:orientation="horizontal">
+
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/sign_in_gg"
+                    android:layout_width="166dp"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="15pt"
+                    android:layout_marginRight="15pt"
+                    android:layout_marginBottom="10dp" />
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_fb"
+                    android:layout_width="166dp"
+                    android:layout_height="36dp"
+
+                    android:layout_marginRight="15pt"
+                    android:layout_marginBottom="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewQuenMatKhau"
             android:layout_width="250dp"
-            android:layout_height="50dp"
+            android:layout_height="26dp"
             android:layout_marginLeft="30pt"
-            android:layout_marginRight="10pt"
             android:layout_marginTop="10pt"
+            android:layout_marginRight="10pt"
             android:layout_marginBottom="10dp"
             android:text="Bạn quên mật khẩu?"
             android:textColor="#BD2121"
@@ -99,6 +122,7 @@
             android:text="Đăng ký tài khoản"
             android:textColor="#fff"
             android:textSize="7pt" />
+
 
 
     </LinearLayout>

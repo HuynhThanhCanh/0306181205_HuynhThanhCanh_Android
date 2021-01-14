@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 import com.example.cinemaapp.model.ThanhVien;
 
 public class DBManager extends SQLiteOpenHelper {
@@ -14,23 +12,23 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String TABLE_NAME ="thanhvien";
     private static final String ID ="id";
     private static final String hoten ="hoten";
-    private static final String email ="email";
-    private static final String sdt ="sdt";
-    private static final String diachi ="diachi";
-    private static final String matkhau ="matkhau";
     private static final String ngaysinh ="ngaysinh";
+    private static final String diachi ="diachi";
+    private static final String sdt ="sdt";
+    private static final String email ="email";
+    private static final String password ="password";
     private static final String gioitinh ="gioitinh";
 
     private Context context;
     private  String SQLQuery = " CREATE TABLE "+TABLE_NAME+" ("+
             ID +" integer primary key, "+
             hoten + " TEXT, "+
+            ngaysinh+ " TEXT, "+
+            diachi + " TEXT, "+
             sdt + " TEXT, "+
             email+ " TEXT, "+
-            matkhau + " TEXT, "+
-            gioitinh + " TEXT, "+
-            ngaysinh+ " TEXT, "+
-            diachi + " TEXT)";
+            password + " TEXT, "+
+            gioitinh + " TEXT) "      ;
 
 
 
@@ -54,12 +52,13 @@ public class DBManager extends SQLiteOpenHelper {
             SQLiteDatabase db= this.getWritableDatabase();
             ContentValues values=  new ContentValues();
             values.put(hoten,thanhVien.getmHoten());
-            values.put(sdt,thanhVien.getmSDT());
-            values.put(email,thanhVien.getmEmail());
-            values.put(matkhau,thanhVien.getmMatKhau());
-            values.put(gioitinh,thanhVien.getmGioitinh());
             values.put(ngaysinh,thanhVien.getmNgaysinh());
             values.put(diachi,thanhVien.getmDiaChi());
+            values.put(sdt,thanhVien.getmSDT());
+            values.put(email,thanhVien.getmEmail());
+            values.put(password,thanhVien.getmMatKhau());
+            values.put(gioitinh,thanhVien.getmGioitinh());
+
 
 
             db.insert(TABLE_NAME,null,values);

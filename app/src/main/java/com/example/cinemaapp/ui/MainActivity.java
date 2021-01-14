@@ -1,15 +1,5 @@
 package com.example.cinemaapp.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,18 +8,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
-//import android.widget.Toolbar;
 import android.widget.ViewFlipper;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.Adapter;
 import com.example.cinemaapp.adapter.AdapterSlider;
 import com.example.cinemaapp.model.Model;
-import com.example.cinemaapp.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         //test viewpager 2
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 selectedTab(view);
             }
         });
+
 
 //         toolbar = findViewById(R.id.toolbar);
 //         setSupportActionBar(toolbar);

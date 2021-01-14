@@ -1,10 +1,8 @@
 package com.example.cinemaapp.ui;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +13,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.model.ThanhVien;
@@ -31,12 +32,10 @@ public class DangKyActivity extends AppCompatActivity {
     private Button btnDangky;
     private RadioButton rabtnNam, rabtnNu;
     private Context context;
+    private View toolbar;
 
 
-
-
-
-
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,21 +68,32 @@ public class DangKyActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         starDay = (EditText) findViewById(R.id.editTextNgaySinh);
-        //mũi tên quay lại
-        //ActionBar actionBar = getSupportActionBar(); //gọi để lấy đối tượng action bar
-        //actionBar.hide(); ẩn tên app
-        //actionBar.setTitle("Đăng ký");//đặt tên app
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);//dấu mũi tên
+//        //mũi tên quay lại
+//        ActionBar actionBar = getSupportActionBar(); //gọi để lấy đối tượng action bar
+//        //actionBar.hide(); ẩn tên app
+//        actionBar.setTitle("Đăng ký");//đặt tên app
+//        //String title = actionBar.getTitle().toString(); lấy tên
+//        actionBar.setDisplayHomeAsUpEnabled(true);//dấu mũi tên
+//
+//        actionBar.setBackgroundDrawable(new ColorDrawable(Color.RED));
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar((androidx.appcompat.widget.Toolbar) toolbar);
+       
+
+
+
 
 
         final DBManager dbManager = new DBManager(this);
         editHoten = (EditText) findViewById(R.id.editTextHoTen);
+        editNgaysinh=(EditText)findViewById(R.id.editTextNgaySinh);
         editSdt = (EditText)findViewById(R.id.editTextSDT);
         editEmail = (EditText)findViewById(R.id.editTextTNhapEmail);
         editMatkhau = (EditText)findViewById(R.id.editTextNhapPassword);
         rabtnNam =(RadioButton)findViewById(R.id.radioBtnNam);
         rabtnNu =(RadioButton)findViewById(R.id.radioBtnNu);
-        editNgaysinh=(EditText)findViewById(R.id.editTextNgaySinh);
+
         btnDangky=(Button)findViewById(R.id.btnDangKy);
         spinner = (Spinner)findViewById(R.id.spinner);
         btnDangky.setOnClickListener(new View.OnClickListener() {
@@ -166,4 +176,6 @@ public class DangKyActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
