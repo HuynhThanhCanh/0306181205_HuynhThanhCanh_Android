@@ -1,9 +1,5 @@
 package com.example.cinemaapp.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +7,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.bumptech.glide.Glide;
 import com.example.cinemaapp.R;
-import com.example.cinemaapp.adapter.GiaodienAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -24,11 +22,12 @@ public class ThongTinPhimActivity extends AppCompatActivity {
     private TextView tv_title,tv_description;
     private FloatingActionButton play_fab;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin_phim);
-        //Của fragment
+               //Của fragment
         //tabLayout=findViewById(R.id.tab_layout);
         //viewPager=findViewById(R.id.view_page);
         //GiaodienAdapter giaodienAdapter = new GiaodienAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -61,4 +60,6 @@ public class ThongTinPhimActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TrailerActivity.class);
         startActivity(intent);
     }
+
+
 }

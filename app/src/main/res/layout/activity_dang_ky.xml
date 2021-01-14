@@ -4,18 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.DangKyActivity">
+    tools:context=".ui.RegisterApp">
 
- <androidx.appcompat.widget.Toolbar
-     android:id="@+id/toolbar"
-     android:layout_width="match_parent"
-     android:layout_height="?attr/actionBarSize"
-     android:background="#BD2121"
-     tools:ignore="MissingConstraints" />
+
  <LinearLayout
-     android:layout_width="413dp"
-     android:layout_height="736dp"
+     android:layout_width="match_parent"
+     android:layout_height="785dp"
      android:gravity="center_vertical"
      android:orientation="vertical"
      app:layout_constraintBottom_toBottomOf="parent"
@@ -25,13 +19,12 @@
      app:layout_constraintTop_toTopOf="parent"
      app:layout_constraintVertical_bias="1.0">
 
-
   <ImageView
       android:id="@+id/imageView"
       android:layout_width="match_parent"
-      android:layout_height="89dp"
-      android:layout_marginTop="30dp"
-      android:layout_marginBottom="30dp"
+      android:layout_height="184dp"
+
+      android:layout_marginBottom="50dp"
       android:scaleType="centerCrop"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -39,112 +32,87 @@
       app:srcCompat="@drawable/hinhnen" />
 
   <EditText
-       android:id="@+id/editTextHoTen"
-       android:layout_width="350dp"
-       android:layout_height="50dp"
-       android:layout_marginLeft="15pt"
+      android:id="@+id/editTextHoTen"
+      android:layout_width="350dp"
+      android:layout_height="50dp"
+      android:layout_marginLeft="15pt"
+      android:layout_marginTop="15dp"
+      android:layout_marginBottom="10dp"
+      android:ems="10"
+      android:hint="Họ tên"
+      android:inputType="textPersonName"
+      android:textSize="7pt" />
 
-       android:layout_marginBottom="10dp"
-       android:ems="10"
-       android:hint="Họ tên"
-       android:inputType="textPersonName"
-       android:textSize="7pt" />
+  <EditText
+      android:id="@+id/editTextSDT"
+      android:layout_width="350dp"
+      android:layout_height="50dp"
+      android:layout_marginLeft="15pt"
 
-   <EditText
-       android:id="@+id/editTextSDT"
-       android:layout_width="350dp"
-       android:layout_height="50dp"
-       android:layout_marginLeft="15pt"
+      android:layout_marginBottom="10dp"
+      android:ems="10"
+      android:hint="Số điện thoại"
+      android:inputType="textPersonName"
+      android:textSize="7pt" />
 
-       android:layout_marginBottom="10dp"
-       android:ems="10"
-       android:hint="Số điện thoại"
-       android:inputType="textPersonName"
-       android:textSize="7pt" />
+  <EditText
+      android:id="@+id/editTextTNhapEmail"
+      android:layout_width="350dp"
+      android:layout_height="50dp"
+      android:layout_marginLeft="15pt"
 
-   <EditText
-       android:id="@+id/editTextTNhapEmail"
-       android:layout_width="350dp"
-       android:layout_height="50dp"
-       android:layout_marginLeft="15pt"
+      android:layout_marginBottom="10dp"
+      android:ems="10"
+      android:hint="Email"
+      android:inputType="textPersonName"
+      android:textSize="7pt" />
 
-       android:layout_marginBottom="10dp"
-       android:ems="10"
-       android:hint="Email"
-       android:inputType="textPersonName"
-       android:textSize="7pt" />
+  <EditText
+      android:id="@+id/editTextNhapPassword"
+      android:layout_width="350dp"
+      android:layout_height="50dp"
+      android:layout_marginLeft="15pt"
 
-   <EditText
-       android:id="@+id/editTextNhapPassword"
-       android:layout_width="350dp"
-       android:layout_height="50dp"
-       android:layout_marginLeft="15pt"
+      android:layout_marginBottom="10dp"
+      android:ems="10"
+      android:hint="Mật khẩu"
+      android:inputType="textPassword"
+      android:textSize="7pt" />
+  <EditText
+      android:id="@+id/editTextNgaySinh"
+      android:layout_width="350dp"
+      android:layout_height="50dp"
+      android:layout_marginLeft="15pt"
+      android:layout_marginBottom="10dp"
+      android:ems="10"
+      android:hint="dd/MM/yyyy"
+      android:inputType="date"
+      android:textSize="7pt" />
 
-       android:layout_marginBottom="10dp"
-       android:ems="10"
-       android:hint="Mật khẩu"
-       android:inputType="textPassword"
-       android:textSize="7pt" />
+  <EditText
 
-   <RadioGroup
-       android:layout_width="189dp"
-       android:layout_height="40dp"
-       android:layout_marginLeft="15pt"
-       android:layout_marginBottom="10dp"
-       android:orientation="horizontal">
-
-    <RadioButton
-
-        android:id="@+id/radioBtnNam"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-
-        android:layout_marginEnd="24dp"
-
-        android:layout_marginBottom="10dp"
-        android:text="@string/Nam"
-        android:textSize="7pt" />
-
-    <RadioButton
-        android:id="@+id/radioBtnNu"
-        android:layout_width="60dp"
-        android:layout_height="22dp"
-
-        android:layout_marginEnd="144dp"
-        android:text="@string/Nu"
-        android:textSize="7pt" />
+      android:inputType="textMultiLine"
+      android:hint="Địa chỉ"
+      android:id="@+id/editTextDiaChi"
+      android:layout_width="352dp"
+      android:layout_height="41dp"
+      android:layout_marginLeft="15pt"
+      android:layout_marginTop="15dp" />
 
 
-   </RadioGroup>
+  <Button
 
-   <EditText
-       android:id="@+id/editTextNgaySinh"
-       android:layout_width="265dp"
-       android:layout_height="54dp"
-       android:layout_marginLeft="15pt"
-       android:layout_marginTop="15dp"
-       android:hint="Ngày sinh"
-       android:onClick="PopupNgay" />
-
-   <Spinner
-       android:id="@+id/spinner"
-       android:layout_width="193dp"
-       android:layout_height="41dp"
-       android:layout_marginLeft="15pt"
-       android:layout_marginTop="15dp" />
-
-     <Button
-         android:id="@+id/btnDangKy"
-         android:layout_width="350dp"
-         android:layout_height="50dp"
-         android:layout_marginLeft="15pt"
-         android:layout_marginTop="20pt"
-         android:layout_marginBottom="10dp"
-         android:background="@drawable/botron_button"
-         android:text="Đăng Ký"
-         android:textColor="#fff"
-         android:textSize="10pt" />
-
+      android:id="@+id/btnDangKythanhvien"
+      android:background="@drawable/botron_button"
+      android:text="Đăng Ký"
+      android:layout_marginBottom="10dp"
+      android:layout_marginTop="20pt"
+      android:textColor="#fff"
+      android:textSize="10pt"
+      android:layout_marginLeft="15pt"
+      android:layout_width="350dp"
+      android:layout_height="50dp"
+      />
 
 
  </LinearLayout>

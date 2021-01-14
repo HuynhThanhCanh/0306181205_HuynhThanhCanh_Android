@@ -32,7 +32,12 @@
         <activity android:name=".ui.MoviePlayerActivity" />
         <activity android:name=".ui.ThongTinPhimActivity" />
         <activity android:name=".ui.SoDoRapActivity"/>
-        <activity android:name=".ui.LichSuChiTieuActivity" />
+        <activity android:name=".ui.SplashScreenActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.LichSuGiaoDichActivity" />
 
         <activity
@@ -42,18 +47,14 @@
             android:name=".fragment.TrangCaNhan_ThongTinFragment"
             tools:ignore="Instantiatable" />
         <activity android:name=".ui.TrangCaNhanActivity" />
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.MainActivity"/>
 
-
-        <activity android:name=".ui.DangNhapActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.DangNhapActivity"/>
+        <activity android:name=".ui.LoginApp"/>
+        <activity android:name=".ui.RegisterApp"/>
 
         <activity android:name=".ui.MovieListActivity"/>
-        <activity android:name=".ui.SplashScreenActivity"/>
+        <activity android:name=".ui.LichSuChiTieuActivity"/>
 
 
         <activity android:name=".ui.ThanhToanActivity" />
