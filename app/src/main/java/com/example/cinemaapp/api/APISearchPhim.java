@@ -2,8 +2,9 @@ package com.example.cinemaapp.api;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.TextWatcher;
 
-import com.google.android.gms.dynamic.IFragmentWrapper;
+import com.example.cinemaapp.model.Movie;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,48 +12,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.PublicKey;
 
-public class    APIGetting extends AsyncTask<String , String ,  String> {
+public class APISearchPhim extends AsyncTask<String,String,String> {
     Context context;
-    private String URLApi ="http://192.168.5.24:8080/api/";
 
-    public String getURLApi() {
-        return URLApi;
-    }
-
-    public void setURLApi(String URLApi) {
-        this.URLApi = URLApi;
-    }
-
-    public APIGetting(Context context) {
-        this.context = context;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-    }
-
-    @Override
-    protected String doInBackground(String... strings) {
-
-
-     return  GetJSONTextFromAPI(strings[0]);
-
-    }
-    public String GetJSONTextFromAPI(String name)
+    public  APISearchPhim(Context mCon)
     {
+        this.context=mCon;
+    }
 
+
+
+    public static String searchWord(){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL(this.getURLApi()+name);
+            URL requestURL = new URL("http://192.168.1.12:8080/api/phim");
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
@@ -84,4 +61,8 @@ public class    APIGetting extends AsyncTask<String , String ,  String> {
         return result;
     }
 
+    @Override
+    protected String doInBackground(String... strings) {
+        return APISearchPhim.searchWord();
+    }
 }

@@ -1,9 +1,6 @@
 package com.example.cinemaapp.api;
 
-import android.content.Context;
 import android.os.AsyncTask;
-
-import com.google.android.gms.dynamic.IFragmentWrapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,50 +9,20 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class    APIGetting extends AsyncTask<String , String ,  String> {
-    Context context;
-    private String URLApi ="http://192.168.5.24:8080/api/";
-
-    public String getURLApi() {
-        return URLApi;
-    }
-
-    public void setURLApi(String URLApi) {
-        this.URLApi = URLApi;
-    }
-
-    public APIGetting(Context context) {
-        this.context = context;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-    }
-
-    @Override
-    protected String doInBackground(String... strings) {
+public class MoiveAsync extends AsyncTask<String,String,String> {
 
 
-     return  GetJSONTextFromAPI(strings[0]);
-
-    }
-    public String GetJSONTextFromAPI(String name)
-    {
-
+    private String getMovies(String value){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL(this.getURLApi()+name);
+            //Tạo kết nối
+            URL requestURL = new URL(value);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
+            //Lấy dữ liệu được trả về ra
             InputStream inputStream = urlConnection.getInputStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder builder = new StringBuilder();
@@ -63,6 +30,7 @@ public class    APIGetting extends AsyncTask<String , String ,  String> {
             while ((line = reader.readLine()) != null) {
                 builder.append(line);
             }
+
             if (builder.length() == 0) {
                 return null;
             }
@@ -84,4 +52,8 @@ public class    APIGetting extends AsyncTask<String , String ,  String> {
         return result;
     }
 
+    @Override
+    protected String doInBackground(String... strings) {
+        return getMovies(strings[0]);
+    }
 }

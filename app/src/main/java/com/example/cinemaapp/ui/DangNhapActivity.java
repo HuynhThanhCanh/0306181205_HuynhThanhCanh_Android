@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.cinemaapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -110,7 +111,8 @@ public class DangNhapActivity extends AppCompatActivity implements View.OnClickL
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
-            Intent intent = new Intent(this, DangKyActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
+
             startActivity(intent);
 
         }
@@ -123,6 +125,12 @@ public class DangNhapActivity extends AppCompatActivity implements View.OnClickL
             // Signed in successfully, show authenticated UI.
             updateUI(account);
             // updateUI(null);
+            if(completedTask.isSuccessful())
+            {
+                GoogleSignInAccount acct=completedTask.getResult();
+                TextView name=findViewById(R.id.txtName);
+                name.setText(acct.getDisplayName().toString());
+            }
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -131,18 +139,18 @@ public class DangNhapActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    public static void getLastSignedInAccount(Context context) {
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(new DangKyActivity());
-        if (acct != null) {
-            String editTextHoTen = acct.getDisplayName();
-            String editTextTNhapEmail = acct.getEmail();
-
-
-        }
-    }
+//    public static void getLastSignedInAccount(Context context) {
+//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(new DangKyActivity());
+//        if (acct != null) {
+//            String editTextHoTen = acct.getDisplayName();
+//            String editTextTNhapEmail = acct.getEmail();
+//
+//
+//        }
+//    }
 
     public void chuyensangdangky(View view) {
-        Intent intent = new Intent(this, DangKyActivity.class);
+        Intent intent = new Intent(this, RegisterApp.class);
         startActivity(intent);
     }
 }
