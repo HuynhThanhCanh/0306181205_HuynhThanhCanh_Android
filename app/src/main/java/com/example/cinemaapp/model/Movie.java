@@ -1,40 +1,67 @@
 package com.example.cinemaapp.model;
 
 public class Movie {
+    private String MaPhim;
+
+    public String getMaPhim() {
+        return MaPhim;
+    }
+
+    public void setMaPhim(String maPhim) {
+        MaPhim = maPhim;
+    }
+
     private String title;
     private String description;
-    private int thumbnail;
-    private String studio;
+    private String thumbnail;
+    private String genre;
+    private  String Directors;
     private String rating;
     private String streamingLink;
-    private int coverPhoto;
+    private String coverPhoto;
     private String label;
 
     public Movie() {
     }
 
-    public Movie(String title, int thumbnail) {
+//    public Movie(String title, String thumbnail) {
+//        this.title = title;
+//        this.thumbnail = thumbnail;
+//    }
+//
+//    public Movie(String description, String studio, String rating, String streamingLink, String label) {
+//        this.title = title;
+//        this.description = description;
+//        this.thumbnail = thumbnail;
+//        this.studio = studio;
+//        this.rating = rating;
+//        this.streamingLink = streamingLink;
+//        this.label=label;
+//
+//    }
+
+//    public Movie(String title, String thumbnail, String coverPhoto, String rating, String label) {
+//        this.title = title;
+//        this.thumbnail = thumbnail;
+//        this.coverPhoto=coverPhoto;
+//        this.rating=rating;
+//        this.label=label;
+//    }
+
+    public Movie(String title) {
         this.title = title;
-        this.thumbnail = thumbnail;
     }
 
-    public Movie(String description, String studio, String rating, String streamingLink,String label) {
-        this.title = title;
-        this.description = description;
-        this.thumbnail = thumbnail;
-        this.studio = studio;
-        this.rating = rating;
-        this.streamingLink = streamingLink;
-        this.label=label;
+    public Movie() {
 
     }
 
-    public Movie(String title, int thumbnail, int coverPhoto,String rating,String label) {
-        this.title = title;
-        this.thumbnail = thumbnail;
-        this.coverPhoto=coverPhoto;
-        this.rating=rating;
-        this.label=label;
+    public String getDirectors() {
+        return Directors;
+    }
+
+    public void setDirectors(String directors) {
+        Directors = directors;
     }
 
     public String getLabel() {
@@ -53,12 +80,8 @@ public class Movie {
         return description;
     }
 
-    public int getThumbnail() {
+    public String getThumbnail() {
         return thumbnail;
-    }
-
-    public String getStudio() {
-        return studio;
     }
 
     public String getRating() {
@@ -69,7 +92,7 @@ public class Movie {
         return streamingLink;
     }
 
-    public int getCoverPhoto() {
+    public String getCoverPhoto() {
         return coverPhoto;
     }
 
@@ -81,12 +104,8 @@ public class Movie {
         this.description = description;
     }
 
-    public void setThumbnail(int thumbnail) {
+    public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
-    }
-
-    public void setStudio(String studio) {
-        this.studio = studio;
     }
 
     public void setRating(String rating) {
@@ -97,9 +116,15 @@ public class Movie {
         this.streamingLink = streamingLink;
     }
 
-    public void setCoverPhoto(int coverPhoto) {
+    public void setCoverPhoto(String coverPhoto) {
         this.coverPhoto = coverPhoto;
     }
+    public String getGenre() {
+        return genre;
+    }
 
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
 }

@@ -4,7 +4,7 @@
     package="com.example.cinemaapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,8 +18,8 @@
         <activity android:name=".ui.TrailerActivity"
             android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".ui.MoviePlayerActivity" />
         <activity android:name=".ui.ThongTinPhimActivity" />
+
         <activity android:name=".ui.SoDoRapActivity"/>
         <activity android:name=".ui.LichSuChiTieuActivity" />
         <activity android:name=".ui.LichSuGiaoDichActivity" />
@@ -29,7 +29,8 @@
         <activity
             android:name=".fragment.TrangCaNhan_ThongTinFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".ui.TrangCaNhanActivity" />
+        <activity android:name=".ui.TrangCaNhanActivity">
+        </activity>
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.DangNhapActivity"/>
         <activity android:name=".ui.MovieListActivity"/>

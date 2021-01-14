@@ -12,11 +12,15 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 //import android.widget.Toolbar;
@@ -24,64 +28,82 @@ import android.widget.ViewFlipper;
 
 import com.example.cinemaapp.adapter.Adapter;
 import com.example.cinemaapp.adapter.AdapterSlider;
+import com.example.cinemaapp.Sqlite.Database;
+import com.example.cinemaapp.api.MoiveAsync;
 import com.example.cinemaapp.model.Model;
 import com.example.cinemaapp.R;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
     ViewFlipper flipper;
     private int stt =0;
     ViewPager viewPager2;
-
+    private String URLImage="http://192.168.1.3:8000/image/phim/";
     ViewPager2 viewPagerVP;
     Adapter adapter;
     private Handler sliderHandler = new Handler();
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
-    List<Model> models;
-    List<Model> models2;
+
+    LinkedList<Model> MoviesDC= new LinkedList<Model>();
+    LinkedList<Model> MoviesSC= new LinkedList<Model>();
     Button btn_dangchieu;
-    final List<Model> dangchieu_ats =new ArrayList<>();
+
     Button btn_sapchieu;
+    ImageButton imgAnh;
+    GoogleSignInClient mGoogleSignInClient;
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
     Toolbar toolbar;
-
+    Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        //test viewpager 2
-
-
-        constructormodels2();
         viewPagerVP=(ViewPager2)findViewById(R.id.viewPagerImageSlider);
-        // khởi tao các đối tượng  add vào silder đang chiếu
-        dangchieu_ats.add(new Model(R.drawable.matbet,"Mắt Biếc","Tình cảm"));
-        dangchieu_ats.add(new Model(R.drawable.rom,"Ròm","Hành động"));
-        dangchieu_ats.add(new Model(R.drawable.trangmau,"Tiệc Trăng Máu","Hài Hước"));
-        dangchieu_ats.add(new Model(R.drawable.venom,"Venom","Kinh dị"));
-        dangchieu_ats.add(new Model(R.drawable.trangquynh,"Trạng Quỳnh","Tâm lý"));
+        MoviesDC.clear();
+        MoviesSC.clear();
+//        try {
+//            LoadMovies("http://192.168.1.3:8000/api/phim",MoviesDC,URLImage);
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            LoadMovies("http://192.168.1.3:8000/api/phim",MoviesSC,URLImage);
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
-        //end test
-
-        initslider1(dangchieu_ats);
-
+//        initslider1(MoviesDC);
 
         btn_dangchieu = (Button) findViewById(R.id.btn_dang_chieu);
         btn_dangchieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                initslider1(dangchieu_ats);
+//               initslider1(MoviesDC);
                 selectedTab(view);
             }
         });
@@ -90,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         btn_sapchieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    initslider1(models);
+//                    initslider1(MoviesSC);
                 selectedTab(view);
             }
         });
@@ -106,12 +128,24 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawerLayout = findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,drawerLayout,R.string.drawer_open,R.string.drawer_close);
+
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-
-
        navigationView = findViewById(R.id.nav_view);
        View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
+        navigationView = findViewById(R.id.nav_view);
+        int random_int = (int)(Math.random() * (100) + 1);
+
+        //set đăng nhập hay đăng kí ở đây
+//        if (random_int%2==0){
+//            View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
+//            TextView txtTenUser =(TextView) navView.findViewById(R.id.txtTenUser);
+//            txtTenUser.setText("Đặng Thái Bình");
+//        }
+//        else{
+            View navView = navigationView.inflateHeaderView(R.layout.navigation_header_login);
+
+//        }
        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
            @Override
            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -119,6 +153,23 @@ public class MainActivity extends AppCompatActivity {
                return false;
            }
        });
+
+
+
+//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+//        if (acct != null) {
+//
+//
+//            String personName = acct.getDisplayName();
+//            Uri personPhoto = acct.getPhotoUrl();
+//            name=findViewById(R.id.txtName);
+//            imgAnh=findViewById(R.id.avatarUser)  ;
+//            name.setText(personName);
+//            Glide.with(this).load(String.valueOf(personPhoto)) .into(imgAnh) ;
+//
+//        }
+
+
 
 
     }
@@ -152,6 +203,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         return super.onOptionsItemSelected(item);
     }
+
+
+
     // xử lí khi người dùng click vào menu ở đây
 
     public void UserMenuSelected(MenuItem item){
@@ -174,27 +228,37 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public  void constructormodels2()
-    {
-        // khởi tạo các đối tượng add vào silder sắp chiếu
-        models = new ArrayList<>();
-        models.add(new Model(R.drawable.img_1,"Tiec Trang Mau","Hai huoc"));
-        models.add(new Model(R.drawable.img_2,"365 ngay yeu anh","tinh cam"));
-        models.add(new Model(R.drawable.img_3,"minions","hoat hinh"));
-        models.add(new Model(R.drawable.img_2,"EngGame","Hanh Dong"));
-        models.add(new Model(R.drawable.img_3,"Em chua 18","Tam ly"));
-    }
 
 
     public void xem_chi_tiet(View view) {
         String tb = "Ban da chon phim"+Integer.toString(stt);
         Toast.makeText(MainActivity.this,tb,Toast.LENGTH_LONG).show();
     }
+    public void LoadMovies(String urlAPI, LinkedList movies,String URLimage) throws ExecutionException, InterruptedException, JSONException {
+        String jsonText = new MoiveAsync().execute(urlAPI).get();
+        JSONArray jsonArray = new JSONArray(jsonText);
+        int len=jsonArray.length();
+        for (int i =0;i<len;i++)
+        {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String id = jsonObject.getString("MaPhim");
+            String image =jsonObject.getString("HinhAnh");
+            String name =jsonObject.getString("TenPhim");
+            String title=jsonObject.getString("TenLoaiPhim");
+
+            Model movie = new Model(id,URLimage+image,name,title);
+            movies.addLast(movie);
+        }
+
+
+
+    }
     public  void initslider1(List<Model> dangchieus)
     {
 
-
-        viewPagerVP.setAdapter(new AdapterSlider(dangchieus,viewPagerVP));
+        AdapterSlider adapterSlider =new AdapterSlider(dangchieus,viewPagerVP);
+        adapterSlider.setContext(getApplicationContext());
+        viewPagerVP.setAdapter(adapterSlider);
 
         viewPagerVP.setClipToPadding(false);
         viewPagerVP.setClipChildren(false);
@@ -222,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 sliderHandler.removeCallbacks((Runnable) silderRunnable);
-                sliderHandler.postDelayed((Runnable) silderRunnable,3500);
+                sliderHandler.postDelayed((Runnable) silderRunnable,4000);
             }
 
             @Override
@@ -246,6 +310,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void showTrangCaNhan(View view) {
         Intent intent = new Intent(this, TrangCaNhanActivity.class);
+        startActivity(intent);
+    }
+
+    public void dangnhap(View view) {
+        Intent intent = new Intent(this, DangNhapActivity.class);
         startActivity(intent);
     }
 }
