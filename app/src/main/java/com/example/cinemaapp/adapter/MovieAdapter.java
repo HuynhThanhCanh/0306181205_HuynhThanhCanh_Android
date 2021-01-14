@@ -17,29 +17,33 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.model.Movie;
 import com.example.cinemaapp.model.MovieItemClickListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> implements Filterable {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
     Context context;
-    List<Movie> mData;
-    List<Movie> mDatafilter;
-    MovieItemClickListener movieItemClickListener;
-
-    public MovieAdapter(List<Movie> mData,Context context) {
-        this.context=context;
-        this.mDatafilter =mData;
+    LinkedList<Movie> mData;
+    // LinkedList<Movie> mDatafilter;
+   MovieItemClickListener movieItemClickListener;
+    LayoutInflater inflater;
+    public MovieAdapter(LinkedList<Movie> mData, Context context,MovieItemClickListener listener) {
         this.mData=mData;
+        this.context=context;
+        this.movieItemClickListener=listener;
+        inflater= LayoutInflater.from(context);
+        //this.mDatafilter =mData;
 
     }
 
-    public MovieAdapter(Context context, List<Movie> mdata, MovieItemClickListener listener) {
-            this.context = context;
-            this.mData = mdata;
-            this.movieItemClickListener = listener;
-            this.mDatafilter=mdata;
-    }
+//    public MovieAdapter(Context context, LinkedList<Movie> mdata, MovieItemClickListener listener) {
+//            this.context = context;
+//            this.mData = mdata;
+//            this.movieItemClickListener = listener;
+//            this.mDatafilter=mdata;
+//    }
 
 
 
@@ -47,11 +51,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
-        View view = LayoutInflater.from(context).inflate(R.layout.item_movie,viewGroup,false);
-        return new MyViewHolder(view);
+        View itemView= inflater.inflate(R.layout.item_movie, parent, false);
+        return new MyViewHolder (itemView, this);
     }
 
     @Override
@@ -64,72 +68,80 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         // you ca use the previous same animation like the following
 
         // but i want to use a different one so lets create it ..
-       // MyViewHolder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
-        myViewHolder.TvTitle.setText(mDatafilter.get(i).getTitle());
-        myViewHolder.ImgMovie.setImageResource(mDatafilter.get(i).getThumbnail());
-        myViewHolder.Tvtpoint.setText(mDatafilter.get(i).getRating());
-        myViewHolder.TvTlabel.setText(mDatafilter.get(i).getLabel());
+        //MyViewHolder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
+//        myViewHolder.TvTitle.setText(mDatafilter.get(i).getTitle());
+//        myViewHolder.ImgMovie.setImageResource(mDatafilter.get(i).getThumbnail());
+//        myViewHolder.Tvtpoint.setText(mDatafilter.get(i).getRating());
+//        myViewHolder.TvTlabel.setText(mDatafilter.get(i).getLabel());
+
+        Movie movie=mData.get(i);
+        myViewHolder.TvTitle.setText(movie.getTitle());
+        myViewHolder.Tvtpoint.setText(movie.getRating());
+        myViewHolder.TvTlabel.setText(movie.getLabel());
+        Picasso.get().load(movie.getCoverPhoto()).into( myViewHolder.ImgMovie);
         myViewHolder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
     }
 
     @Override
     public int getItemCount() {
-        return mDatafilter.size();
+        return mData.size();
     }
 
-    @Override
-    public Filter getFilter() {
-       return new Filter() {
-           @Override
-           protected FilterResults performFiltering(CharSequence constraint) {
-               String key=constraint.toString();
-               if(key.isEmpty())
-               {
-                   mDatafilter=mData;
-               }
-               else
-               {
-                   List<Movie>lstFitler=new ArrayList<>();
-                   for(Movie row:mData)
-                   {
-                       if(row.getTitle().toLowerCase().contains(key.toLowerCase())||row.getTitle().toUpperCase().contains(key.toUpperCase()))
-                       {
-                           lstFitler.add(row);
-                       }
-                   }
-                   mDatafilter=lstFitler;
-
-
-               }
-               FilterResults filterResults= new FilterResults();
-               filterResults.values=mDatafilter;
-               return filterResults;
-
-           }
-
-           @Override
-           protected void publishResults(CharSequence constraint, FilterResults results) {
-                mDatafilter=(List<Movie>)results.values;
-                notifyDataSetChanged();
-           }
-       };
-    }
+//    @Override
+//    public Filter getFilter() {
+//       return new Filter() {
+//           @Override
+//           protected FilterResults performFiltering(CharSequence constraint) {
+//               String key=constraint.toString();
+//               if(key.isEmpty())
+//               {
+//                   mDatafilter=mData;
+//               }
+//               else
+//               {
+//
+//                   LinkedList<Movie>lstFitler=new LinkedList<>();
+//                   for(Movie row:mData)
+//                   {
+//                       if(row.getTitle().toLowerCase().contains(key.toLowerCase())||row.getTitle().toUpperCase().contains(key.toUpperCase()))
+//                       {
+//                           lstFitler.add(row);
+//                       }
+//                   }
+//                   mDatafilter=lstFitler;
+//
+//
+//               }
+//               FilterResults filterResults= new FilterResults();
+//               filterResults.values=mDatafilter;
+//               return filterResults;
+//
+//           }
+//
+//           @Override
+//           protected void publishResults(CharSequence constraint, FilterResults results) {
+//                mDatafilter=(LinkedList<Movie>)results.values;
+//                notifyDataSetChanged();
+//           }
+//       };
+//    }
 
 
     public  class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView TvTitle,Tvtpoint,TvTlabel;
-        private ImageView ImgMovie,imgsao;
-
+        private ImageView ImgMovie;
+        private MovieAdapter adapter;
         public RelativeLayout container;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView , MovieAdapter movieAdapter) {
             super(itemView);
 
             TvTitle= itemView.findViewById(R.id.item_movie_title);
             ImgMovie=itemView.findViewById(R.id.item_movie_img);
             Tvtpoint=itemView.findViewById(R.id.item_movie_point);
             TvTlabel=itemView.findViewById(R.id.item_movie_label);
+            adapter=movieAdapter;
             //imgsao=itemView.findViewById(R.id.item_movie_star);
             container = itemView.findViewById(R.id.container);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -139,5 +151,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
                 }
             });
         }
+
+
     }
 }

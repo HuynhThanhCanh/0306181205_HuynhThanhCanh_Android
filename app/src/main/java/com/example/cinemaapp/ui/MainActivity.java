@@ -12,12 +12,14 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Movie;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
@@ -26,9 +28,11 @@ import android.widget.ViewFlipper;
 
 import com.example.cinemaapp.adapter.Adapter;
 import com.example.cinemaapp.adapter.AdapterSlider;
+import com.example.cinemaapp.Sqlite.Database;
 import com.example.cinemaapp.api.MoiveAsync;
 import com.example.cinemaapp.model.Model;
 import com.example.cinemaapp.R;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -57,16 +61,20 @@ public class MainActivity extends AppCompatActivity {
     Button btn_dangchieu;
 
     Button btn_sapchieu;
+    ImageButton imgAnh;
+    GoogleSignInClient mGoogleSignInClient;
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
     Toolbar toolbar;
-
+    Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewPagerVP=(ViewPager2)findViewById(R.id.viewPagerImageSlider);
         MoviesDC.clear();
         MoviesSC.clear();
 //        try {
@@ -88,13 +96,7 @@ public class MainActivity extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 
-        //test viewpager 2
-
-        viewPagerVP=(ViewPager2)findViewById(R.id.viewPagerImageSlider);
-
-
 //        initslider1(MoviesDC);
-
 
         btn_dangchieu = (Button) findViewById(R.id.btn_dang_chieu);
         btn_dangchieu.setOnClickListener(new View.OnClickListener() {
@@ -129,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-
-
+       navigationView = findViewById(R.id.nav_view);
+       View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
         navigationView = findViewById(R.id.nav_view);
         int random_int = (int)(Math.random() * (100) + 1);
 
@@ -144,9 +146,6 @@ public class MainActivity extends AppCompatActivity {
             View navView = navigationView.inflateHeaderView(R.layout.navigation_header_login);
 
 //        }
-
-
-
        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
            @Override
            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -154,6 +153,23 @@ public class MainActivity extends AppCompatActivity {
                return false;
            }
        });
+
+
+
+//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+//        if (acct != null) {
+//
+//
+//            String personName = acct.getDisplayName();
+//            Uri personPhoto = acct.getPhotoUrl();
+//            name=findViewById(R.id.txtName);
+//            imgAnh=findViewById(R.id.avatarUser)  ;
+//            name.setText(personName);
+//            Glide.with(this).load(String.valueOf(personPhoto)) .into(imgAnh) ;
+//
+//        }
+
+
 
 
     }
@@ -296,6 +312,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TrangCaNhanActivity.class);
         startActivity(intent);
     }
+
     public void dangnhap(View view) {
         Intent intent = new Intent(this, DangNhapActivity.class);
         startActivity(intent);
