@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.model.Ve;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.LinkedList;
 
 public class VeAdapter extends RecyclerView.Adapter<VeAdapter.VeViewHolder> {
     private LinkedList<Ve> mVeList;
     private LayoutInflater mInflater;
+    private NumberFormat format = new DecimalFormat("#,###");
 
     public VeAdapter(Context context, LinkedList<Ve> mVeList) {
         mInflater = LayoutInflater.from(context);
@@ -37,7 +40,8 @@ public class VeAdapter extends RecyclerView.Adapter<VeAdapter.VeViewHolder> {
         holder.chiNhanh.setText(mVe.getChiNhanh());
         holder.ghe.setText("Ghế: " + mVe.getGhe());
         holder.diem.setText(String.valueOf("+" + mVe.getDiem() + " điểm thưởng"));
-        holder.giaTien.setText(String.valueOf(mVe.getGiaTien() + " VND"));
+        Double giaTien = mVe.getGiaTien();
+        holder.giaTien.setText(format.format(giaTien) + " VNĐ");
         holder.thoiGianMua.setText(mVe.getThoiGianMua());
     }
 

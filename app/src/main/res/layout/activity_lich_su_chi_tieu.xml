@@ -30,141 +30,129 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/txt_TongChiTieuTrongNam"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="50dp"
-            android:text="Tổng chi tiêu trong năm 2020:"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txt_TongTien"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="5.580.000 VNĐ"
-            android:textAlignment="center"
-            android:textColor="#BD2121"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txt_XemChiTietTheoNam"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="CLick và đây để xem chi tiết >>"
-            android:textAlignment="center"
-            android:onClick="showFilterActivity"
-            android:textColor="#0090FF"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/txt_LuaChonMocThoiGian"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="#CED0DA"
-            android:padding="10dp"
-            android:text="TRA CỨU THEO MỐC THỜI GIAN: "
-            android:textColor="#000000"
-            android:textIsSelectable="false"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txt_StartDay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:text="Từ "
-            android:textColor="#000000"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/edtext_StartDay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/et_style"
-            android:ems="10"
-            android:inputType="date"
-            android:onClick="openCalendar"
-            android:padding="10dp"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/txt_EndDay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:text="Đến "
-            android:textColor="#000000"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/edtext_EndDay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/et_style"
-            android:ems="10"
-            android:inputType="date"
-            android:onClick="openCalendar"
-            android:padding="10dp"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/txt_TongChiTieuTheoMocThoiGian"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:text="Tổng chi tiêu:"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txt_TongTienTheoMocThoiGian"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="5.580.000 VNĐ"
-            android:textAlignment="center"
-            android:textColor="#BD2121"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txt_XemChiTietTheoMocThoiGian"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="CLick và đây để xem chi tiết >>"
-            android:onClick="showFilterActivity"
-            android:textAlignment="center"
-            android:textColor="#0090FF"
-            android:textSize="18sp" />
-
         <ScrollView
-            android:id="@+id/scrollView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_TongChiTieuTrongNam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Tổng chi tiêu trong năm 2020:"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txt_TongTien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textAlignment="center"
+                    android:textColor="#BD2121"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txt_LuaChonMocThoiGian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:background="#CED0DA"
+                    android:padding="10dp"
+                    android:text="TRA CỨU THEO MỐC THỜI GIAN: "
+                    android:textColor="#000000"
+                    android:textIsSelectable="false"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txt_StartDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Từ "
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/edtext_StartDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/et_style"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:onClick="openCalendar"
+                    android:padding="10dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_EndDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Đến "
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/edtext_EndDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/et_style"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:onClick="openCalendar"
+                    android:padding="10dp"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_XemTongChiTieu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#BD2121"
+                    android:text="Xem"
+                    android:onClick="xem"
+                    android:textColor="#FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_TongChiTieuTheoMocThoiGian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Tổng chi tiêu:"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txt_TongTienTheoMocThoiGian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textAlignment="center"
+                    android:textColor="#BD2121"
+                    android:textSize="24sp" />
+            </LinearLayout>
         </ScrollView>
 
     </LinearLayout>

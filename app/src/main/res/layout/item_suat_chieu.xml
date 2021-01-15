@@ -8,6 +8,7 @@
     <Button
         android:id="@+id/btn_ChonSuatChieu"
         android:text="9:00"
+        android:textColor="@color/card_bg_color"
         android:orientation="horizontal"
         android:textAlignment="center"
         android:layout_gravity="center"

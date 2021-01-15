@@ -23,7 +23,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.LichChieuAdapter;
+import com.example.cinemaapp.api.APIGetting;
 import com.example.cinemaapp.model.Lichchieu;
+import com.example.cinemaapp.model.Movie;
 import com.example.cinemaapp.readjson.LichChieuAsync;
 import com.example.cinemaapp.ui.GiaodienActivity;
 import com.example.cinemaapp.ui.MainActivity;
@@ -48,15 +50,16 @@ import static com.example.cinemaapp.R.array.Adres;
  */
 public class LichChieuFragment extends Fragment   {
 
-     RecyclerView recyclerView;
-     DatePicker datePicker;
+    RecyclerView recyclerView;
+    DatePicker datePicker;
     Spinner spinner;
     Spinner loai;
     View view;
     String mAdress[];
     String dinhdang[];
-    int MaPhim =1;
+    String MaPhim ="1";
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
+   private Movie movie = new Movie();
      public  ImageView imgCover;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -114,10 +117,7 @@ public class LichChieuFragment extends Fragment   {
 
         GiaodienActivity activity = (GiaodienActivity) getActivity();
         String s =activity.getIntent().getStringExtra("ID");
-        MaPhim=Integer.parseInt(s);
-//        ThongTinPhimActivity activityThongTinPhim=(ThongTinPhimActivity) getActivity();
-//        String image=activityThongTinPhim.getIntent().getStringExtra("image");
-//        Picasso.get().load(image).into( imgCover);
+        MaPhim=s;
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             int year =calendar.get(Calendar.YEAR);
@@ -164,19 +164,11 @@ public class LichChieuFragment extends Fragment   {
    //     String jsonTexts=LichChieuAsync.execute("http://192.168.1.3:8000/api/lich-chieu-phim-ngay?ngay=2021-1-13&maPhim=2").get();
 //
         LoadlistLoai();
-        loadListAddress();
-//        ThongTinPhimActivity image = new ThongTinPhimActivity();
-//        imgCover.setImageDrawable(image.thisImg);
-
-
-
-
-//        hinhx = getArguments().getInt("hinh", 0);
-
+        loadListAddress()
         btnClick();
 
         LoadHinh();
-
+            getImage();
 //
 //        try {
 //            LinkedList<Lichchieu>  listFull=  readJSON(Host +"api/lich-chieu-phim-ngay?ngay=2021-1-14&maPhim=2");
@@ -197,10 +189,6 @@ public class LichChieuFragment extends Fragment   {
 
         return view;
     }
-
-
-
-
     public boolean ktSuatTrung(LinkedList<Lichchieu> List,Lichchieu lich)
     {
         boolean kq = false;
@@ -264,30 +252,15 @@ public class LichChieuFragment extends Fragment   {
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
         recyclerView.setAdapter(lichChieuAdapter1);
 
     }
-   
-    public void setLichChieuAdapter(){
-
-    }
-
-    private void showDatePicker(Context context , int year,int month,int day) {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                if(view.isShown()){}
-            }
-        }, year,month,day);
-        datePickerDialog.show();
-    }
-
     private void LoadHinh() {
         Intent intent= new Intent(getActivity(),ThongTinPhimActivity.class);
+        intent.getExtras();
 
     }
-
     private void btnClick() {
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -397,5 +370,34 @@ public class LichChieuFragment extends Fragment   {
         spinner.setAdapter(arrayAdapter);
     }
 
+    private  void getImage (){
+        try {
+            try {
+                getThongTinPhim(MaPhim);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String Image = movie.getCoverPhoto();
+        Glide.with(getContext()).load(Image).into(imgCover);
 
+    }
+    public void getThongTinPhim(String MaPhim) throws ExecutionException, InterruptedException, JSONException {
+        String s= new APIGetting(getContext()).execute("phim/"+MaPhim).get();
+        JSONArray jsonArray = new JSONArray(s);
+
+        if (s!=null) {
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            movie.setTitle(jsonObject.getString("TenPhim"));
+            movie.setCoverPhoto(Host + "image/phim/" +  jsonObject.getString("HinhAnh"));
+            movie.setThumbnail(Host + "image/phim/" +  jsonObject.getString("HinhAnh"));
+
+        }
+    }
 }

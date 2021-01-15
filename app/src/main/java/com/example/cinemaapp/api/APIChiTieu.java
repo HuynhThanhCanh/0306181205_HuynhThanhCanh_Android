@@ -10,13 +10,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class APIUser {
-    static String getUser(String maTV) {
+public class APIChiTieu {
+    static String getTongChiTieuTrongNam(String nam, String maTV) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL(MainActivity.HostDomain+"api/thanhvien/" + maTV);
+            URL requestURL = new URL(MainActivity.HostDomain+"api/tong-chi-tieu-trong-nam?nam=" + nam + "&maTV=" + maTV);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
@@ -51,14 +51,12 @@ public class APIUser {
         return result;
     }
 
-    static String updateUser(String maTV, String hoTenTV, String sdt, String diaChi) {
+    static String getTongChiTieuTrongKhoangThoiGian(String ngayBatDau, String ngayKetThuc ,String maTV) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL =
-                    new URL(MainActivity.HostDomain+"api/cap-nhat-thanh-vien?maThanhVien=" +
-                            maTV + "&hoTenTV=" + hoTenTV + "&sdt=" + sdt + "&diaChi=" + diaChi);
+            URL requestURL = new URL(MainActivity.HostDomain+"api/tong-chi-tieu-trong-khoang-thoi-gian?ngayBatDau=" + ngayBatDau + "&ngayKetThuc=" + ngayKetThuc +"&maTV=" + maTV);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

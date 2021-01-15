@@ -45,7 +45,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
         MaPhim=getIntent().getExtras().getString("ID");
     //    Toast.makeText(getApplicationContext(),"Ma P him : "+MaPhim,Toast.LENGTH_LONG).show();
         inViews();
-        Toast.makeText(this,"Ma thanh vien hien tai : "+MainActivity.MaThanhVien,Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,"Ma thanh vien hien tai : "+MainActivity.MaThanhVien,Toast.LENGTH_LONG).show();
     }
 
      void XuLyMuave() {

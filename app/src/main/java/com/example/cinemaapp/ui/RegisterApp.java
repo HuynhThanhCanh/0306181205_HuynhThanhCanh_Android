@@ -3,7 +3,6 @@ package com.example.cinemaapp.ui;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -11,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.api.APIThemThanhVien;
@@ -27,10 +27,21 @@ public class RegisterApp extends AppCompatActivity
 {
     private EditText edtDate,editHoten,editEmail,editPassoword,editSDT,editDiaChi;
     private Button btnDangKy;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            }
+        });
         editHoten=(EditText)findViewById(R.id.editTextHoTen);
         editSDT=(EditText)findViewById(R.id.editTextSDT);
         editEmail=(EditText)findViewById(R.id.editTextTNhapEmail);
@@ -86,6 +97,7 @@ public class RegisterApp extends AppCompatActivity
         else if(editSDT.length()==0)
         {
             editSDT.setError("Không được bỏ trống!");
+
             return;
         }
         else if(editEmail.length()==0)
@@ -93,11 +105,12 @@ public class RegisterApp extends AppCompatActivity
             editEmail.setError("Không được bỏ trống!");
             return;
         }
-        else if(editPassoword.length()==0)
+        else if(editPassoword.length()==0||editPassoword.length()<6)
         {
             editPassoword.setError("Không được bỏ trống!");
             return;
         }
+
         else if(edtDate.length()==0)
         {
             edtDate.setError("Không được bỏ trống!");
@@ -133,6 +146,8 @@ public class RegisterApp extends AppCompatActivity
             startActivity(intent);
         }
         //Toast.makeText(this,result,Toast.LENGTH_LONG).show();
+        //toolbar
+
     }
 
     private boolean checkNull(String str){
