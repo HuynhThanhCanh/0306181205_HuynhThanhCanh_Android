@@ -3,7 +3,7 @@ package com.example.cinemaapp.api;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.google.android.gms.dynamic.IFragmentWrapper;
+import com.example.cinemaapp.ui.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class    APIGetting extends AsyncTask<String , String ,  String> {
     Context context;
-    private String URLApi ="http://192.168.5.24:8080/api/";
+    private String URLApi = MainActivity.HostDomain+"api/";
 
     public String getURLApi() {
         return URLApi;

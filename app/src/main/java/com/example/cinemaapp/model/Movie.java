@@ -52,9 +52,6 @@ public class Movie {
         this.title = title;
     }
 
-    public Movie() {
-
-    }
 
     public String getDirectors() {
         return Directors;

@@ -2,10 +2,9 @@ package com.example.cinemaapp.api;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
-import com.example.cinemaapp.model.User;
 import com.example.cinemaapp.model.Users;
+import com.example.cinemaapp.ui.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +30,7 @@ public class APIThemThanhVien  extends AsyncTask<Users,String,String> {
         String result = null;
         try {
             //URL requestURL = new URL("http://192.168.1.108/dictionary/api.php?word="+tuVung.getWord()+"&definition="+tuVung.getDefinition()+"&image="+tuVung.getImage());
-            URL requestURL = new URL("http://192.18.5.24:8080/api/savethanhvien?HoTenTV="+users.getHoTenTV()+"&NgaySinh="+users.getNgaySinh()+"&SDT="+users.getSDT()+"&Email="+users.getEmail()+"&Password="+users.getPass()+"&DiaChi="+users.getDiaChi());
+            URL requestURL = new URL(MainActivity.HostDomain+"api/savethanhvien?HoTenTV="+users.getHoTenTV()+"&NgaySinh="+users.getNgaySinh()+"&SDT="+users.getSDT()+"&Email="+users.getEmail()+"&Password="+users.getPass()+"&DiaChi="+users.getDiaChi());
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

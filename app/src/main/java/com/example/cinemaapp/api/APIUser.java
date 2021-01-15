@@ -1,5 +1,7 @@
 package com.example.cinemaapp.api;
 
+import com.example.cinemaapp.ui.MainActivity;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +16,7 @@ public class APIUser {
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL("http://192.168.131.26:8080/api/ve/" + value);
+            URL requestURL = new URL(MainActivity.HostDomain+"api/ve/" + value);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

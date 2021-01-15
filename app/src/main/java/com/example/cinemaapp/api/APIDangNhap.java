@@ -3,6 +3,7 @@ package com.example.cinemaapp.api;
 import android.os.AsyncTask;
 
 import com.example.cinemaapp.model.Users;
+import com.example.cinemaapp.ui.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class APIDangNhap extends AsyncTask<Users,String,String> {
         String result = null;
         try {
             //URL requestURL = new URL("http://192.168.1.108/dictionary/api.php?word="+tuVung.getWord()+"&definition="+tuVung.getDefinition()+"&image="+tuVung.getImage());
-            URL requestURL = new URL("http://192.168.5.24:8080/api/loginApp?User="+users.getEmail()+"&Pass="+users.getPass());
+            URL requestURL = new URL(MainActivity.HostDomain+"api/loginApp?User="+users.getEmail()+"&Pass="+users.getPass());
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

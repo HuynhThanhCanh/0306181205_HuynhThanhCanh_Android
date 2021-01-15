@@ -105,7 +105,7 @@
                 android:id="@+id/ten_dao_dien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/theloai"
+                android:layout_below="@id/ten_the_loai"
                 android:layout_marginLeft="200dp"
                 android:padding="5dp"
                 android:textColor="@android:color/black" />

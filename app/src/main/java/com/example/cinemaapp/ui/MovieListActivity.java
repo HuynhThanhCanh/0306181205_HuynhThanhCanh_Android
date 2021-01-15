@@ -47,7 +47,7 @@ private TabLayout indicator;
 private RecyclerView MoviesRV;
 private RecyclerView MoviesRV1;
 private EditText searchInput;
-private String URLimage="http://192.168.5.24:8080/image/phim/";
+private String URLimage=MainActivity.HostDomain+"image/phim/";
 private  String jsonString;
 public LinkedList<Movie> lst_movie=new LinkedList<>() ;
 public LinkedList<Movie> lst_movie2= new LinkedList<>() ;

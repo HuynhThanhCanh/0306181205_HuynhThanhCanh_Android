@@ -41,7 +41,7 @@ public class LoginApp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         database= new Database(this,"cinema.sqlite",null,3);
         //Tạo bảng User gồm User gồm các object và trang thai
-        database.QueryData("CREATE TABLE IF NOT EXISTS ThanhVien(User VARCHAR,TrangThai BIT)");
+        database.QueryData("CREATE TABLE IF NOT EXISTS ThanhVien(User NVARCHAR,TrangThai NVARCHAR)");
         Cursor cursor=database.getData("Select * from ThanhVien");
         cursor.moveToFirst();
         String result="";
@@ -62,9 +62,9 @@ public class LoginApp extends AppCompatActivity {
         signin=findViewById(R.id.sign_in_gg);
         editEmail= (EditText) findViewById(R.id.editTextEmail);
         editPass=(EditText)findViewById(R.id.editTextPassword);
-
-        editEmail.setText("phamminhnhut@gmail.com");
-        editPass.setText("12345");
+//
+//        editEmail.setText("phamminhnhut@gmail.com");
+//        editPass.setText("12345");
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,6 +157,7 @@ public class LoginApp extends AppCompatActivity {
            // String name=object.getString("HoTenTV");
             JSONObject jsonObject1=new JSONObject(s);
             String nameTV=jsonObject1.getString("HoTenTV");
+
             String maThanhVien=jsonObject1.getString("MaThanhVien");
             String Email=jsonObject1.getString("Email");
             String Avatar=jsonObject1.getString("Avatar");

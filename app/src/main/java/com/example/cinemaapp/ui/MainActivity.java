@@ -3,7 +3,6 @@ package com.example.cinemaapp.ui;
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -26,9 +25,9 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.Sqlite.Database;
 import com.example.cinemaapp.adapter.Adapter;
 import com.example.cinemaapp.adapter.AdapterSlider;
-import com.example.cinemaapp.Sqlite.Database;
 import com.example.cinemaapp.api.MoiveAsync;
 import com.example.cinemaapp.model.Model;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -38,7 +37,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -50,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper flipper;
     private int stt =0;
     ViewPager viewPager2;
-    private String URLImage="http://192.168.1.3:8000/image/phim/";
+    public  static String  HostDomain="http://192.168.1.12:8080/";
+    private String URLImage=HostDomain+"image/phim/";
     ViewPager2 viewPagerVP;
     Adapter adapter;
     private Handler sliderHandler = new Handler();
@@ -64,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn_sapchieu;
     ImageButton imgAnh;
     GoogleSignInClient mGoogleSignInClient;
+    View viewHeader;
+    public static String MaThanhVien="0";
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -78,33 +79,33 @@ public class MainActivity extends AppCompatActivity {
         viewPagerVP=(ViewPager2)findViewById(R.id.viewPagerImageSlider);
         MoviesDC.clear();
         MoviesSC.clear();
-//        try {
-//            LoadMovies("http://192.168.1.3:8000/api/phim",MoviesDC,URLImage);
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            LoadMovies("http://192.168.1.3:8000/api/phim",MoviesSC,URLImage);
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            LoadMovies(HostDomain+"api/phimDangChieu",MoviesDC,URLImage);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            LoadMovies(HostDomain+"api/phimSapChieu",MoviesSC,URLImage);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-//        initslider1(MoviesDC);
+        initslider1(MoviesDC);
 
         btn_dangchieu = (Button) findViewById(R.id.btn_dang_chieu);
         btn_dangchieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//               initslider1(MoviesDC);
+               initslider1(MoviesDC);
                 selectedTab(view);
             }
         });
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         btn_sapchieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                    initslider1(MoviesSC);
+                    initslider1(MoviesSC);
                 selectedTab(view);
             }
         });
@@ -133,21 +134,61 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-       navigationView = findViewById(R.id.nav_view);
-       View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
-        navigationView = findViewById(R.id.nav_view);
-        int random_int = (int)(Math.random() * (100) + 1);
 
-        //set đăng nhập hay đăng kí ở đây
-//        if (random_int%2==0){
-//            View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
-//            TextView txtTenUser =(TextView) navView.findViewById(R.id.txtTenUser);
-//            txtTenUser.setText("Đặng Thái Bình");
-//        }
-//        else{
+
+        navigationView = findViewById(R.id.nav_view);
+
+        database= new Database(this,"cinema.sqlite",null,3);
+        //Tạo bảng User gồm User gồm các object và trang thai
+        database.QueryData("CREATE TABLE IF NOT EXISTS ThanhVien(User NVARCHAR,TrangThai NVARCHAR)");
+
+
+        Cursor cursor=database.getData("Select * from ThanhVien");
+
+        cursor.moveToFirst();
+        String result="";
+        String TTUser="";
+
+        while (!cursor.isAfterLast())
+        {
+            String User=cursor.getString(1);
+            String user1 = cursor.getString(0);
+
+            cursor.moveToNext();
+            if (cursor.isAfterLast())
+            {
+                result=User;
+                TTUser=user1;
+            }
+
+        }
+
+        cursor.close();
+
+
+        if (result.equals("1")){
+
+            String name ="Empty";
+            try {
+                JSONObject jsonObject = new JSONObject(TTUser);
+               name=jsonObject.getString("HoTenTV");
+               MaThanhVien=jsonObject.getString("MaThanhVien");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            viewHeader= navigationView.inflateHeaderView(R.layout.navigation_header);
+            TextView txtTenUser=viewHeader.findViewById(R.id.txtTenUser);
+            txtTenUser.setText(name);
+        }
+        else{
             View navView = navigationView.inflateHeaderView(R.layout.navigation_header_login);
 
-//        }
+        }
+
+
+
+
        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
            @Override
            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -255,6 +296,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void logout(View view)
+    {
+        navigationView.removeHeaderView(viewHeader);
+        View navView = navigationView.inflateHeaderView(R.layout.navigation_header_login);
+
+        database.QueryData("INSERT INTO ThanhVien VALUES('NULL','0')");
+        MaThanhVien="0";
+
+    }
     public  void initslider1(List<Model> dangchieus)
     {
 
@@ -316,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void dangnhap(View view) {
-        Intent intent = new Intent(this, DangNhapActivity.class);
+        Intent intent = new Intent(this, LoginApp.class);
         startActivity(intent);
     }
 }

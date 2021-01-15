@@ -1,47 +1,37 @@
 package com.example.cinemaapp.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.bumptech.glide.Glide;
 import com.example.cinemaapp.R;
-import com.example.cinemaapp.adapter.GiaodienAdapter;
 import com.example.cinemaapp.api.APIGetting;
 import com.example.cinemaapp.model.Movie;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.LinkedList;
 import java.util.concurrent.ExecutionException;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 
 public class ThongTinPhimActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private String MaPhim="";
-    private String Host="http://192.168.5.24:8080/";
+    private String MaPhim="1";
+    private String Host=MainActivity.HostDomain;
     private ImageView MovieThumbnaiImg,MovieCoverImg;
-    private FloatingActionButton play_fab;
+
     public static Drawable thisImg;
     private TextView tv_title,tv_description,sao,genrename,daoDien,noiDung,doTuoi;
      private FloatingActionButton play_fab;
@@ -51,9 +41,11 @@ public class ThongTinPhimActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin_phim);
         XuLyMuave();
-        thisImg=MovieThumbnaiImg.getDrawable();
+//        thisImg=MovieThumbnaiImg.getDrawable();
         MaPhim=getIntent().getExtras().getString("ID");
+    //    Toast.makeText(getApplicationContext(),"Ma P him : "+MaPhim,Toast.LENGTH_LONG).show();
         inViews();
+        Toast.makeText(this,"Ma thanh vien hien tai : "+MainActivity.MaThanhVien,Toast.LENGTH_LONG).show();
     }
 
      void XuLyMuave() {
@@ -61,7 +53,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
              @Override
              public void onClick(View v) {
                  Intent intent = new Intent(getApplicationContext(), GiaodienActivity.class);
-
+                 intent.putExtra("ID",MaPhim);
                  startActivity(intent);
              }
          });
@@ -79,7 +71,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Toast.makeText(this,"size : "+movie.getTitle(),Toast.LENGTH_LONG).show();
+
 
         //play_fab=findViewById(R.id.play_fab);
 //        String movieTitle =getIntent().getExtras().getString("title");
@@ -104,7 +96,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
       Glide.with(this).load(imageResoureId).into(MovieThumbnaiImg);
        MovieCoverImg=findViewById(R.id.detail_movie_cover);
        // Picasso.get().load(movie.getCoverPhoto()).into( MovieThumbnaiImg);
-        Glide.with(this).load(imageCover).into(MovieThumbnaiImg);
+        Glide.with(this).load(imageCover).into(MovieCoverImg);
        tv_title=findViewById(R.id.detail_movie_title);
        tv_title.setText(movieTitle);
 
@@ -125,7 +117,8 @@ public class ThongTinPhimActivity extends AppCompatActivity {
     }
 
     public void play_trailer(View view) {
-        String link =getIntent().getExtras().getString("trailer");
+//        String link =getIntent().getExtras().getString("trailer");
+        String link=movie.getStreamingLink();
         String movieTitle =getIntent().getExtras().getString("title");
         play_fab=findViewById(R.id.play_fab);
         Intent intent = new Intent(this, TrailerActivity.class);

@@ -19,7 +19,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.model.Model;
-import com.example.cinemaapp.ui.GiaodienActivity;
+import com.example.cinemaapp.ui.ThongTinPhimActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.IOException;
@@ -66,8 +66,9 @@ public  class AdapterSlider extends RecyclerView.Adapter<AdapterSlider.SliderVie
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, GiaodienActivity.class);
+                Intent intent = new Intent(context, ThongTinPhimActivity.class);
                 intent.putExtra("ID",dangchieu_ats.get(position).getId());
+
                 context.startActivity(intent);
             }
         });

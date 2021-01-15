@@ -1,17 +1,11 @@
 package com.example.cinemaapp.ui;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cinemaapp.R;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class ThanhToanActivity extends AppCompatActivity {
 
@@ -40,6 +34,8 @@ public class ThanhToanActivity extends AppCompatActivity {
 //        txtSo.setText(tongSoGhe.toString());
 //        txtTong.setText(finalTongTien.toString() + "VNĐ");
 ////        Ket thuc phan cua Trang
+
+
 
     }
 
