@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.LichChieuFragment">
 
@@ -13,7 +14,6 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent">
-
        <ImageView
            android:id="@+id/detail_movie_cover"
            android:scaleType="centerCrop"
@@ -41,7 +41,7 @@
            android:layout_width="wrap_content"
            android:datePickerMode="calendar"
            android:layout_marginLeft="30dp"
-           android:layout_height="303dp"
+           android:layout_height="wrap_content"
            android:layout_below="@id/spinner_dd"
            android:layout_marginTop="10dp">
 

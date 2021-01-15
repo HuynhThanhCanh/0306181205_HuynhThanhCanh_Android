@@ -37,7 +37,7 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
 
     TextView txtSoGhe, txtTongTien;
     Button btnThanhToan;
-
+    public String Host = MainActivity.HostDomain;
     ViewGroup layout;
     Rapphim cinemaModel;
     private FirebaseAuth firebaseAuth;
@@ -151,7 +151,9 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
                 String s = gson.toJson(lichchieu);
                 intent.putExtra("LichChieu" ,s);
                 String ghes=gson.toJson(seatSec);
+                String Gias =gson.toJson(seatSec);
                 intent.putExtra("Ghes",ghes);
+                intent.putExtra("gias",Gias);
 //                Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class).putExtra("tongtien", tongTien)
 //                        .putExtra("soghe", tongSoGhe);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -240,7 +242,7 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
         LichChieuAsync lichChieuAsync = new LichChieuAsync();
         String jsonTexts="";
         try {
-            jsonTexts=lichChieuAsync.execute("http://192.168.131.29:8000/api/so-do-rap?maLichChieu=1").get();
+            jsonTexts=lichChieuAsync.execute( MainActivity.HostDomain+"/api/so-do-rap?maLichChieu=1").get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -257,6 +259,7 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
         tongSoGhe = soGheDaChon;
         Integer tongGiaTien = soGheDaChon * 50000;
         tongTien = tongGiaTien;
+        NumberFormat format = new DecimalFormat("#,###");
         if (seatSec.size()==8)
         {
             Toast.makeText(SoDoRapActivity.this,"Chỉ được chọn tối đa 8 ghế !",Toast.LENGTH_SHORT).show();
@@ -286,18 +289,18 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
                     }
 
 
-                    txtTongTien.setText(5000*seatSec.size()+" VNĐ");
+                    txtTongTien.setText(50000*seatSec.size()+" VNĐ");
                 } else  {
                     view.setBackgroundResource(R.drawable.ic_seats_selected);
                     seatSec.add(seat);
 
 
 
-                    NumberFormat format = new DecimalFormat("#,###");
+
                     String finalTongTien = format.format(tongGiaTien);
 
-                    //txtTongTien.setText(finalTongTien.toString() + "VNĐ");
-                    txtTongTien.setText(5000*seatSec.size()+" VNĐ");
+                    txtTongTien.setText(finalTongTien.toString() );
+                    txtTongTien.setText(50000*seatSec.size()+" VNĐ");
                     for (int i = 0; i < seatSec.size(); i++) {
 
                         if (i == 0) {
