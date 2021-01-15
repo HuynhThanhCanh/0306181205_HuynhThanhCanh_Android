@@ -8,183 +8,194 @@
     android:layout_height="match_parent"
     tools:context=".ui.SoDoRapActivity">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:id="@+id/xxx"
-        >
-        <TextView
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_manhinh"
-            android:text="Màn hình"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:textColor="#fff"
-            android:textAlignment="center"
-            />
+            android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_manhinh"
-            android:layout_marginTop="10dp"
-            android:id="@+id/note"
-            android:scrollbars="vertical">
-            <HorizontalScrollView
-                android:id="@+id/layoutSeat"
-                android:layout_width="fill_parent"
+            <RelativeLayout
+                android:id="@+id/xxx"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
-        </ScrollView>
+                android:layout_marginTop="70dp">
 
-        <RelativeLayout
-            android:id="@+id/rel_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/note"
-            android:layout_marginTop="10dp"
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/txt_dangchon"
-                android:layout_height="wrap_content">
-                <Button
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="#B2A8A8"
+                <TextView
+                    android:id="@+id/txt_manhinh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Màn hình"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ScrollView
+                    android:id="@+id/note"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_manhinh"
+                    android:layout_marginTop="10dp"
+                    android:scrollbars="vertical">
+
+                    <HorizontalScrollView
+                        android:id="@+id/layoutSeat"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </ScrollView>
+
+                <RelativeLayout
+                    android:id="@+id/rel_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/note"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/txt_dangchon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+
+                        <Button
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="#B2A8A8" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Ghế đang chọn"
+                            android:textColor="#fff"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/txt_ghechon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/txt_dangchon">
+
+                        <Button
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="#6C757C" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Ghế đã đặt"
+                            android:textColor="#fff"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/aaa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/txt_dangchon">
+
+                        <Button
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="#E84949" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Ghế trống"
+                            android:textColor="#fff"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/xxx"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/layout_Soghe">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtghe"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/card_bg_color"
+                    android:text="Số ghế: "
+                    android:layout_marginLeft="15dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Ghế đang chọn"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="5dp"
+                    android:id="@+id/txtSoGhe"
+                    android:textColor="@color/card_bg_color"
+                    android:text=""
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/txtghe"
                     />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/txt_ghechon"
-                android:layout_toLeftOf="@id/txt_dangchon"
-                android:layout_marginRight="10dp"
-                android:layout_height="wrap_content">
-                <Button
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="#6C757C"
-                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Ghế đã đặt"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:text="Tổng tiền: "
+                    android:textColor="@color/card_bg_color"
+                    android:layout_below="@+id/txtSoGhe"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="15dp"
+                    android:textStyle="bold"
                     />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/aaa"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/txt_dangchon"
-                android:layout_height="wrap_content">
-                <Button
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="#E84949"
-                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Ghế trống"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="5dp"
+                    android:id="@+id/txtTongTien"
+                    android:text="0"
+                    android:textColor="@color/card_bg_color"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/txtSoGhe"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
                     />
-            </LinearLayout>
-        </RelativeLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
 
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/xxx"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/layout_Soghe">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnThanhToan"
+                    android:text="Thanh Toán"
+                    android:textSize="20sp"
+                    android:textAllCaps="false"
+                    android:padding="17dp"
+                    android:layout_margin="15dp"
+                    android:layout_below="@+id/txtTongTien"
+                    />
 
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtghe"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/card_bg_color"
-            android:text="Số ghế: "
-            android:layout_marginLeft="15dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSoGhe"
-            android:textColor="@color/card_bg_color"
-            android:text=""
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:textSize="15sp"
-            android:layout_below="@+id/txtghe"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Tổng tiền: "
-            android:textColor="@color/card_bg_color"
-            android:layout_below="@+id/txtSoGhe"
-            android:layout_marginTop="6dp"
-            android:layout_marginLeft="15dp"
-            android:textStyle="bold"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtTongTien"
-            android:text="0"
-            android:textColor="@color/card_bg_color"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:layout_below="@+id/txtSoGhe"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            />
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnThanhToan"
-            android:text="Thanh Toán"
-            android:textSize="20sp"
-            android:textAllCaps="false"
-            android:padding="17dp"
-            android:layout_margin="15dp"
-            android:layout_below="@+id/txtTongTien"
-            />
-    </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

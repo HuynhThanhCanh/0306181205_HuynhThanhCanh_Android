@@ -164,7 +164,7 @@ public class LichChieuFragment extends Fragment   {
    //     String jsonTexts=LichChieuAsync.execute("http://192.168.1.3:8000/api/lich-chieu-phim-ngay?ngay=2021-1-13&maPhim=2").get();
 //
         LoadlistLoai();
-        loadListAddress()
+        loadListAddress();
         btnClick();
 
         LoadHinh();
