@@ -17,7 +17,6 @@
        <ImageView
            android:id="@+id/detail_movie_cover"
            android:scaleType="centerCrop"
-
            android:layout_width="match_parent"
            android:layout_height="170dp"
            />

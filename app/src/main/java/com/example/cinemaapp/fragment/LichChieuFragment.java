@@ -31,6 +31,7 @@ import com.example.cinemaapp.ui.GiaodienActivity;
 import com.example.cinemaapp.ui.MainActivity;
 import com.example.cinemaapp.ui.SoDoRapActivity;
 import com.example.cinemaapp.ui.ThongTinPhimActivity;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,8 +59,8 @@ public class LichChieuFragment extends Fragment   {
     String dinhdang[];
     String MaPhim ="1";
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
-   private ImageView imgCover;
    private Movie movie = new Movie();
+     public  ImageView imgCover;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -112,11 +113,11 @@ public class LichChieuFragment extends Fragment   {
 
             recyclerView= view.findViewById(R.id.recyclerViewSuatChieu);
           datePicker =view.findViewById(R.id.lich);
+        imgCover = (ImageView) view.findViewById(R.id.detail_movie_cover);
 
         GiaodienActivity activity = (GiaodienActivity) getActivity();
         String s =activity.getIntent().getStringExtra("ID");
         MaPhim=s;
-
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             int year =calendar.get(Calendar.YEAR);
@@ -163,7 +164,7 @@ public class LichChieuFragment extends Fragment   {
    //     String jsonTexts=LichChieuAsync.execute("http://192.168.1.3:8000/api/lich-chieu-phim-ngay?ngay=2021-1-13&maPhim=2").get();
 //
         LoadlistLoai();
-        loadListAddress();
+        loadListAddress()
         btnClick();
 
         LoadHinh();
@@ -347,7 +348,7 @@ public class LichChieuFragment extends Fragment   {
         btn6 = (Button) view.findViewById(R.id.btn6);
         btn7 = (Button) view.findViewById(R.id.btn7);
         btn8 = (Button) view.findViewById(R.id.btn8);
-        imgCover = (ImageView) view.findViewById(R.id.detail_movie_cover);
+
 
     }
 
