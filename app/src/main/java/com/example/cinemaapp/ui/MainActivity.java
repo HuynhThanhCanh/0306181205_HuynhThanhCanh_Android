@@ -14,6 +14,7 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper flipper;
     private int stt =0;
     ViewPager viewPager2;
-    public  static String  HostDomain="http://192.168.131.13:8080/";
+    public  static String  HostDomain="http://192.168.131.19:8000/";
     private String URLImage=HostDomain+"image/phim/";
     ViewPager2 viewPagerVP;
     Adapter adapter;
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         navigationView = findViewById(R.id.nav_view);
+
+
 
         database= new Database(this,"cinema.sqlite",null,3);
         //Tạo bảng User gồm User gồm các object và trang thai
@@ -260,12 +263,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
-//            case R.id.dangnhap_dangky :
-//            {
-//                Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
-//                startActivity(intent);
-//                break;
-//            }
+            case R.id.veCuaToi :
+            {
+                if (MaThanhVien.equals("0"))
+                {
+                    Toast.makeText(this,"Bạn chưa đăng nhập !",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Intent intent = new Intent(getApplicationContext(), LichSuGiaoDichActivity.class);
+                startActivity(intent);
+                break;
+            }
+
         }
 
 
@@ -291,6 +300,10 @@ public class MainActivity extends AppCompatActivity {
 
             Model movie = new Model(id,URLimage+image,name,title);
             movies.addLast(movie);
+            if (i==4)
+            {
+             break;
+            }
         }
 
 
@@ -300,7 +313,6 @@ public class MainActivity extends AppCompatActivity {
     {
         navigationView.removeHeaderView(viewHeader);
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header_login);
-
         database.QueryData("INSERT INTO ThanhVien VALUES('NULL','0')");
         MaThanhVien="0";
 
@@ -362,11 +374,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void showTrangCaNhan(View view) {
         Intent intent = new Intent(this, TrangCaNhanActivity.class);
+
         startActivity(intent);
     }
 
     public void dangnhap(View view) {
         Intent intent = new Intent(this, LoginApp.class);
+
         startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        this.recreate();
     }
 }

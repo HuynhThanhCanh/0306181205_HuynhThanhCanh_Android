@@ -110,66 +110,6 @@ public LinkedList<Movie> lst_movie2= new LinkedList<>() ;
         }
         searhPhim(this);
 
-//        //setup RecylerView Phim đang chiếu
-//        List<Moive>lstMovies=new ArrayList<>();
-//        lstMovies.add(new Moive("Moana",R.drawable.moana,R.drawable.moana,"4","12+"));
-//        lstMovies.add(new Moive("Black P",R.drawable.blackp,R.drawable.blackp,"4","18+"));
-//        lstMovies.add(new Moive("Mulan",R.drawable.mulan,R.drawable.mulan,"5","18+"));
-//        lstMovies.add(new Moive("Avanger",R.drawable.anvanger,R.drawable.anvanger,"1","18+"));
-//        lstMovies.add(new Moive("Ròm",R.drawable.rom,R.drawable.rom,"2","12+"));
-//        lstMovies.add(new Moive("Tiệc trăng máu",R.drawable.tiectrangmau,R.drawable.tiectrangmau,"3","12+"));
-//        MovieAdapter movieAdapter = new MovieAdapter(this,lstMovies,this);
-//        MoviesRV.setAdapter(movieAdapter);
-//        MoviesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-//
-//        //setup RecylerView Phim Sắp chiếu
-//        List<MovieSapChieu>lstMovies2=new ArrayList<>();
-//        lstMovies2.add(new MovieSapChieu("Avanger",R.drawable.anvanger,R.drawable.anvanger,"1","18+"));
-//        lstMovies2.add(new MovieSapChieu("Ròm",R.drawable.rom,R.drawable.rom,"2","12+"));
-//        lstMovies2.add(new MovieSapChieu("Tiệc trăng máu",R.drawable.tiectrangmau,R.drawable.tiectrangmau,"3","12+"));
-//        lstMovies2.add(new MovieSapChieu("Moana",R.drawable.moana,R.drawable.moana,"4","12+"));
-//        lstMovies2.add(new MovieSapChieu("Black P",R.drawable.blackp,R.drawable.blackp,"4","18+"));
-//        lstMovies2.add(new MovieSapChieu("Mulan",R.drawable.mulan,R.drawable.mulan,"5","18+"));
-//
-//
-//        MovieSapChieuAdapter movieAdapter1 = new MovieSapChieuAdapter();
-//        MoviesRV1.setAdapter(movieAdapter1);
-//        MoviesRV1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-
-//        try {
-//            jsonString = new APIGetting(this).execute("true").get();
-//          if(get_list_movieDangChieu(jsonString,lst_movie)){
-//
-//             Adapter= new MovieAdapter(lst_movie,this,this);
-//              MoviesRV.setAdapter(Adapter2);
-//              MoviesRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-//            }
-//            else{
-//                MoviesRV.setVisibility(View.INVISIBLE);
-//
-//            }
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        } try {
-//            jsonString = new APIGetting(this).execute().get();
-//            if(get_list_movieDangChieu(jsonString,lst_movie2)){
-//
-//                Adapter2= new MovieSapChieuAdapter(lst_movie2,this,this);
-//                MoviesRV1.setAdapter(Adapter);
-//                MoviesRV1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-//            }
-//            else{
-//                MoviesRV1.setVisibility(View.INVISIBLE);
-//
-//            }
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        }
-
 
 
     }

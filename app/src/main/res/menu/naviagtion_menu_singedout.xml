@@ -14,15 +14,4 @@
     </item>
 
 
-
-    <item
-        android:id="@+id/veCuaToi"
-        android:icon="@android:drawable/ic_menu_save"
-        android:title="@string/veCuaToi">
-    </item>
-
-
-
-
-
 </menu>

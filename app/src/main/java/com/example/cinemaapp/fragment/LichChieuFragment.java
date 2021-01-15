@@ -221,6 +221,7 @@ public class LichChieuFragment extends Fragment   {
             lichchieu.MaPhim=jsonArray.getJSONObject(i).getString("MaPhim");
             lichchieu.MaRap=jsonArray.getJSONObject(i).getString("MaRap");
             lichchieu.SuatChieu= jsonArray.getJSONObject(i).getString("ThoiGianChieu");
+            lichchieu.NgayChieu= jsonArray.getJSONObject(i).getString("NgayChieu");
             lichs.addLast(lichchieu);
         }
 

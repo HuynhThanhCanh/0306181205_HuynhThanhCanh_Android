@@ -181,6 +181,7 @@ public class LoginApp extends AppCompatActivity {
             database.QueryData("INSERT INTO ThanhVien VALUES('" +s+"',1)");
            // intent.putExtra("name",nameTV);
             //  intent.putExtra("name",name);
+            this.finish();
             startActivity(intent);
         }
         else
@@ -191,6 +192,7 @@ public class LoginApp extends AppCompatActivity {
 
     public void chuyensangdangky(View view) {
         Intent intent= new Intent(LoginApp.this,RegisterApp.class);
+
         startActivity(intent);
     }
 }

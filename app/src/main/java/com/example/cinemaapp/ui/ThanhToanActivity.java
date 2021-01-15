@@ -1,17 +1,24 @@
 package com.example.cinemaapp.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.gifdecoder.GifHeader;
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.api.APIGetting;
 import com.example.cinemaapp.model.Ghe;
 import com.example.cinemaapp.model.Lichchieu;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +34,7 @@ public class ThanhToanActivity extends AppCompatActivity {
 
         public Lichchieu LICH_CHIEU=new Lichchieu();
         public LinkedList<Ghe> Ghes = new LinkedList<Ghe>();
-        String MaDSVe = "10";
+        String MaDSVe = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +50,7 @@ public class ThanhToanActivity extends AppCompatActivity {
 //        tongGiaTien = intent.getIntExtra("tongtien", 0);
 //        tongSoGhe = intent.getIntExtra("soghe", 0);
 //
-//        TextView txtSo = (TextView) findViewById(R.id.txtso);
-//        TextView txtTong = (TextView) findViewById(R.id.txtTTTongTien);
+
 //
 //        NumberFormat format = new DecimalFormat("#,###");
 //        String finalTongTien = format.format(tongGiaTien);
@@ -65,8 +71,10 @@ public class ThanhToanActivity extends AppCompatActivity {
         }
 
 
+        initView();
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -88,7 +96,55 @@ public class ThanhToanActivity extends AppCompatActivity {
 
             JSONObject lc = new JSONObject(LichchieuText);
         String ID =lc.getString("MaLichChieu");
-         LICH_CHIEU.MaLichChieu=ID;
+
+        LICH_CHIEU.MaLichChieu=ID;
+        LICH_CHIEU.TenPhim=   lc.getString("TenPhim");
+        LICH_CHIEU.MaPhim=    lc.getString("MaPhim");
+        LICH_CHIEU.MaRap=     lc.getString("MaRap");
+        LICH_CHIEU.SuatChieu= lc.getString("ThoiGianChieu");
+        LICH_CHIEU.NgayChieu= lc.getString("NgayChieu");
+
+
+
+
+
+
+    }
+
+    public void initView()
+    {
+
+        TextView txtTenPhim = (TextView) findViewById(R.id.txtTenPhim);
+        TextView txtNgayChieu = (TextView) findViewById(R.id.txtThoiGianChieu);
+        TextView txtTenRap = (TextView) findViewById(R.id.txtTenRap);
+        TextView txtGhe = (TextView) findViewById(R.id.txtSoGhe);
+        TextView txtNhan = (TextView) findViewById(R.id.txtNhan);
+        TextView txtTongTien = (TextView) findViewById(R.id.txtTTTongTien);
+        TextView txtSoLuong = (TextView) findViewById(R.id.txtso);
+
+        txtTenPhim.setText(ThongTinPhimActivity.MOVIE.getTitle());
+        txtNgayChieu.setText(SoDoRapActivity.LICH_CHIEU.NgayChieu + " : "+SoDoRapActivity.LICH_CHIEU.SuatChieu);
+        txtTenRap.setText("Rap : "+SoDoRapActivity.LICH_CHIEU.MaRap);
+        txtNhan.setText(ThongTinPhimActivity.MOVIE.getLabel());
+
+        ImageView imageView = (ImageView) findViewById(R.id.imageMovie);
+        Glide.with(this).load(ThongTinPhimActivity.MOVIE.getCoverPhoto()).into(imageView);
+        String ghess="";
+                for (int i = 0;i<Ghes.size();i++)
+                {
+                    ghess+= (Ghes.get(i).MaGhe).substring(5)+", ";
+                }
+        txtGhe.setText(ghess);
+                Double tongtien = 0.0;
+        for (int i=0;i<Ghes.size();i++){
+
+            tongtien+=Ghes.get(i).Gia;
+
+        }
+
+        txtTongTien.setText(tongtien+".");
+        int len  = Ghes.size();
+       txtSoLuong.setText(len+".");
 
 
 
@@ -124,6 +180,7 @@ public class ThanhToanActivity extends AppCompatActivity {
             JSONObject ghe =GHES.getJSONObject(i);
             Ghe ghe1 =new Ghe();
             ghe1.MaGhe=ghe.getString("MaGhe");
+            ghe1.Gia=ghe.getDouble("Gia");
             ghe1.status=Integer.parseInt(ghe.getString("status"));
 
             Ghes.addLast(ghe1);
@@ -134,14 +191,20 @@ public class ThanhToanActivity extends AppCompatActivity {
         try {
             if (!checkVe())
             {
+                Double tien =0.0;
+                for (int i =0;i<Ghes.size();i++)
+                {
+                    tien+=Ghes.get(i).Gia;
+                }
 
-                int tien =Ghes.size()*50000;
 //                Toast.makeText(this,"Ma danh sach ve la  : "+MaDSVe,Toast.LENGTH_LONG).show();
                 String s = new APIGetting(this).execute("themdanhsachve?SoLuong="+Ghes.size()+"&TongThanhTien="+tien+"&MaTV="+MainActivity.MaThanhVien).get();
 
                 try {
-                    JSONObject DanhSachVe = new JSONObject(s);
-                    MaDSVe=DanhSachVe.getString("MaDsVe");
+                    JSONObject DanhSachVeText = new JSONObject(s);
+                    String DanhSachVe=DanhSachVeText.getString("message");
+                    JSONObject DSV = new JSONObject(DanhSachVe);
+                    MaDSVe=DSV.getString("id");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -149,11 +212,12 @@ public class ThanhToanActivity extends AppCompatActivity {
 
                 int len = Ghes.size();
                 for (int i=0;i<len;i++){
+
                     String ss = new APIGetting(this).
                             execute("themve?MaDsVe="+MaDSVe
                             +"&MaGhe="+Ghes.get(i).MaGhe
-                                    +"&ThanhTien=50000"
-                                    +"&MaLichChieu="+LICH_CHIEU.MaLichChieu).get();
+                                    +"&ThanhTien="+Ghes.get(i).Gia
+                                            +"&MaLichChieu="+LICH_CHIEU.MaLichChieu).get();
 
 
 
@@ -161,8 +225,10 @@ public class ThanhToanActivity extends AppCompatActivity {
                 Toast.makeText(this,"Đặt vé thành công !",Toast.LENGTH_LONG).show();
 
                 Intent intent= new Intent(this,MovieListActivity.class);
-                startActivity(intent);
+
                 this.finish();
+                startActivity(intent);
+
 
             }
         } catch (ExecutionException e) {

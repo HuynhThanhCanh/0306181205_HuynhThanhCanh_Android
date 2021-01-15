@@ -47,6 +47,7 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
     private Lichchieu lichchieu=new Lichchieu();
     LinkedList<Ghe> seatSelected;
     LinkedList<Ghe> seatSec= new LinkedList<Ghe>();
+    public static Lichchieu LICH_CHIEU =new Lichchieu();
 
     final int seatSize = 100;               // size x size of seat
     final int seatPadding = 30;             // padding seat
@@ -71,6 +72,12 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
         try {
             JSONObject lich =new JSONObject(lichChieuJSON);
             lichchieu.MaLichChieu=lich.getString("MaLichChieu");
+            lichchieu.MaPhim=lich.getString("MaPhim");
+            lichchieu.MaRap=lich.getString("MaRap");
+            lichchieu.SuatChieu=lich.getString("SuatChieu");
+            lichchieu.NgayChieu=lich.getString("NgayChieu");
+
+            LICH_CHIEU=lichchieu;
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -117,6 +124,8 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
 
         XuLyChonGhe();
 
+
+
     }
     public LinkedList<Ghe> readJSON(String URL) throws ExecutionException, InterruptedException, JSONException {
         LichChieuAsync lichChieuAsync = new LichChieuAsync();
@@ -131,8 +140,11 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
         {
             Ghe ghe = new Ghe();
             ghe.MaGhe=jsonArray.getJSONObject(i).getString("MaGhe");
-//            ghe.Gia=jsonArray.getJSONObject(i).getString("Gia");
+
             ghe.status=Integer.parseInt(jsonArray.getJSONObject(i).getString("TrangThai"));
+             Double ten  =jsonArray.getJSONObject(i).getDouble("DonGia");
+
+            ghe.Gia=ten;
             ghes.addLast(ghe);
         }
 
@@ -145,6 +157,12 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (seatSec.size()==0)
+                {
+                    Toast.makeText(getApplicationContext(),"Vui lòng chọn ít nhất 1 ghế !",Toast.LENGTH_LONG).show();
+                    return;
+
+                }
 
               Intent intent = new Intent(getApplicationContext(),ThanhToanActivity.class);
                 Gson gson = new Gson();
@@ -158,8 +176,10 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
 //                        .putExtra("soghe", tongSoGhe);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                Toast.makeText(getApplicationContext(),ghes,Toast.LENGTH_LONG).show();
+
+
                 startActivity(intent);
+
             }
         });
 
@@ -260,18 +280,14 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
         Integer tongGiaTien = soGheDaChon * 50000;
         tongTien = tongGiaTien;
         NumberFormat format = new DecimalFormat("#,###");
-        if (seatSec.size()==8)
-        {
-            Toast.makeText(SoDoRapActivity.this,"Chỉ được chọn tối đa 8 ghế !",Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         switch (seat.status) {
             case Ghe.STATUS_AVAILABLE:
                 if (seatSec.contains(seat)) {
                     view.setBackgroundResource(R.drawable.ic_seats_b);
 
                     seatSec.remove(seat);
-
+                    Double tong =0.0;
                     if (seatSec.size()!=0)
                     {
                         for (int i = 0; i < seatSec.size(); i++) {
@@ -283,24 +299,29 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
                                 txtSoGhe.setText(txtSoGhe.getText() + ", " + (seatSec.get(i).MaGhe.toString()).substring(5));
 
                             }
+                            tong+=seatSec.get(i).Gia;
                         }
                     }else{
                         txtSoGhe.setText("");
                     }
 
 
-                    txtTongTien.setText(50000*seatSec.size()+" VNĐ");
+                    txtTongTien.setText(tong+" VNĐ");
                 } else  {
+                    if (seatSec.size()==8)
+                    {
+                        Toast.makeText(SoDoRapActivity.this,"Chỉ được chọn tối đa 8 ghế !",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     view.setBackgroundResource(R.drawable.ic_seats_selected);
                     seatSec.add(seat);
 
+                    Double tong =0.0;
 
 
 
-                    String finalTongTien = format.format(tongGiaTien);
 
-                    txtTongTien.setText(finalTongTien.toString() );
-                    txtTongTien.setText(50000*seatSec.size()+" VNĐ");
+
                     for (int i = 0; i < seatSec.size(); i++) {
 
                         if (i == 0) {
@@ -311,7 +332,11 @@ public class SoDoRapActivity extends AppCompatActivity implements View.OnClickLi
 
 
                         }
+                        tong+=seatSec.get(i).Gia;
                     }
+                    String finalTongTien = format.format(tong);
+                    txtTongTien.setText(finalTongTien.toString()+" VNĐ" );
+//                    txtTongTien.setText(tong+" VNĐ");
 
                 }
                 break;

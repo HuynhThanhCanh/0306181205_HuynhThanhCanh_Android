@@ -36,6 +36,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
     private TextView tv_title,tv_description,sao,genrename,daoDien,noiDung,doTuoi;
      private FloatingActionButton play_fab;
     private Movie movie = new Movie();
+    public static Movie MOVIE = new Movie();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +53,19 @@ public class ThongTinPhimActivity extends AppCompatActivity {
          findViewById(R.id.btndatve).setOnClickListener(new View.OnClickListener(){
              @Override
              public void onClick(View v) {
-                 Intent intent = new Intent(getApplicationContext(), GiaodienActivity.class);
-                 intent.putExtra("ID",MaPhim);
-                 startActivity(intent);
+                 if (MainActivity.MaThanhVien.equals("0"))
+                 {
+                     Intent intent = new Intent(getApplicationContext(), LoginApp.class);
+
+
+                     startActivity(intent);
+                 }
+                 else{
+                     Intent intent = new Intent(getApplicationContext(), GiaodienActivity.class);
+                     intent.putExtra("ID",MaPhim);
+                     startActivity(intent);
+                 }
+
              }
          });
     }
@@ -144,6 +155,8 @@ public class ThongTinPhimActivity extends AppCompatActivity {
             movie.setDescription(jsonObject.getString("NoiDung"));
             movie.setCoverPhoto(Host + "image/phim/" +  jsonObject.getString("HinhAnh"));
             movie.setThumbnail(Host + "image/phim/" +  jsonObject.getString("HinhAnh"));
+
+            MOVIE=movie;
 
         }
     }
