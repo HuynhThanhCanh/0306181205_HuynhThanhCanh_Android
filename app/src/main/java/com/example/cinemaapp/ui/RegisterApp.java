@@ -3,7 +3,6 @@ package com.example.cinemaapp.ui;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -86,6 +85,7 @@ public class RegisterApp extends AppCompatActivity
         else if(editSDT.length()==0)
         {
             editSDT.setError("Không được bỏ trống!");
+
             return;
         }
         else if(editEmail.length()==0)
@@ -93,11 +93,12 @@ public class RegisterApp extends AppCompatActivity
             editEmail.setError("Không được bỏ trống!");
             return;
         }
-        else if(editPassoword.length()==0)
+        else if(editPassoword.length()==0||editPassoword.length()<6)
         {
             editPassoword.setError("Không được bỏ trống!");
             return;
         }
+
         else if(edtDate.length()==0)
         {
             edtDate.setError("Không được bỏ trống!");
