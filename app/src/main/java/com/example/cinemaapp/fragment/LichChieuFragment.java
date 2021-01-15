@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapter.LichChieuAdapter;
 import com.example.cinemaapp.model.Lichchieu;
@@ -28,6 +29,7 @@ import com.example.cinemaapp.ui.GiaodienActivity;
 import com.example.cinemaapp.ui.MainActivity;
 import com.example.cinemaapp.ui.SoDoRapActivity;
 import com.example.cinemaapp.ui.ThongTinPhimActivity;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,7 +57,7 @@ public class LichChieuFragment extends Fragment   {
     String dinhdang[];
     int MaPhim =1;
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
-    ImageView imgCover;
+     public  ImageView imgCover;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -108,11 +110,14 @@ public class LichChieuFragment extends Fragment   {
 
             recyclerView= view.findViewById(R.id.recyclerViewSuatChieu);
           datePicker =view.findViewById(R.id.lich);
+        imgCover = (ImageView) view.findViewById(R.id.detail_movie_cover);
 
         GiaodienActivity activity = (GiaodienActivity) getActivity();
         String s =activity.getIntent().getStringExtra("ID");
-      MaPhim=Integer.parseInt(s);
-
+        MaPhim=Integer.parseInt(s);
+//        ThongTinPhimActivity activityThongTinPhim=(ThongTinPhimActivity) getActivity();
+//        String image=activityThongTinPhim.getIntent().getStringExtra("image");
+//        Picasso.get().load(image).into( imgCover);
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             int year =calendar.get(Calendar.YEAR);
@@ -160,8 +165,9 @@ public class LichChieuFragment extends Fragment   {
 //
         LoadlistLoai();
         loadListAddress();
-        ThongTinPhimActivity image = new ThongTinPhimActivity();
-        imgCover.setImageDrawable(image.thisImg);
+//        ThongTinPhimActivity image = new ThongTinPhimActivity();
+//        imgCover.setImageDrawable(image.thisImg);
+
 
 
 
@@ -369,7 +375,7 @@ public class LichChieuFragment extends Fragment   {
         btn6 = (Button) view.findViewById(R.id.btn6);
         btn7 = (Button) view.findViewById(R.id.btn7);
         btn8 = (Button) view.findViewById(R.id.btn8);
-        imgCover = (ImageView) view.findViewById(R.id.detail_movie_cover);
+
 
     }
 

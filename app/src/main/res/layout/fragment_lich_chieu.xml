@@ -17,7 +17,6 @@
        <ImageView
            android:id="@+id/detail_movie_cover"
            android:scaleType="centerCrop"
-
            android:layout_width="match_parent"
            android:layout_height="170dp"
            />
@@ -41,7 +40,7 @@
            android:layout_width="wrap_content"
            android:datePickerMode="calendar"
            android:layout_marginLeft="30dp"
-           android:layout_height="303dp"
+           android:layout_height="wrap_content"
            android:layout_below="@id/spinner_dd"
            android:layout_marginTop="10dp">
 

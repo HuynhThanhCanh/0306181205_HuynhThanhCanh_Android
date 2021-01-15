@@ -54,6 +54,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
              public void onClick(View v) {
                  Intent intent = new Intent(getApplicationContext(), GiaodienActivity.class);
                  intent.putExtra("ID",MaPhim);
+                 intent.putExtra("image",movie.getCoverPhoto());
 
                  startActivity(intent);
              }
@@ -97,7 +98,7 @@ public class ThongTinPhimActivity extends AppCompatActivity {
       Glide.with(this).load(imageResoureId).into(MovieThumbnaiImg);
        MovieCoverImg=findViewById(R.id.detail_movie_cover);
        // Picasso.get().load(movie.getCoverPhoto()).into( MovieThumbnaiImg);
-        Glide.with(this).load(imageCover).into(MovieThumbnaiImg);
+        Glide.with(this).load(imageCover).into(MovieCoverImg);
        tv_title=findViewById(R.id.detail_movie_title);
        tv_title.setText(movieTitle);
 
