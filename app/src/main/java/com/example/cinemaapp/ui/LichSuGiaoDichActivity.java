@@ -33,7 +33,7 @@ public class LichSuGiaoDichActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lich_su_giao_dich);
         try {
-            showData("1");
+            showData(MainActivity.MaThanhVien);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -44,7 +44,7 @@ public class LichSuGiaoDichActivity extends AppCompatActivity{
     }
 
     public void showData(String value) throws ExecutionException, InterruptedException, JSONException, JSONException {
-        String list = new APIGettingVe(this).execute(value,"get").get();
+        String list = new APIGettingVe(this).execute(value).get();
 
         JSONArray jr = new JSONArray(list);
         int len = jr.length();
