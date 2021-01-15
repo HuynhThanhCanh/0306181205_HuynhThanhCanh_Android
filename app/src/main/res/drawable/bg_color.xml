@@ -3,7 +3,7 @@
     <item  android:state_pressed="true">
         <shape android:shape="rectangle">
             <solid android:color="@color/bg_activity_detail" />
-            <stroke android:color="@color/colorPrimary"
+            <stroke android:color="@color/bg_activity_detail"
                 android:width="6dp"/>
             <corners android:radius="5dp"/>
         </shape>
@@ -12,8 +12,8 @@
 
     <item>
         <shape android:shape="rectangle">
-            <gradient android:startColor="@color/fragment_common_view"
-                android:endColor="@color/detail_list_item_view"
+            <gradient android:startColor="#C7C8C8"
+                android:endColor="#C8C7C7"
                 android:angle="45"/>
 
 
