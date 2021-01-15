@@ -54,8 +54,6 @@ public class ThongTinPhimActivity extends AppCompatActivity {
              public void onClick(View v) {
                  Intent intent = new Intent(getApplicationContext(), GiaodienActivity.class);
                  intent.putExtra("ID",MaPhim);
-                 intent.putExtra("image",movie.getCoverPhoto());
-
                  startActivity(intent);
              }
          });
@@ -119,7 +117,8 @@ public class ThongTinPhimActivity extends AppCompatActivity {
     }
 
     public void play_trailer(View view) {
-        String link =getIntent().getExtras().getString("trailer");
+//        String link =getIntent().getExtras().getString("trailer");
+        String link=movie.getStreamingLink();
         String movieTitle =getIntent().getExtras().getString("title");
         play_fab=findViewById(R.id.play_fab);
         Intent intent = new Intent(this, TrailerActivity.class);
