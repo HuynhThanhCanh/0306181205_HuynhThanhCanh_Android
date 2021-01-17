@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper flipper;
     private int stt =0;
     ViewPager viewPager2;
-    public  static String  HostDomain="http://192.168.131.19:8000/";
+
+    public  static String  HostDomain="http://phim.thietkeweb5s.net/";
+
     private String URLImage=HostDomain+"image/phim/";
     ViewPager2 viewPagerVP;
     Adapter adapter;
